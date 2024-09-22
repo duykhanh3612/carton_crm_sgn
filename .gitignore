@@ -3,6 +3,7 @@
 /public/storage
 /public/upload
 /public/modules
+/public/plugin/bootstrap
 /storage
 /storage/*.key
 /vendor
@@ -18,5 +19,4 @@ yarn-error.log
 /.vscode
 /.readme
 /.composer.lock
-/public/modules
 Modules/Admin/Resources/views/order/assets

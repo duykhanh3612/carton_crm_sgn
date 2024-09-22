@@ -1,0 +1,10 @@
+{
+    "Api": true,
+    "Admin": true,
+    "Plugin": true,
+    "Modules": true,
+    "ZaloDevelopers": true,
+    "HyperSpace": true,
+    "DynDns": true,
+    "ATC": true
+}
