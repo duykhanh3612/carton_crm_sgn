@@ -1,0 +1,247 @@
+#printFelixOffice {
+  width: 1024px;
+}
+#printFelixOffice h1,
+#printFelixOffice h2,
+#printFelixOffice h3,
+#printFelixOffice h4,
+#printFelixOffice h5 {
+  font-weight: 600;
+  margin: unset;
+}
+#printFelixOffice h1 {
+  font-size: 103px;
+}
+#printFelixOffice h2 {
+  font-size: 36px;
+}
+#printFelixOffice h3 {
+  font-size: 25px;
+}
+#printFelixOffice h4 {
+  font-size: 20px;
+}
+#printFelixOffice p {
+  margin: unset;
+}
+#printFelixOffice .text-main-color {
+  color: #c73067;
+}
+
+#printFelixOffice img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+#printFelixOffice .lrPadding {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+#printFelixOffice .lPadding {
+  padding-left: 50px;
+}
+#printFelixOffice .tbPadding {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#printFelixOffice .tbPadding2 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+#printFelixOffice .tPadding {
+  padding-top: 15px;
+}
+#printFelixOffice .logoImg {
+  width: 130px;
+}
+#printFelixOffice .firstPage .dateTime {
+  color: #8495ae;
+}
+#printFelixOffice .firstPage .contents {
+  padding: 30px 50px;
+  background-image: url("../../assets/img/building-bg.jpg");
+  background-position: center;
+}
+#printFelixOffice .firstPage .contents .title {
+  color: white;
+  padding-top: 100px;
+}
+#printFelixOffice .firstPage .contents .subTitle {
+  color: white;
+  margin-top: 10px;
+}
+#printFelixOffice .firstPage .contents .commitText {
+  color: white;
+  margin-top: 100px;
+  line-height: 1.3;
+}
+#printFelixOffice .firstPage .contents .contactSaler {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+#printFelixOffice .firstPage .contents .contactSaler img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+#printFelixOffice .firstPage .contents .contactSaler div p {
+  color: white;
+}
+#printFelixOffice .firstPage .contents .contactSaler div p:first-child {
+  font-weight: 600;
+}
+#printFelixOffice .firstPage .logo {
+  display: flex;
+  justify-content: end;
+  padding: 30px 30px 0 30px;
+}
+#printFelixOffice .listProjectPage .pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: #f8fafd; */
+  border-bottom: 1px solid #d1d5da;
+}
+#printFelixOffice .listProjectPage .pageHeader h4 {
+  width: 50%;
+}
+#printFelixOffice .listProjectPage .pageHeader .phoneNumber {
+  font-weight: bold;
+}
+
+#printFelixOffice .productDetailPage .productImages {
+  border-left: 3px solid #f5f5f5;
+}
+#printFelixOffice .productDetailPage .productImages .firstImg {
+  height: 425px;
+}
+#printFelixOffice .productDetailPage .productImages .secondImg {
+  margin-top: 15px;
+  height: 255px;
+}
+#printFelixOffice .productDetailPage .productDetail .title2 {
+  position: relative;
+  padding: 30px 0;
+}
+#printFelixOffice .productDetailPage .productDetail .title2::before {
+  content: "";
+  position: absolute;
+  width: 75px;
+  height: 7px;
+  background-color: #c73067;
+  top: 0;
+  left: 0;
+}
+#printFelixOffice .productDetailPage .productDetail .title3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 3px solid black;
+}
+#printFelixOffice .productDetailPage .productDetail table {
+  width: 100%;
+}
+#printFelixOffice .productDetailPage .productDetail table th {
+  padding: 15px 15px 0px 0;
+}
+#printFelixOffice .productDetailPage .productDetail table thead tr {
+  border-bottom: none;
+  vertical-align: baseline;
+}
+#printFelixOffice .productDetailPage .productDetail table tbody td {
+  padding: 10px 12px 0px 0;
+}
+#printFelixOffice .productDetailPage .productDetail table tbody tr {
+  border-bottom: none;
+}
+#printFelixOffice .productDetailPage .productDetail .row {
+  margin-top: 30px;
+}
+#printFelixOffice .productDetailPage .productDetail .verticalTableDetail th {
+  width: 40%;
+}
+#printFelixOffice .productDetailPage .productDetail .verticalTableDetail td {
+  text-align: left;
+  padding: 15px 15px 10px 0;
+}
+#printFelixOffice .productDetailPage .productDetail .verticalTableDetail tr {
+  vertical-align: baseline;
+}
+#printFelixOffice .contactFooter .contactInfo .saleImg img {
+  -o-object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+#printFelixOffice .contactFooter .contactInfo .tagName {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(8, 36, 76, 0.7294117647);
+  padding: 15px;
+  right: 0;
+  color: white;
+}
+#printFelixOffice .contactFooter .contactInfo .tagName p:first-child {
+  font-weight: bold;
+}
+#printFelixOffice .contactFooter .processDetail {
+  background-color: #f7fbfe;
+}
+#printFelixOffice .contactFooter .processDetail .row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+#printFelixOffice .contactFooter .processDetail .col-xs-3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+#printFelixOffice .contactFooter .processDetail p {
+  text-align: center;
+  padding: 0 30px 30px 30px;
+  position: relative;
+  margin-right: 20px;
+}
+#printFelixOffice .contactFooter .processDetail p::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 16px;
+  background-color: #c0c0c0;
+  bottom: 0;
+  left: 0;
+  border-radius: 3px;
+}
+#printFelixOffice .contactFooter .processDetail p.active::after {
+  background-color: #c73067;
+}
+#printFelixOffice .contactFooter .processDetail i {
+  color: #c0c0c0;
+}
+#printFelixOffice .contactFooter .processDetail i.active {
+  color: #c73067;
+}
+#printFelixOffice .contactFooter .footerLogo {
+  background-color: #08244c;
+  padding: 90px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#printFelixOffice .contactFooter .footerLogo .logo {
+  width: 300px;
+} /*# sourceMappingURL=printFelixOffice.css.map */
+
+#printFelixOffice .table {
+  width: 100%;
+}
+#orderValueTable tr td:first-child {
+  width: 140px;
+  text-align: right;
+}

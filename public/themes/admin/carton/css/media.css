@@ -1,0 +1,278 @@
+@media (max-width: 1030px) {
+    .row {
+        margin-left: 0;
+        margin-right: 0
+    }
+    .formHys .row, .invoiceController .row {
+        margin-left: -15px;
+        margin-right: -15px
+    }
+    .btnbody {
+        padding: 12px 10px 6px !important
+    }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+    .container {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 992px) {
+    #logo {
+        margin-left: 45px;
+        position: relative;
+        z-index: 1003
+    }
+
+    .navHs .navHS-xs {
+		display: block;
+    }
+
+    .navHs {
+        width: 100%;
+        position: absolute;
+        top: 16px;
+        left: 0;
+        z-index: 1001
+    }
+    .navHs .collapsing {
+        overflow: hidden;
+        background-color: #000;
+        clear:both;      
+    }
+
+    .navHs .navbar-nav {        
+        float: none;
+        margin:0;
+    }
+   
+    .navbar-collapse {
+    	padding-left:0;
+    	padding-right:0;
+    }
+
+    .navHs .navbar-collapse.in {
+        width: 100%;
+        overflow: hidden;
+        background-color: #000;
+        display:block !important;
+        padding-left: 0;
+        padding-right: 0;
+        clear: both;
+        border-top: 1px solid transparent;
+		box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+    }
+
+    .navHs .navbar-nav>li {
+    	float: none;   
+    }
+   
+    .navHs .nav li:hover {
+        background: #78ab35;
+    }
+
+    .navHs .nav li a:hover {
+        color: #fff
+    }
+    .navHs .nav li.active {
+        border-bottom: none;
+    }
+
+	.container {
+        width: 100% !important;
+    }
+    .headTabs .rightSide {
+        margin-left: 10px;
+    }
+    .dropDownList .dropdown-menu {
+        margin-top: 0;
+    }
+    .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: auto;
+        overflow-x: auto;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+        -webkit-overflow-scrolling: touch;
+    }
+    .inlineHysform .form-group {
+        margin-right: 0
+    }
+
+    .invoiceController {
+        clear: both;
+        text-align: center;
+        margin-top:0;
+        margin-left: -15px;
+        margin-right: -15px;
+    }    
+
+    .invoiceController li:nth-child(4n + 0) a{
+    	margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 960px) {
+    .headTabs .rightSide {
+        float: left;
+    }
+}
+
+@media (max-width: 922px) {
+    .headTabs .rightSide {
+        float: left;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .detailBlock .info dt {
+        text-align: left;
+        width: 40%;
+        font-weight: normal;
+    }
+    .detailBlock .info dd {
+        margin-left: 40%;
+    }
+
+}
+@media (max-width: 768px) {
+    .profile-control .dropdown-toggle {        
+        padding: 18px 0 17px 5px;
+        float: right;
+    }
+
+    .profile-control {
+        z-index: 1002
+    }
+
+    .profile-control .avatar {
+        margin-right: 0;
+        width: 35px;
+        height: 35px;
+    }
+    .profile-control .dropdown-menu {
+        margin-left: -146px;
+        min-width: 200px;
+    }
+    
+    .avatar-user .icon {
+        color: #78ab35;
+        font-size: 20px;
+        border: 2px solid rgba(120, 171, 53, 0.5);
+        padding: 4px 12px 0;
+    }
+
+    .notification .buble_alert {
+        position: absolute;
+        right: 0;
+    }
+    
+    .container {
+        width: 100%
+    }
+	
+	footer .btnGreen {
+		font-size: 10px;
+	}
+}
+@media (max-width: 767px) {
+    .refresh i {
+        margin-left: 0
+    }
+    .detailBlock .info dt {
+        margin-bottom: 20px;
+    }
+    .formHys button {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .formHys .dontSave {
+        margin: 0;
+        display: inherit;
+        text-align: center;
+    }
+}
+@media (max-width: 718px) {
+    .filters .pull-left {
+        width: 100% !important
+    }
+    .filters .form-group {
+        width: 100% !important;
+        float: none;
+        margin-bottom: 10px
+    }
+    .filters input[type="text"] {
+        width: 100%;
+    }
+    .filters .form-group.date .form-group {
+        width: 46% !important;
+    }
+}
+@media (max-width: 677px) {
+    .headTabs .rightSide {
+        margin-top:0;
+        float: right
+    }
+    #small-size-menu {
+        display: block;
+        float: left;
+        margin-right: 10px;
+    }
+    #small-size-menu select {
+        height: 30px;
+        line-height: 30px;
+    }
+    #full-size-menu {
+        display: none;
+    }
+}
+@media (max-width: 666px) {
+    .filters .form-group {
+        float: none;
+        margin-bottom: 20px;
+    }
+    .filters input[type="text"] {
+        width:100%;
+    }
+    .filters .form-group.date .form-group {
+        width: 45%
+    }
+    .date .glyphicon-resize-horizontal {
+        font-size: 100%
+    }
+}
+@media (max-width: 600px) {
+    .opt-tab .btnBody {
+        padding-left: 5px !important;
+        padding-right: 10px !important;
+    }
+    .opt-tab a.btnGrey {
+        min-width: 100px;
+        width: auto !important;
+    }
+    .opt-tab li.active a.btnGrey {
+        padding-right: 10px !important;
+    }
+    .invoiceController i {
+        margin-right: 5px
+    }
+    /*	.btnBody {
+		padding: 12px 8px 6px !important
+	}*/
+}
+
+@media (max-width: 480px) {
+    #logo {
+        width: 180px;
+        height: 14px;
+        margin-top: 27px;        
+    }
+    #logo.sprite {
+        background-size: 410px 410px;
+    }
+}
+
+.info button.multiselect{white-space: normal;}

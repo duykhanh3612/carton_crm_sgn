@@ -1,0 +1,49 @@
+th.group-1,
+td.group-1,
+th.group-2,
+td.group-2,
+th.group-3,
+td.group-3,
+th.group-4,
+td.group-4,
+th.group-5,
+td.group-5,
+th.group-6,
+td.group-6,
+th.group-7,
+td.group-7,
+th.group-8,
+td.group-8,
+th.group-9,
+td.group-9 {
+    display: none;
+}
+#main-tab.group-1 th.group-1,
+#main-tab.group-1 td.group-1,
+#main-tab.group-2 th.group-2,
+#main-tab.group-2 td.group-2,
+#main-tab.group-3 th.group-3,
+#main-tab.group-3 td.group-3,
+#main-tab.group-4 th.group-4,
+#main-tab.group-4 td.group-4,
+#main-tab.group-5 th.group-5,
+#main-tab.group-5 td.group-5,
+#main-tab.group-6 th.group-6,
+#main-tab.group-6 td.group-6,
+#main-tab.group-7 th.group-7,
+#main-tab.group-7 td.group-7,
+#main-tab.group-8 th.group-8,
+#main-tab.group-8 td.group-8,
+#main-tab.group-9 th.group-9,
+#main-tab.group-9 td.group-9 {
+    display: table-cell;
+}
+tr.pending-approval {
+    background-color: #ffb2b2 !important;
+}
+header .nav-black .user-action .dropdown-toggle {
+    min-width: 200px;
+}
+.content-wrapper .main.jsAutoLoad {
+    padding-bottom: 80px;
+}

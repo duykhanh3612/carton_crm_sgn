@@ -1,0 +1,69 @@
+/* @charset "utf-8";
+/*
+Theme Name: Dinh Gia Truc Tuyen
+Theme URI: https://dinhgiatructuyen.com
+Author: Ngoc Thuy Do
+Author URI: https://ngocthuydo.com
+
+
+*/
+
+@page {
+  size: A4;
+  margin: 20px 0;
+}
+
+.modal-header,
+.modal-content {
+  -webkit-print-color-adjust: exact;
+  border-radius: 0;
+}
+
+.pagebreak {
+  /* page-break-before: always; */
+}
+
+.pagenum {
+  display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  page-break-after: avoid;
+}
+table,
+figure {
+  page-break-inside: avoid;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media print {
+  body,
+  html,
+  .modal-header {
+    color: #000 !important;
+    background: #fff;
+  }
+
+  a[href]:after {
+    content: none !important;
+  }
+
+  .pagebreak {
+    /* page-break-before: always; */
+    height: max-content;
+    margin-top: 20px;
+  }
+  .pagenum {
+    text-align: right;
+    padding-top: -20pt;
+    display: block;
+  }
+}

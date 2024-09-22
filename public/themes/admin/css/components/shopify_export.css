@@ -1,0 +1,106 @@
+#shopify_export_order .modal-dialog {
+    min-width: 600px;
+}
+
+#shopify_export_order .modal-dialog .field-row{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content : flex-start;
+    align-items : center;
+    align-content:center;
+    margin-bottom: 5px;
+}
+
+#shopify_export_order .modal-dialog label{
+    margin: 5px 5px 0px 0px;
+    padding:5px;
+    white-space: nowrap;
+}
+
+#shopify_export_order .modal-dialog input , #shopify_export_order .modal-dialog select{
+    margin: 0px 5px 0px 0px;
+    padding:10px 0px 5px 5px;
+}
+
+#shopify_export_order .modal-dialog .filter-value{
+    flex-grow:10;
+}
+
+#shopify_export_order .modal-dialog .field-row span.filter-remove{
+    margin: 5px 5px 0px 0px;
+    padding:5px 10px;
+    cursor: pointer;
+    color: #dddddd;
+}
+
+#shopify_export_order .modal-dialog .field-row span.filter-remove:hover{
+    color: #000000;
+}
+
+#shopify_filter_fields_wrapper {
+    display: flex;
+}
+
+#shopify_filter_fields_wrapper button{
+    margin-right: 10px;
+}
+
+#shopify_filter_fields_wrapper>span:last-child{
+    min-width: 200px;
+    flex-grow: 1;
+}
+
+#shopify_export_order .field-row .select2-container {
+    flex-grow: 1;
+}
+
+#shopify_export_order .select2-container .select2-selection--single, #shopify_export_order .select2-container .select2-selection--multiple {
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #000000;
+    border-radius: 0;
+    padding: 5px 10px 2px;
+    margin-right: 5px;
+}
+
+#shopify_export_order .select2-container .select2-selection--multiple {
+    padding: 0px;
+}
+
+#shopify_export_order .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top:5px;
+    right:5px;
+}
+
+#shopify_export_order .modal-dialog .field-row .filter-operator {
+    margin-right: 5px;
+    padding: 10px 5px 5px 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#shopify_export_order #export_selected_headers {
+    list-style: none;
+    padding: 0;
+}
+
+#shopify_export_order #export_selected_headers li{
+    display: block;
+    background-color: #ddd;
+    padding:10px 10px 5px 10px;
+    margin-bottom: 8px;
+    box-shadow: 2px 2px #888888;
+    font-weight: bold;
+}
+
+#shopify_export_order .multiselect-container.dropdown-menu.show {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+#shopify_export_order .modal-dialog span.selection li.select2-search input.select2-search__field {
+    margin-top: 5px;
+    padding: 1px 0px 1px 5px;
+    margin-left: 10px;
+    min-width: 30px;
+}

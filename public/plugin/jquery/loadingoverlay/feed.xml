@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<TITLE>Gaspare Sganga</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<FONT FACE="Arial" SIZE="2">
+<A HREF="Link Required">
+<IMG BORDER=0 SRC="URL Required" ALT="Title Required">
+</A>
+<BR>RSS Channel:
+<A HREF="default.htm">Gaspare Sganga</A><BR>
+Freelance Developer & Consultant, IT Manager, GIS Analyst & Lead Developer at Setin.</A>
+<TABLE BORDER=0>
+<TR><TD><FONT FACE="Arial" SIZE="2">Generator:</TD><TD><FONT FACE="Arial" SIZE="2">SimpleRSS ver 0.4 (BlueHippo) Release 1</TD></TR>
+<TR><TD><FONT FACE="Arial" SIZE="2">Docs:</TD><TD><FONT FACE="Arial" SIZE="2">http://blogs.law.harvard.edu/tech/rss</TD></TR>
+</TABLE>
+<HR SIZE=1>
+<A HREF="posts/php-shapefile-3.4.1/default.htm">PHP Shapefile 3.4.1</A><BR>
+Invalid/corrupted Shapefile recovering, GeoJSON Feature properties support and more<BR>
+
+<HR SIZE=1>
+<A HREF="posts/php-shapefile-3.4.0/default.htm">PHP Shapefile 3.4.0</A><BR>
+Invalid/corrupted Shapefile recovering, GeoJSON Feature properties support and more<BR>
+
+<HR SIZE=1>
+<A HREF="posts/php-shapefile-3.3.3/default.htm">PHP Shapefile 3.3.3</A><BR>
+Fixed a bug affecting ShapefileWriter with certain Point geometries<BR>
+
+<HR SIZE=1>
+<A HREF="posts/php-shapefile-3.3.2/default.htm">PHP Shapefile 3.3.2</A><BR>
+Removed duplicated header introduced in v3.2.1<BR>
+
+<HR SIZE=1>
+<A HREF="posts/php-shapefile-3.3.1/default.htm">PHP Shapefile 3.3.1</A><BR>
+Prevented a PHP warning when encoding a boolean value<BR>
+
+<HR SIZE=1>
+<A HREF="posts/postgis-normalize-geometry-1.2.1/default.htm">PostGIS normalize_geometry 1.2.1</A><BR>
+Fixed multipolygons handling<BR>
+
+<HR SIZE=1>
+<A HREF="posts/php-shapefile-3.3.0/default.htm">PHP Shapefile 3.3.0</A><BR>
+Polygons/MultiPolygons rings orientation made simple<BR>
+
+<HR SIZE=1>
+<A HREF="posts/jquery-message-box-3.2.2/default.htm">jQuery MessageBox 3.2.2</A><BR>
+Default overlay z-index<BR>
+
+<HR SIZE=1>
+<A HREF="posts/php-shapefile-3.2.0/default.htm">PHP Shapefile 3.2.0</A><BR>
+New OPTION_DBF_ALLOW_FIELD_SIZE_255<BR>
+
+<HR SIZE=1>
+<A HREF="posts/jquery-loading-overlay-2.1.7/default.htm">jQuery LoadingOverlay 2.1.7</A><BR>
+Fixed a bug when applied to multiple target elements at once<BR>
+
+<HR SIZE=1>
+</FONT>
+</BODY>
+</HTML>

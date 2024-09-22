@@ -1,0 +1,1481 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery LoadingOverlay - Gaspare Sganga</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A flexible loading overlay jQuery plugin">
+    <meta name="author" content="Gaspare Sganga">
+
+    <style type="text/css">
+        svg:not(:root).svg-inline--fa {
+            overflow: visible
+        }
+
+        .svg-inline--fa {
+            display: inline-block;
+            font-size: inherit;
+            height: 1em;
+            overflow: visible;
+            vertical-align: -.125em
+        }
+
+        .svg-inline--fa.fa-lg {
+            vertical-align: -.225em
+        }
+
+        .svg-inline--fa.fa-w-1 {
+            width: .0625em
+        }
+
+        .svg-inline--fa.fa-w-2 {
+            width: .125em
+        }
+
+        .svg-inline--fa.fa-w-3 {
+            width: .1875em
+        }
+
+        .svg-inline--fa.fa-w-4 {
+            width: .25em
+        }
+
+        .svg-inline--fa.fa-w-5 {
+            width: .3125em
+        }
+
+        .svg-inline--fa.fa-w-6 {
+            width: .375em
+        }
+
+        .svg-inline--fa.fa-w-7 {
+            width: .4375em
+        }
+
+        .svg-inline--fa.fa-w-8 {
+            width: .5em
+        }
+
+        .svg-inline--fa.fa-w-9 {
+            width: .5625em
+        }
+
+        .svg-inline--fa.fa-w-10 {
+            width: .625em
+        }
+
+        .svg-inline--fa.fa-w-11 {
+            width: .6875em
+        }
+
+        .svg-inline--fa.fa-w-12 {
+            width: .75em
+        }
+
+        .svg-inline--fa.fa-w-13 {
+            width: .8125em
+        }
+
+        .svg-inline--fa.fa-w-14 {
+            width: .875em
+        }
+
+        .svg-inline--fa.fa-w-15 {
+            width: .9375em
+        }
+
+        .svg-inline--fa.fa-w-16 {
+            width: 1em
+        }
+
+        .svg-inline--fa.fa-w-17 {
+            width: 1.0625em
+        }
+
+        .svg-inline--fa.fa-w-18 {
+            width: 1.125em
+        }
+
+        .svg-inline--fa.fa-w-19 {
+            width: 1.1875em
+        }
+
+        .svg-inline--fa.fa-w-20 {
+            width: 1.25em
+        }
+
+        .svg-inline--fa.fa-pull-left {
+            margin-right: .3em;
+            width: auto
+        }
+
+        .svg-inline--fa.fa-pull-right {
+            margin-left: .3em;
+            width: auto
+        }
+
+        .svg-inline--fa.fa-border {
+            height: 1.5em
+        }
+
+        .svg-inline--fa.fa-li {
+            width: 2em
+        }
+
+        .svg-inline--fa.fa-fw {
+            width: 1.25em
+        }
+
+        .fa-layers svg.svg-inline--fa {
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .fa-layers {
+            display: inline-block;
+            height: 1em;
+            position: relative;
+            text-align: center;
+            vertical-align: -.125em;
+            width: 1em
+        }
+
+        .fa-layers svg.svg-inline--fa {
+            -webkit-transform-origin: center center;
+            transform-origin: center center
+        }
+
+        .fa-layers-counter,
+        .fa-layers-text {
+            display: inline-block;
+            position: absolute;
+            text-align: center
+        }
+
+        .fa-layers-text {
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            -webkit-transform-origin: center center;
+            transform-origin: center center
+        }
+
+        .fa-layers-counter {
+            background-color: #ff253a;
+            border-radius: 1em;
+            color: #fff;
+            height: 1.5em;
+            line-height: 1;
+            max-width: 5em;
+            min-width: 1.5em;
+            overflow: hidden;
+            padding: .25em;
+            right: 0;
+            text-overflow: ellipsis;
+            top: 0;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: top right;
+            transform-origin: top right
+        }
+
+        .fa-layers-bottom-right {
+            bottom: 0;
+            right: 0;
+            top: auto;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: bottom right;
+            transform-origin: bottom right
+        }
+
+        .fa-layers-bottom-left {
+            bottom: 0;
+            left: 0;
+            right: auto;
+            top: auto;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: bottom left;
+            transform-origin: bottom left
+        }
+
+        .fa-layers-top-right {
+            right: 0;
+            top: 0;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: top right;
+            transform-origin: top right
+        }
+
+        .fa-layers-top-left {
+            left: 0;
+            right: auto;
+            top: 0;
+            -webkit-transform: scale(.25);
+            transform: scale(.25);
+            -webkit-transform-origin: top left;
+            transform-origin: top left
+        }
+
+        .fa-lg {
+            font-size: 1.33333em;
+            line-height: .75em;
+            vertical-align: -.0667em
+        }
+
+        .fa-xs {
+            font-size: .75em
+        }
+
+        .fa-sm {
+            font-size: .875em
+        }
+
+        .fa-1x {
+            font-size: 1em
+        }
+
+        .fa-2x {
+            font-size: 2em
+        }
+
+        .fa-3x {
+            font-size: 3em
+        }
+
+        .fa-4x {
+            font-size: 4em
+        }
+
+        .fa-5x {
+            font-size: 5em
+        }
+
+        .fa-6x {
+            font-size: 6em
+        }
+
+        .fa-7x {
+            font-size: 7em
+        }
+
+        .fa-8x {
+            font-size: 8em
+        }
+
+        .fa-9x {
+            font-size: 9em
+        }
+
+        .fa-10x {
+            font-size: 10em
+        }
+
+        .fa-fw {
+            text-align: center;
+            width: 1.25em
+        }
+
+        .fa-ul {
+            list-style-type: none;
+            margin-left: 2.5em;
+            padding-left: 0
+        }
+
+        .fa-ul>li {
+            position: relative
+        }
+
+        .fa-li {
+            left: -2em;
+            position: absolute;
+            text-align: center;
+            width: 2em;
+            line-height: inherit
+        }
+
+        .fa-border {
+            border: solid .08em #eee;
+            border-radius: .1em;
+            padding: .2em .25em .15em
+        }
+
+        .fa-pull-left {
+            float: left
+        }
+
+        .fa-pull-right {
+            float: right
+        }
+
+        .fa.fa-pull-left,
+        .fab.fa-pull-left,
+        .fal.fa-pull-left,
+        .far.fa-pull-left,
+        .fas.fa-pull-left {
+            margin-right: .3em
+        }
+
+        .fa.fa-pull-right,
+        .fab.fa-pull-right,
+        .fal.fa-pull-right,
+        .far.fa-pull-right,
+        .fas.fa-pull-right {
+            margin-left: .3em
+        }
+
+        .fa-spin {
+            -webkit-animation: fa-spin 2s infinite linear;
+            animation: fa-spin 2s infinite linear
+        }
+
+        .fa-pulse {
+            -webkit-animation: fa-spin 1s infinite steps(8);
+            animation: fa-spin 1s infinite steps(8)
+        }
+
+        @-webkit-keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0)
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0)
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg)
+            }
+        }
+
+        .fa-rotate-90 {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg)
+        }
+
+        .fa-rotate-180 {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg)
+        }
+
+        .fa-rotate-270 {
+            -webkit-transform: rotate(270deg);
+            transform: rotate(270deg)
+        }
+
+        .fa-flip-horizontal {
+            -webkit-transform: scale(-1, 1);
+            transform: scale(-1, 1)
+        }
+
+        .fa-flip-vertical {
+            -webkit-transform: scale(1, -1);
+            transform: scale(1, -1)
+        }
+
+        .fa-flip-horizontal.fa-flip-vertical {
+            -webkit-transform: scale(-1, -1);
+            transform: scale(-1, -1)
+        }
+
+        :root .fa-flip-horizontal,
+        :root .fa-flip-vertical,
+        :root .fa-rotate-180,
+        :root .fa-rotate-270,
+        :root .fa-rotate-90 {
+            -webkit-filter: none;
+            filter: none
+        }
+
+        .fa-stack {
+            display: inline-block;
+            height: 2em;
+            position: relative;
+            width: 2em
+        }
+
+        .fa-stack-1x,
+        .fa-stack-2x {
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .svg-inline--fa.fa-stack-1x {
+            height: 1em;
+            width: 1em
+        }
+
+        .svg-inline--fa.fa-stack-2x {
+            height: 2em;
+            width: 2em
+        }
+
+        .fa-inverse {
+            color: #fff
+        }
+
+        .sr-only {
+            border: 0;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px
+        }
+
+        .sr-only-focusable:active,
+        .sr-only-focusable:focus {
+            clip: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            position: static;
+            width: auto
+        }
+    </style>
+    <link integrity="sha256-rRC4SAGT0Mcy/4ql2BzZQaR1Y11rcsXK3P+yVDUo07E=" href="assets/img/favicon-ad10b8480193d0c732ff8aa5d81cd941a475635d6b72c5cadcffb2543528d3b1.ico" rel="shortcut icon">
+    <link rel="alternate" type="application/rss+xml" title="Gaspare Sganga" href="https://gasparesganga.com/feed.xml">
+    <link rel="canonical" href="https://gasparesganga.com/labs/jquery-loading-overlay/">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic">
+    <link rel="stylesheet" type="text/css" href="assets/css/style-c583e76271f6a52d2d7fdcaae150041558e7e0dc0403891b582e602a9a2cb044.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/jquery-loading-overlay/_assets/demo-20b138b88446186a394af886a4aaf8ec5893f7e3095cb193b2bd091cde13a05c.css" >
+    <style>
+        @-webkit-keyframes loadingoverlay_animation__rotate_right {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes loadingoverlay_animation__rotate_right {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes loadingoverlay_animation__rotate_left {
+            to {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+            }
+        }
+
+        @keyframes loadingoverlay_animation__rotate_left {
+            to {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+            }
+        }
+
+        @-webkit-keyframes loadingoverlay_animation__fadein {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale(0.1, 0.1);
+                transform: scale(0.1, 0.1);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+        }
+
+        @keyframes loadingoverlay_animation__fadein {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale(0.1, 0.1);
+                transform: scale(0.1, 0.1);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+        }
+
+        @-webkit-keyframes loadingoverlay_animation__pulse {
+            0% {
+                -webkit-transform: scale(0, 0);
+                transform: scale(0, 0);
+            }
+
+            50% {
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+
+            100% {
+                -webkit-transform: scale(0, 0);
+                transform: scale(0, 0);
+            }
+        }
+
+        @keyframes loadingoverlay_animation__pulse {
+            0% {
+                -webkit-transform: scale(0, 0);
+                transform: scale(0, 0);
+            }
+
+            50% {
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+
+            100% {
+                -webkit-transform: scale(0, 0);
+                transform: scale(0, 0);
+            }
+        }
+    </style>
+    <style>
+        .--savior-overlay-transform-reset {
+            transform: none !important;
+        }
+
+        .--savior-overlay-z-index-top {
+            z-index: 2147483643 !important;
+        }
+
+        .--savior-overlay-position-relative {
+            position: relative;
+        }
+
+        .--savior-overlay-position-static {
+            position: static !important;
+        }
+
+        .--savior-overlay-overflow-hidden {
+            overflow: hidden !important;
+        }
+
+        .--savior-overlay-overflow-x-visible {
+            overflow-x: visible !important;
+        }
+
+        .--savior-overlay-overflow-y-visible {
+            overflow-y: visible !important;
+        }
+
+        .--savior-overlay-z-index-reset {
+            z-index: auto !important;
+        }
+
+        .--savior-overlay-display-none {
+            display: none !important;
+        }
+
+        .--savior-overlay-clearfix {
+            clear: both;
+        }
+
+        .--savior-overlay-reset-filter {
+            filter: none !important;
+            backdrop-filter: none !important;
+        }
+
+        .--savior-tooltip-host {
+            z-index: 9999;
+            position: absolute;
+            top: 0;
+        }
+
+        /*Override css styles for Twitch.tv*/
+        main.--savior-overlay-z-index-reset {
+            z-index: auto !important;
+        }
+
+        .modal__backdrop.--savior-overlay-z-index-reset {
+            position: static !important;
+        }
+
+        main.--savior-overlay-z-index-top {
+            z-index: auto !important;
+        }
+
+        main.--savior-overlay-z-index-top .channel-root__player-container+div,
+        main.--savior-overlay-z-index-top .video-player-hosting-ui__container+div {
+            opacity: 0.1;
+        }
+
+        /*Dirty hack for facebook big video page e.g: https://www.facebook.com/abc/videos/...*/
+        .--savior-backdrop {
+            position: fixed !important;
+            z-index: 2147483642 !important;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw !important;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .--savior-overlay-twitter-video-player {
+            position: fixed;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+        }
+
+        .--savior-overlay-z-index-reset [data-testid="sidebarColumn"],
+        .--savior-overlay-z-index-reset header[role="banner"],
+        .--savior-overlay-z-index-reset [aria-label="Home timeline"]>div:first-child,
+        .--savior-overlay-z-index-reset [aria-label="Home timeline"]>div:nth-child(3) {
+            z-index: -1 !important;
+        }
+
+        /* Fix conflict css with zingmp3 */
+        .zm-video-modal.--savior-overlay-z-index-reset {
+            position: absolute;
+        }
+
+        /* Dirty hack for xvideos99 */
+        #page #main.--savior-overlay-z-index-reset {
+            z-index: auto !important;
+        }
+
+        /* Overlay for ok.ru */
+        #vp_w.--savior-overlay-z-index-reset.media-layer.media-layer__video {
+            overflow-y: hidden;
+            z-index: 2147483643 !important;
+        }
+
+        /* Fix missing controller for tv.naver.com */
+        .--savior-overlay-z-index-top.rmc_controller,
+        .--savior-overlay-z-index-top.rmc_setting_intro,
+        .--savior-overlay-z-index-top.rmc_highlight,
+        .--savior-overlay-z-index-top.rmc_control_settings {
+            z-index: 2147483644 !important;
+        }
+
+        /* Dirty hack for douyi.com */
+        .swiper-wrapper.--savior-overlay-z-index-reset .swiper-slide:not(.swiper-slide-active),
+        .swiper-wrapper.--savior-overlay-transform-reset .swiper-slide:not(.swiper-slide-active) {
+            display: none;
+        }
+
+        .videoWrap+div>div {
+            pointer-events: unset;
+        }
+
+        /* Dirty hack for fpt.ai */
+        .mfp-wrap.--savior-overlay-z-index-top {
+            position: relative;
+        }
+
+        .mfp-wrap.--savior-overlay-z-index-top .mfp-close {
+            display: none;
+        }
+
+        .mfp-wrap.--savior-overlay-z-index-top .mfp-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        section.--savior-overlay-z-index-reset>main[role="main"].--savior-overlay-z-index-reset+nav {
+            z-index: -1 !important;
+        }
+
+        section.--savior-overlay-z-index-reset>main[role="main"].--savior-overlay-z-index-reset section.--savior-overlay-z-index-reset div.--savior-overlay-z-index-reset~div {
+            position: relative;
+        }
+
+        div[class^="tiktok"].--savior-overlay-z-index-reset {
+            z-index: 2147483644 !important;
+        }
+
+        @-moz-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="profile">
+            <div id="profile_pic">
+                <a href=""><img integrity="sha256-4yJ/2ADvPPDeHhOZXNUo5sccDd92g/P5VGTyneIyQ4k=" src="/assets/img/logo_no_bg-e3227fd800ef3cf0de1e13995cd528e6c71c0ddf7683f3f95464f29de2324389.svg"></a>
+            </div>
+            <div id="profile_title">Gaspare Sganga</div>
+            <div id="profile_details">
+                <p>IT Manager, GIS Analyst &amp; Lead Developer <a href="https://www.setin.srl">@setin</a>.</p>
+                <p>Freelance Developer &amp; Consultant.</p>
+            </div>
+            <div id="profile_social">
+                <a id="profile_social_feed" href="feed.xml" title="RSS Feed"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 8 8">
+                        <g>
+                            <rect width="8" height="8" rx="1.5"></rect>
+                        </g>
+                        <g style="fill:#ffffff;">
+                            <circle cx="2" cy="6" r="1"></circle>
+                            <path d="m 1,4 a 3,3 0 0 1 3,3 h 1 a 4,4 0 0 0 -4,-4 z"></path>
+                            <path d="m 1,2 a 5,5 0 0 1 5,5 h 1 a 6,6 0 0 0 -6,-6 z"></path>
+                        </g>
+                    </svg></a>
+                <a id="profile_social_twitter" href="https://twitter.com/gasparesganga" title="Twitter"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2000 1625">
+                        <g>
+                            <path
+                                d="m 1999.9999,192.4 c -73.58,32.64 -152.67,54.69 -235.66,64.61 84.7,-50.78 149.77,-131.19 180.41,-227.01 -79.29,47.03 -167.1,81.17 -260.57,99.57 C 1609.3399,49.82 1502.6999,0 1384.6799,0 c -226.6,0 -410.328,183.71 -410.328,410.31 0,32.16 3.628,63.48 10.625,93.51 -341.016,-17.11 -643.368,-180.47 -845.739,-428.72 -35.324,60.6 -55.5583,131.09 -55.5583,206.29 0,142.36 72.4373,267.95 182.5433,341.53 -67.262,-2.13 -130.535,-20.59 -185.8519,-51.32 -0.039,1.71 -0.039,3.42 -0.039,5.16 0,198.803 141.441,364.635 329.145,402.342 -34.426,9.375 -70.676,14.395 -108.098,14.395 -26.441,0 -52.145,-2.578 -77.203,-7.364 52.215,163.008 203.75,281.649 383.304,284.946 -140.429,110.062 -317.351,175.66 -509.5972,175.66 -33.1211,0 -65.7851,-1.949 -97.8828,-5.738 181.586,116.4176 397.27,184.359 628.988,184.359 754.732,0 1167.462,-625.238 1167.462,-1167.47 0,-17.79 -0.41,-35.48 -1.2,-53.08 80.1799,-57.86 149.7399,-130.12 204.7499,-212.41">
+                            </path>
+                        </g>
+                    </svg></a>
+                <a id="profile_social_github" href="https://github.com/gasparesganga" title="GitHub"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 438 438">
+                        <g>
+                            <path
+                                d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365 c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63 c0,47.78,13.94,90.745,41.827,128.906c27.884,38.164,63.906,64.572,108.063,79.227c5.14,0.954,8.945,0.283,11.419-1.996 c2.475-2.282,3.711-5.14,3.711-8.562c0-0.571-0.049-5.708-0.144-15.417c-0.098-9.709-0.144-18.179-0.144-25.406l-6.567,1.136 c-4.187,0.767-9.469,1.092-15.846,1c-6.374-0.089-12.991-0.757-19.842-1.999c-6.854-1.231-13.229-4.086-19.13-8.559 c-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559 c-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-0.951-2.568-2.098-3.711-3.429c-1.142-1.331-1.997-2.663-2.568-3.997 c-0.572-1.335-0.098-2.43,1.427-3.289c1.525-0.859,4.281-1.276,8.28-1.276l5.708,0.853c3.807,0.763,8.516,3.042,14.133,6.851 c5.614,3.806,10.229,8.754,13.846,14.842c4.38,7.806,9.657,13.754,15.846,17.847c6.184,4.093,12.419,6.136,18.699,6.136 c6.28,0,11.704-0.476,16.274-1.423c4.565-0.952,8.848-2.383,12.847-4.285c1.713-12.758,6.377-22.559,13.988-29.41 c-10.848-1.14-20.601-2.857-29.264-5.14c-8.658-2.286-17.605-5.996-26.835-11.14c-9.235-5.137-16.896-11.516-22.985-19.126 c-6.09-7.614-11.088-17.61-14.987-29.979c-3.901-12.374-5.852-26.648-5.852-42.826c0-23.035,7.52-42.637,22.557-58.817 c-7.044-17.318-6.379-36.732,1.997-58.24c5.52-1.715,13.706-0.428,24.554,3.853c10.85,4.283,18.794,7.952,23.84,10.994 c5.046,3.041,9.089,5.618,12.135,7.708c17.705-4.947,35.976-7.421,54.818-7.421s37.117,2.474,54.823,7.421l10.849-6.849 c7.419-4.57,16.18-8.758,26.262-12.565c10.088-3.805,17.802-4.853,23.134-3.138c8.562,21.509,9.325,40.922,2.279,58.24 c15.036,16.18,22.559,35.787,22.559,58.817c0,16.178-1.958,30.497-5.853,42.966c-3.9,12.471-8.941,22.457-15.125,29.979 c-6.191,7.521-13.901,13.85-23.131,18.986c-9.232,5.14-18.182,8.85-26.84,11.136c-8.662,2.286-18.415,4.004-29.263,5.146 c9.894,8.562,14.842,22.077,14.842,40.539v60.237c0,3.422,1.19,6.279,3.572,8.562c2.379,2.279,6.136,2.95,11.276,1.995 c44.163-14.653,80.185-41.062,108.068-79.226c27.88-38.161,41.825-81.126,41.825-128.906 C438.536,184.851,428.728,148.168,409.132,114.573z">
+                            </path>
+                        </g>
+                    </svg></a>
+            </div>
+        </div>
+        <nav id="menu">
+            <a href="">About</a>
+            <a href="labs/">Labs</a>
+            <a href="posts/">Posts</a>
+        </nav>
+        <div id="header_actions">
+            <a href="coffee/"><img integrity="sha256-0TK7W/zy/fVwKVBCPyT8xTZcBE684puX5bDpMzV8MWc=" src="/assets/img/coffee-d132bb5bfcf2fdf5702950423f24fcc5365c044ebce29b97e5b0e933357c3167.svg"><span>Buy me a coffee?</span></a>
+        </div>
+    </header>
+
+    <main>
+        <article class="lab">
+            <section class="page_header">
+                <h1>jQuery LoadingOverlay</h1>
+                <h2>A flexible loading overlay jQuery plugin</h2>
+            </section>
+
+            <section class="page_content">
+
+                <!--<div class="alert">
+<b>Do you like this plugin? Great! Then why don't you try my other <a href="labs/">jQuery plugins</a>?</b>
+</div>-->
+
+                <h2 id="contents">Contents</h2>
+                <ul>
+                    <li><a href="#quick-demo">Quick Demo</a></li>
+                    <li><a href="#get-it">Get it</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#methods">Methods</a></li>
+                    <li><a href="#actions">Actions</a></li>
+                    <li><a href="#options-and-defaults-values">Options and defaults values</a></li>
+                    <li><a href="#animations">Animations</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#history">History</a></li>
+                    <li><a href="#comments-and-ideas">Comments and Ideas</a></li>
+                </ul>
+
+                <h2 id="quick-demo">Quick Demo</h2>
+
+                <p><button id="quick_demo">Try jQuery LoadingOverlay!</button></p>
+
+                <h2 id="get-it">Get it</h2>
+
+                <h5>GitHub</h5>
+                <p>View project on <a href="https://github.com/gasparesganga/jquery-loading-overlay">GitHub</a> or download the latest <a href="https://github.com/gasparesganga/jquery-loading-overlay/releases/latest">release</a>.</p>
+
+                <h5>npm</h5>
+                <p><code class="highlighter-rouge">npm install gasparesganga-jquery-loading-overlay</code></p>
+
+                <h5>Bower</h5>
+                <p><code class="highlighter-rouge">bower install gasparesganga-jquery-loading-overlay</code></p>
+
+                <h5>CDN</h5>
+
+                <pre class="highlight"><code class="highlighter-rouge">https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js</code></pre>
+                <p>CDN hosting of this library is possible thanks to <a href="https://www.jsdelivr.com">jsDelivr</a>. For more details about URL structure please refer to the official <a href="https://www.jsdelivr.com/features">documentation</a>.<br>
+                    On the <a href="https://www.jsdelivr.com/package/npm/gasparesganga-jquery-loading-overlay">CDN configuration page</a> you can find all the available files and versions of this library, select a specific version, use <i>range</i> or <i>latest</i> version aliasing, join more files in a single request and enable <i>subresource integrity (SRI)</i>.</p>
+
+                <h2 id="features">Features</h2>
+                <ul>
+                    <li>Easy <em>plug-and-play</em> default behaviour yet fully configurable for advanced uses</li>
+                    <li>Shows a loading overlay on the whole page or over single DOM elements</li>
+                    <li>Can auto resize according to its container (very useful if used over a DOM element being filled meanwhile)</li>
+                    <li>Tracks a <em>counter</em> to allow multiple calls on single target</li>
+                    <li>Can show an image, some text, a progress bar or even a custom element to provide feedback to the user</li>
+                    <li>Compatible with <a href="https://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>
+                    <li>No external CSS, high performances</li>
+                </ul>
+
+                <h2 id="methods">Methods</h2>
+                <p>There are three different methods, one to attach a LoadingOverlay to the <code class="language-plaintext highlighter-rouge">body</code> and thus covering the whole page, another to attach it to a single <em>DOM element</em> or a set of <em>DOM elements</em> and the last one to set the default parameters.</p>
+
+                <h3 id="loadingoverlayaction-options"><em>$.LoadingOverlay(action [,options])</em></h3>
+                <p>Shows the LoadingOverlay with a fixed position, covering the whole page. Optionally pass some <code class="language-plaintext highlighter-rouge">options</code> to it.<br>
+                    This method doesn’t return anything. See <a href="#actions">Actions</a> for details.</p>
+
+                <h3 id="selectorloadingoverlayaction-options"><em>$(selector).LoadingOverlay(action [,options])</em></h3>
+                <p>Attach the LoadingOverlay to a single <em>DOM element</em> or a set of <em>DOM elements</em>. Optionally pass some <code class="language-plaintext highlighter-rouge">options</code> to it.<br>
+                    This method returns a <em>jQuery object</em> or a set of <em>jQuery objects</em> <em>(depending on the selector used)</em> and is <strong>chainable</strong>. See <a href="#actions">Actions</a> for details.</p>
+
+                <h3 id="loadingoverlaysetupoptions"><em>$.LoadingOverlaySetup(options)</em></h3>
+                <p>Set default <code class="language-plaintext highlighter-rouge">options</code> for all future calls to <strong><code class="language-plaintext highlighter-rouge">$.LoadingOverlay()</code></strong> and <strong><code class="language-plaintext highlighter-rouge">$(selector).LoadingOverlay()</code></strong>.</p>
+
+                <h2 id="actions">Actions</h2>
+                <p>The <strong><code class="language-plaintext highlighter-rouge">$.LoadingOverlay()</code></strong> and <strong><code class="language-plaintext highlighter-rouge">$(selector).LoadingOverlay()</code></strong> methods have five variants, corresponding to five <em>Actions</em>:</p>
+
+                <h5 id="show">Show</h5>
+                <p><strong><code class="language-plaintext highlighter-rouge">$[(selector)].LoadingOverlay("show" [,options])</code></strong><br>
+                    Shows a LoadingOverlay, or increases the <em>counter</em> if it’s been already shown. Optionally you can pass a set of <code class="language-plaintext highlighter-rouge">options</code>, but note that they only take effect if the LoadingOverlay has not been shown yet on the element.</p>
+
+                <h5 id="hide">Hide</h5>
+                <p><strong><code class="language-plaintext highlighter-rouge">$[(selector)].LoadingOverlay("hide" [,force])</code></strong><br>
+                    Hides the LoadingOverlay or decreases the <em>counter</em> if it’s higher than <code class="language-plaintext highlighter-rouge">1</code>. You can optionally pass a boolean parameter <code class="language-plaintext highlighter-rouge">force</code> to hide the LoadingOverlay even if the counter hasn’t reached <code class="language-plaintext highlighter-rouge">0</code>.</p>
+
+                <h5 id="resize">Resize</h5>
+                <p><strong><code class="language-plaintext highlighter-rouge">$[(selector)].LoadingOverlay("resize")</code></strong><br>
+                    Force LoadingOverlay resizing. This is especially useful when you decide to disable the <a href="#resizeinterval">auto resize</a> feature and you want to manually control it when you page changes.</p>
+
+                <h5 id="text">Text</h5>
+                <p><strong><code class="language-plaintext highlighter-rouge">$[(selector)].LoadingOverlay("text", value)</code></strong><br>
+                    Update the text currently shown with the one passed to the <code class="language-plaintext highlighter-rouge">value</code> parameter. Pass boolean value <code class="language-plaintext highlighter-rouge">false</code> to hide the text element.<br>
+                    Note that this <em>action</em> only works if LoadingOverlay was initialized with some <a href="#text">text</a>.</p>
+
+                <h5 id="progress">Progress</h5>
+                <p><strong><code class="language-plaintext highlighter-rouge">$[(selector)].LoadingOverlay("progress", value)</code></strong><br>
+                    Update the progress bar with the <code class="language-plaintext highlighter-rouge">value</code> parameter. Pass boolean value <code class="language-plaintext highlighter-rouge">false</code> to hide the progress bar.<br>
+                    Note that this <em>action</em> only works if LoadingOverlay was initialized with <a href="#progress">progress</a> option set to <code class="language-plaintext highlighter-rouge">true</code>.</p>
+
+                <h2 id="options-and-defaults-values">Options and defaults values</h2>
+                <div class="language-javascript highlighter-rouge">
+                    <div class="highlight">
+                        <pre class="highlight"><code><span class="c1">// Background</span>
+<span class="nx">background</span>              <span class="p">:</span> <span class="dl">"</span><span class="s2">rgba(255, 255, 255, 0.8)</span><span class="dl">"</span>        <span class="c1">// String</span>
+<span class="nx">backgroundClass</span>         <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="c1">// Image</span>
+<span class="nx">image</span>                   <span class="p">:</span> <span class="dl">"</span><span class="s2">&lt;svg&gt; ... &lt;/svg&gt;</span><span class="dl">"</span>                <span class="c1">// String/Boolean</span>
+<span class="nx">imageAnimation</span>          <span class="p">:</span> <span class="dl">"</span><span class="s2">2000ms rotate_right</span><span class="dl">"</span>             <span class="c1">// String/Boolean</span>
+<span class="nx">imageAutoResize</span>         <span class="p">:</span> <span class="kc">true</span>                              <span class="c1">// Boolean</span>
+<span class="nx">imageResizeFactor</span>       <span class="p">:</span> <span class="mi">1</span>                                 <span class="c1">// Float</span>
+<span class="nx">imageColor</span>              <span class="p">:</span> <span class="dl">"</span><span class="s2">#202020</span><span class="dl">"</span>                         <span class="c1">// String/Array/Boolean</span>
+<span class="nx">imageClass</span>              <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="nx">imageOrder</span>              <span class="p">:</span> <span class="mi">1</span>                                 <span class="c1">// Integer</span>
+<span class="c1">// Font Awesome</span>
+<span class="nx">fontawesome</span>             <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="nx">fontawesomeAnimation</span>    <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="nx">fontawesomeAutoResize</span>   <span class="p">:</span> <span class="kc">true</span>                              <span class="c1">// Boolean</span>
+<span class="nx">fontawesomeResizeFactor</span> <span class="p">:</span> <span class="mi">1</span>                                 <span class="c1">// Float</span>
+<span class="nx">fontawesomeColor</span>        <span class="p">:</span> <span class="dl">"</span><span class="s2">#202020</span><span class="dl">"</span>                         <span class="c1">// String/Boolean</span>
+<span class="nx">fontawesomeOrder</span>        <span class="p">:</span> <span class="mi">2</span>                                 <span class="c1">// Integer</span>
+<span class="c1">// Custom</span>
+<span class="nx">custom</span>                  <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/DOM Element/jQuery Object/Boolean</span>
+<span class="nx">customAnimation</span>         <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="nx">customAutoResize</span>        <span class="p">:</span> <span class="kc">true</span>                              <span class="c1">// Boolean</span>
+<span class="nx">customResizeFactor</span>      <span class="p">:</span> <span class="mi">1</span>                                 <span class="c1">// Float</span>
+<span class="nx">customOrder</span>             <span class="p">:</span> <span class="mi">3</span>                                 <span class="c1">// Integer</span>
+<span class="c1">// Text</span>
+<span class="nx">text</span>                    <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="nx">textAnimation</span>           <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="nx">textAutoResize</span>          <span class="p">:</span> <span class="kc">true</span>                              <span class="c1">// Boolean</span>
+<span class="nx">textResizeFactor</span>        <span class="p">:</span> <span class="mf">0.5</span>                               <span class="c1">// Float</span>
+<span class="nx">textColor</span>               <span class="p">:</span> <span class="dl">"</span><span class="s2">#202020</span><span class="dl">"</span>                         <span class="c1">// String/Boolean</span>
+<span class="nx">textClass</span>               <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="nx">textOrder</span>               <span class="p">:</span> <span class="mi">4</span>                                 <span class="c1">// Integer</span>
+<span class="c1">// Progress</span>
+<span class="nx">progress</span>                <span class="p">:</span> <span class="kc">false</span>                             <span class="c1">// Boolean</span>
+<span class="nx">progressAutoResize</span>      <span class="p">:</span> <span class="kc">true</span>                              <span class="c1">// Boolean</span>
+<span class="nx">progressResizeFactor</span>    <span class="p">:</span> <span class="mf">0.25</span>                              <span class="c1">// Float</span>
+<span class="nx">progressColor</span>           <span class="p">:</span> <span class="dl">"</span><span class="s2">#a0a0a0</span><span class="dl">"</span>                         <span class="c1">// String/Boolean</span>
+<span class="nx">progressClass</span>           <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="nx">progressOrder</span>           <span class="p">:</span> <span class="mi">5</span>                                 <span class="c1">// Integer</span>
+<span class="nx">progressFixedPosition</span>   <span class="p">:</span> <span class="dl">""</span>                                <span class="c1">// String/Boolean</span>
+<span class="nx">progressSpeed</span>           <span class="p">:</span> <span class="mi">200</span>                               <span class="c1">// Integer</span>
+<span class="nx">progressMin</span>             <span class="p">:</span> <span class="mi">0</span>                                 <span class="c1">// Float</span>
+<span class="nx">progressMax</span>             <span class="p">:</span> <span class="mi">100</span>                               <span class="c1">// Float</span>
+<span class="c1">// Sizing</span>
+<span class="nx">size</span>                    <span class="p">:</span> <span class="mi">50</span>                                <span class="c1">// Float/String/Boolean</span>
+<span class="nx">minSize</span>                 <span class="p">:</span> <span class="mi">20</span>                                <span class="c1">// Integer/String</span>
+<span class="nx">maxSize</span>                 <span class="p">:</span> <span class="mi">120</span>                               <span class="c1">// Integer/String</span>
+<span class="c1">// Misc</span>
+<span class="nx">direction</span>               <span class="p">:</span> <span class="dl">"</span><span class="s2">column</span><span class="dl">"</span>                          <span class="c1">// String</span>
+<span class="nx">fade</span>                    <span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>                        <span class="c1">// Array/Boolean/Integer/String</span>
+<span class="nx">resizeInterval</span>          <span class="p">:</span> <span class="mi">50</span>                                <span class="c1">// Integer</span>
+<span class="nx">zIndex</span>                  <span class="p">:</span> <span class="mi">2147483647</span>                        <span class="c1">// Integer</span>
+</code></pre>
+                    </div>
+                </div>
+
+                <h5 id="background"><code class="language-plaintext highlighter-rouge">background</code></h5>
+                <p>Overlay’s CSS background-color property. Use <code class="language-plaintext highlighter-rouge">rgba()</code> to set the opacity. Keep in mind that if <code class="language-plaintext highlighter-rouge">backgroundClass</code> is provided then <code class="language-plaintext highlighter-rouge">background</code> option is ignored.</p>
+
+                <h5 id="backgroundclass"><code class="language-plaintext highlighter-rouge">backgroundClass</code></h5>
+                <p>Sets a custom CSS class for the background. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to disable it. Keep in mind that if <code class="language-plaintext highlighter-rouge">backgroundClass</code> is provided then <code class="language-plaintext highlighter-rouge">background</code> option is ignored.</p>
+
+                <h5 id="image"><code class="language-plaintext highlighter-rouge">image</code></h5>
+                <p><em>URL</em> or inline representation of the image to show. It supports both raster images and vectorial SVGs. You can pass an inline SVG, a path to a file or even use a <em>base64-encoded</em> image or SVG (e.g. <code class="language-plaintext highlighter-rouge">"data:image/png;base64,..."</code>). Set to an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code
+                        class="language-plaintext highlighter-rouge">false</code> to show no image.</p>
+
+                <h5 id="imageanimation"><code class="language-plaintext highlighter-rouge">imageAnimation</code></h5>
+                <p>Controls the animation of the <em>image</em> element. See <a href="#animations">animations</a>.</p>
+
+                <h5 id="imageautoresize"><code class="language-plaintext highlighter-rouge">imageAutoResize</code></h5>
+                <p>Controls the auto resizing of the <em>image</em> element. Set to <code class="language-plaintext highlighter-rouge">false</code> to disable it.</p>
+
+                <h5 id="imageresizefactor"><code class="language-plaintext highlighter-rouge">imageResizeFactor</code></h5>
+                <p>Controls the proportion between the <em>image</em> element and the <a href="#size">size</a> parameter.</p>
+
+                <h5 id="imagecolor"><code class="language-plaintext highlighter-rouge">imageColor</code></h5>
+                <p>Image <em>fill</em> and <em>stroke</em> colors. This setting has effect only on <em>SVG</em> images and will be useless with raster images <em>(JPG, PNG, GIF, etc.)</em>. Use a single string value to specify only the <em>fill</em> color, or a two-elements array to set <em>fill</em> and <em>stroke</em> respectively. You can use any CSS valid expression, included <code
+                        class="language-plaintext highlighter-rouge">rgba()</code>. Use an empty string <code class="language-plaintext highlighter-rouge">""</code>, empty array <code class="language-plaintext highlighter-rouge">[]</code> or <code class="language-plaintext highlighter-rouge">false</code> to leave them unspecified. Note that if <code class="language-plaintext highlighter-rouge">imageClass</code> is provided then <code
+                        class="language-plaintext highlighter-rouge">imageColor</code> is ignored.</p>
+
+                <h5 id="imageclass"><code class="language-plaintext highlighter-rouge">imageClass</code></h5>
+                <p>Sets a custom CSS class for the <em>image</em> element. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to disable it. Note that if <code class="language-plaintext highlighter-rouge">imageClass</code> is provided then <code class="language-plaintext highlighter-rouge">imageColor</code> is ignored.</p>
+
+                <h5 id="imageorder"><code class="language-plaintext highlighter-rouge">imageOrder</code></h5>
+                <p>Sets the order of the <em>image</em> element relative to the others.</p>
+
+                <h5 id="fontawesome"><code class="language-plaintext highlighter-rouge">fontawesome</code></h5>
+                <p><strong>Class(es)</strong> of the <a href="https://fontawesome.com">Font Awesome</a> icon to use. Note that you must include Font Awesome in your project if you wish to use this feature. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to disable the feature.</p>
+
+                <h5 id="fontawesomeanimation"><code class="language-plaintext highlighter-rouge">fontawesomeAnimation</code></h5>
+                <p>You can rely on Font Awesome native classes to animate the icon <em>(e.g. <code class="language-plaintext highlighter-rouge">fa-spin</code> or <code class="language-plaintext highlighter-rouge">fa-pulse</code>)</em> and pass them directly to <code class="language-plaintext highlighter-rouge">fontawesome</code> option, but of course you can also enjoy the full power of LoadingOverlay animations as with any other
+                    element type. See <a href="#animations">animations</a> for details.</p>
+
+                <h5 id="fontawesomeautoresize"><code class="language-plaintext highlighter-rouge">fontawesomeAutoResize</code></h5>
+                <p>Controls the auto resizing of the <em>fontawesome</em> element. Set to <code class="language-plaintext highlighter-rouge">false</code> to disable it.</p>
+
+                <h5 id="fontawesomeresizefactor"><code class="language-plaintext highlighter-rouge">fontawesomeResizeFactor</code></h5>
+                <p>Controls the proportion between the <em>fontawesome</em> element and the <a href="#size">size</a> parameter.</p>
+
+                <h5 id="fontawesomecolor"><code class="language-plaintext highlighter-rouge">fontawesomeColor</code></h5>
+                <p>Sets the color of the <em>fontawesome</em> element. You can use any CSS valid expression, included <code class="language-plaintext highlighter-rouge">rgba()</code>. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to leave it unspecified.</p>
+
+                <h5 id="fontawesomeorder"><code class="language-plaintext highlighter-rouge">fontawesomeOrder</code></h5>
+                <p>Sets the order of the <em>fontawesome</em> element relative to the others.</p>
+
+                <h5 id="custom"><code class="language-plaintext highlighter-rouge">custom</code></h5>
+                <p>A <em>DOM element</em>, <em>jQuery object</em> or plain <em>HTML</em> to append to the LoadingOverlay. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to disable the feature.</p>
+
+                <h5 id="customanimation"><code class="language-plaintext highlighter-rouge">customAnimation</code></h5>
+                <p>Controls the animation of the <em>custom</em> element. See <a href="#animations">animations</a>.</p>
+
+                <h5 id="customautoresize"><code class="language-plaintext highlighter-rouge">customAutoResize</code></h5>
+                <p>Controls the auto resizing of the <em>custom</em> element. Set to <code class="language-plaintext highlighter-rouge">false</code> to disable it.</p>
+
+                <h5 id="customresizefactor"><code class="language-plaintext highlighter-rouge">customResizeFactor</code></h5>
+                <p>Controls the proportion between the <em>custom</em> element and the <a href="#size">size</a> parameter.</p>
+
+                <h5 id="customorder"><code class="language-plaintext highlighter-rouge">customOrder</code></h5>
+                <p>Sets the order of the <em>custom</em> element relative to the others.</p>
+
+                <h5 id="text-1"><code class="language-plaintext highlighter-rouge">text</code></h5>
+                <p>Displays a <em>text</em> element in the LoadingOverlay. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to disable the feature.</p>
+
+                <h5 id="textanimation"><code class="language-plaintext highlighter-rouge">textAnimation</code></h5>
+                <p>Controls the animation of the <em>text</em> element. See <a href="#animations">animations</a>.</p>
+
+                <h5 id="textautoresize"><code class="language-plaintext highlighter-rouge">textAutoResize</code></h5>
+                <p>Controls the auto resizing of the <em>text</em> element. Set to <code class="language-plaintext highlighter-rouge">false</code> to disable it.</p>
+
+                <h5 id="textresizefactor"><code class="language-plaintext highlighter-rouge">textResizeFactor</code></h5>
+                <p>Controls the proportion between the <em>text</em> element and the <a href="#size">size</a> parameter.</p>
+
+                <h5 id="textcolor"><code class="language-plaintext highlighter-rouge">textColor</code></h5>
+                <p>Sets the color of the <em>text</em> element. You can use any CSS valid expression, included <code class="language-plaintext highlighter-rouge">rgba()</code>. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to leave it unspecified. Note that if <code class="language-plaintext highlighter-rouge">textClass</code> is
+                    provided then <code class="language-plaintext highlighter-rouge">textColor</code> is ignored.</p>
+
+                <h5 id="textclass"><code class="language-plaintext highlighter-rouge">textClass</code></h5>
+                <p>Sets a custom CSS class for the <em>text</em> element. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to disable it. Note that if <code class="language-plaintext highlighter-rouge">textClass</code> is provided then <code class="language-plaintext highlighter-rouge">textColor</code> is ignored.</p>
+
+                <h5 id="textorder"><code class="language-plaintext highlighter-rouge">textOrder</code></h5>
+                <p>Sets the order of the <em>text</em> element relative to the others.</p>
+
+                <h5 id="progress-1"><code class="language-plaintext highlighter-rouge">progress</code></h5>
+                <p>Displays a <em>progress bar</em> element in the LoadingOverlay. Use <code class="language-plaintext highlighter-rouge">false</code> to disable the feature.</p>
+
+                <h5 id="progressautoresize"><code class="language-plaintext highlighter-rouge">progressAutoResize</code></h5>
+                <p>Controls the auto resizing of the <em>progress</em> element. Set to <code class="language-plaintext highlighter-rouge">false</code> to disable it.</p>
+
+                <h5 id="progressresizefactor"><code class="language-plaintext highlighter-rouge">progressResizeFactor</code></h5>
+                <p>Controls the proportion between the <em>progress</em> element and the <a href="#size">size</a> parameter.</p>
+
+                <h5 id="progresscolor"><code class="language-plaintext highlighter-rouge">progressColor</code></h5>
+                <p>Sets the color of the <em>progress</em> element. You can use any CSS valid expression, included <code class="language-plaintext highlighter-rouge">rgba()</code>. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to leave it unspecified. Note that if <code class="language-plaintext highlighter-rouge">progressClass</code>
+                    is provided then <code class="language-plaintext highlighter-rouge">progressColor</code> is ignored.</p>
+
+                <h5 id="progressclass"><code class="language-plaintext highlighter-rouge">progressClass</code></h5>
+                <p>Sets a custom CSS class for the <em>progress</em> element. Use an empty string <code class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code> to disable it. Note that if <code class="language-plaintext highlighter-rouge">progressClass</code> is provided then <code class="language-plaintext highlighter-rouge">progressColor</code> is ignored.</p>
+
+                <h5 id="progressorder"><code class="language-plaintext highlighter-rouge">progressOrder</code></h5>
+                <p>Sets the order of the <em>progress</em> element relative to the others.</p>
+
+                <h5 id="progressfixedposition"><code class="language-plaintext highlighter-rouge">progressFixedPosition</code></h5>
+                <p>Set a fixed position for the <em>progress</em> element. It accepts a space-separated string with <strong>position</strong> and optional <strong>margin</strong>.<br>
+                    <strong>Position</strong> value can be either <code class="language-plaintext highlighter-rouge">top</code> or <code class="language-plaintext highlighter-rouge">bottom</code> while optional <strong>margin</strong> can be expressed in any CSS unit.<br>
+                    Note that enabling this option will take the <em>progress</em> element out of the order flow and <code class="language-plaintext highlighter-rouge">progressOrder</code> will be ignored.<br>
+                    Example values: <code class="language-plaintext highlighter-rouge">"top"</code>, <code class="language-plaintext highlighter-rouge">"bottom"</code>, <code class="language-plaintext highlighter-rouge">"top 20px"</code>, <code class="language-plaintext highlighter-rouge">"10% top"</code>, <code class="language-plaintext highlighter-rouge">"5rem bottom"</code>, <code
+                        class="language-plaintext highlighter-rouge">"bottom 2vh"</code>, etc.
+                </p>
+
+                <h5 id="progressspeed"><code class="language-plaintext highlighter-rouge">progressSpeed</code></h5>
+                <p>Controls the animation speed in <strong>milliseconds</strong> of the progress bar when its value is updated. Set to <code class="language-plaintext highlighter-rouge">0</code> to disable smooth animation.</p>
+
+                <h5 id="progressmin"><code class="language-plaintext highlighter-rouge">progressMin</code></h5>
+                <p>Sets the minimum value for the <em>progress</em> element.</p>
+
+                <h5 id="progressmax"><code class="language-plaintext highlighter-rouge">progressMax</code></h5>
+                <p>Sets the maximum value for the <em>progress</em> element.</p>
+
+                <h5 id="size"><code class="language-plaintext highlighter-rouge">size</code></h5>
+                <p>Size of elements expressed in <strong>percentage</strong> relative to the LoadingOverlay size. Note that the computed value will be constrained between <code class="language-plaintext highlighter-rouge">minSize</code> and <code class="language-plaintext highlighter-rouge">maxSize</code>. You can specify a fixed size expressed in any CSS unit passing a string (options <code
+                        class="language-plaintext highlighter-rouge">minSize</code> and <code class="language-plaintext highlighter-rouge">maxSize</code> will be ignored in this case).<br>
+                    Each element will then be resized according to the computed value and its <em>Resize Factor</em>.<br>
+                    Use <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">false</code> if you wish to fully control the size of the elements via custom classes.</p>
+
+                <h5 id="minsize"><code class="language-plaintext highlighter-rouge">minSize</code></h5>
+                <p>Minimun size of elements in <strong>pixels</strong>. Set it to <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">false</code> for no limit.</p>
+
+                <h5 id="maxsize"><code class="language-plaintext highlighter-rouge">maxSize</code></h5>
+                <p>Maximun size of elements in <strong>pixels</strong>. Set it to <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">false</code> for no limit.</p>
+
+                <h5 id="direction"><code class="language-plaintext highlighter-rouge">direction</code></h5>
+                <p>Sets the arrangement of the elements in the LoadingOverlay. It can be <code class="language-plaintext highlighter-rouge">"column"</code> or <code class="language-plaintext highlighter-rouge">"row"</code>.</p>
+
+                <h5 id="fade"><code class="language-plaintext highlighter-rouge">fade</code></h5>
+                <p>Controls the <em>fade in</em> and <em>fade out</em> durations, expressed in <strong>milliseconds</strong>. Use <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">false</code> to disable it <em>(meaning a zero duration)</em>, an integer or string to set equal <em>fade in</em> and <em>fade out</em> times or a two-elements array to set respectively <em>fade
+                        in</em> and <em>fade out</em> durations <em>(e.g. <code class="language-plaintext highlighter-rouge">[600, 300]</code>)</em>. Boolean value <code class="language-plaintext highlighter-rouge">true</code> will be treated like default value <code class="language-plaintext highlighter-rouge">[400, 200]</code>.</p>
+
+                <h5 id="resizeinterval"><code class="language-plaintext highlighter-rouge">resizeInterval</code></h5>
+                <p>Specifies an interval in <strong>milliseconds</strong> to resize and reposition the LoadingOverlay according to its container. This is useful when the container element changes size and/or position while the LoadingOverlay is being shown. Set it to <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">false</code> to disable this feature.</p>
+
+                <h5 id="zindex"><code class="language-plaintext highlighter-rouge">zIndex</code></h5>
+                <p>Use this to explicitly set a <code class="language-plaintext highlighter-rouge">z-index</code> for the overlay. This is useful when LoadingOverlay is used with other <em>z-index intensive</em> libraries like Bootstrap.</p>
+
+                <h2 id="animations">Animations</h2>
+                <p>LoadingOverlay takes advantage of CSS animations and offers 4 different <em>built-in</em> keyframes animations:</p>
+                <ul>
+                    <li><strong><code class="language-plaintext highlighter-rouge">rotate_right</code></strong></li>
+                    <li><strong><code class="language-plaintext highlighter-rouge">rotate_left</code></strong></li>
+                    <li><strong><code class="language-plaintext highlighter-rouge">fadein</code></strong></li>
+                    <li><strong><code class="language-plaintext highlighter-rouge">pulse</code></strong></li>
+                </ul>
+
+                <p>Elements animation properties <code class="language-plaintext highlighter-rouge">imageAnimation</code>, <code class="language-plaintext highlighter-rouge">fontawesomeAnimation</code>, <code class="language-plaintext highlighter-rouge">customAnimation</code> and <code class="language-plaintext highlighter-rouge">textAnimation</code> accept a space-separated string with <strong>name</strong> and
+                    <strong>duration</strong>.<br>
+                    Note that <strong>both</strong> parameters are optional and they default to <strong><code class="language-plaintext highlighter-rouge">"rotate_right 2000ms "</code></strong> when only one is specified:</p>
+                <div class="language-javascript highlighter-rouge">
+                    <div class="highlight">
+                        <pre class="highlight"><code><span class="c1">// These are the same:</span>
+<span class="dl">"</span><span class="s2">rotate_right 2s</span><span class="dl">"</span>
+<span class="dl">"</span><span class="s2">2000ms</span><span class="dl">"</span>
+<span class="dl">"</span><span class="s2">rotate_right</span><span class="dl">"</span>
+
+<span class="c1">// And so are these:</span>
+<span class="dl">"</span><span class="s2">2000ms pulse</span><span class="dl">"</span>
+<span class="dl">"</span><span class="s2">pulse</span><span class="dl">"</span>
+</code></pre>
+                    </div>
+                </div>
+                <p>If you prefer to rely on your custom animations altogether you can disable them setting <code class="language-plaintext highlighter-rouge">imageAnimation</code>, <code class="language-plaintext highlighter-rouge">fontawesomeAnimation</code>, <code class="language-plaintext highlighter-rouge">customAnimation</code> and <code class="language-plaintext highlighter-rouge">textAnimation</code> to an empty string <code
+                        class="language-plaintext highlighter-rouge">""</code> or <code class="language-plaintext highlighter-rouge">false</code>, providing animations through custom CSS classes.</p>
+
+                <h2 id="examples">Examples</h2>
+
+                <h3 id="example-1---whole-page-overlay">Example 1 - Whole page Overlay</h3>
+                <div class="language-javascript highlighter-rouge">
+                    <div class="highlight">
+                        <pre class="highlight"><code><span class="c1">// Show full page LoadingOverlay</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// Hide it after 3 seconds</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">hide</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
+</code></pre>
+                    </div>
+                </div>
+
+                <p><button id="example1">Whole page Overlay</button></p>
+
+                <h3 id="example-2---single-element-overlay">Example 2 - Single element Overlay</h3>
+                <div class="language-javascript highlighter-rouge">
+                    <div class="highlight">
+                        <pre class="highlight"><code><span class="c1">// Let's call it 2 times just for fun...</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#element</span><span class="dl">"</span><span class="p">).</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<span class="na">background</span>  <span class="p">:</span> <span class="dl">"</span><span class="s2">rgba(165, 190, 100, 0.5)</span><span class="dl">"</span>
+<span class="p">});</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#element</span><span class="dl">"</span><span class="p">).</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// Here we might call the "hide" action 2 times, or simply set the "force" parameter to true:</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#element</span><span class="dl">"</span><span class="p">).</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">hide</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="example_buttons">
+                    <button id="example2a">Single element Overlay</button>
+                    <button id="example2b">Test auto resizing</button>
+                </div>
+
+                <h3 id="example-3---showcase-of-different-elements">Example 3 - Showcase of different elements</h3>
+                <div class="language-javascript highlighter-rouge">
+                    <div class="highlight">
+                        <pre class="highlight"><code><span class="c1">// Font Awesome</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<span class="na">image</span>       <span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+<span class="na">fontawesome</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">fa fa-cog fa-spin</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="c1">// Text</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<span class="na">image</span>       <span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+<span class="na">text</span>        <span class="p">:</span> <span class="dl">"</span><span class="s2">Loading...</span><span class="dl">"</span>
+<span class="p">});</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Yep, still loading...</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">},</span> <span class="mi">2500</span><span class="p">);</span>
+
+<span class="c1">// Progress</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<span class="na">image</span>       <span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+<span class="na">progress</span>    <span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">count</span>     <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">interval</span>  <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">hide</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">count</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">progress</span><span class="dl">"</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
+<span class="p">},</span> <span class="mi">300</span><span class="p">);</span>
+
+<span class="c1">// Custom</span>
+<span class="kd">var</span> <span class="nx">customElement</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;div&gt;</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<span class="dl">"</span><span class="s2">css</span><span class="dl">"</span>   <span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">border</span><span class="dl">"</span>        <span class="p">:</span> <span class="dl">"</span><span class="s2">4px dashed gold</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">font-size</span><span class="dl">"</span>     <span class="p">:</span> <span class="dl">"</span><span class="s2">40px</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">text-align</span><span class="dl">"</span>    <span class="p">:</span> <span class="dl">"</span><span class="s2">center</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">padding</span><span class="dl">"</span>       <span class="p">:</span> <span class="dl">"</span><span class="s2">10px</span><span class="dl">"</span>
+<span class="p">},</span>
+<span class="dl">"</span><span class="s2">class</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">your-custom-class</span><span class="dl">"</span><span class="p">,</span>
+<span class="dl">"</span><span class="s2">text</span><span class="dl">"</span>  <span class="p">:</span> <span class="dl">"</span><span class="s2">Custom!</span><span class="dl">"</span>
+<span class="p">});</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<span class="na">image</span>       <span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+<span class="na">custom</span>      <span class="p">:</span> <span class="nx">customElement</span>
+<span class="p">});</span>
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="example_buttons">
+                    <button id="example3a">Font Awesome</button>
+                    <button id="example3b">Text</button>
+                    <button id="example3c">Progress</button>
+                    <button id="example3d">Custom</button>
+                </div>
+
+                <h3 id="example-4---complete-playground">Example 4 - Complete playground</h3>
+
+                <div id="example4_inputs">
+                    <div>
+                        <div><label>background</label> : <span><input id="example4_background" class="example4_size_xl" type="text" value="rgba(255, 255, 255, 0.8)"></span></div>
+                    </div>
+                    <div>
+                        <div><label>image</label> : <span><input id="example4_image" class="example4_size_xl" type="text" placeholder="Inline SVG, URL, base64-encoded image"
+                                    value="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 1000 1000&quot;><circle r=&quot;80&quot; cx=&quot;500&quot; cy=&quot;90&quot;/><circle r=&quot;80&quot; cx=&quot;500&quot; cy=&quot;910&quot;/><circle r=&quot;80&quot; cx=&quot;90&quot; cy=&quot;500&quot;/><circle r=&quot;80&quot; cx=&quot;910&quot; cy=&quot;500&quot;/><circle r=&quot;80&quot; cx=&quot;212&quot; cy=&quot;212&quot;/><circle r=&quot;80&quot; cx=&quot;788&quot; cy=&quot;212&quot;/><circle r=&quot;80&quot; cx=&quot;212&quot; cy=&quot;788&quot;/><circle r=&quot;80&quot; cx=&quot;788&quot; cy=&quot;788&quot;/></svg>"></span>
+                        </div>
+                        <div><label>imageAnimation</label> : <span><input id="example4_imageAnimation1" class="example4_size_m" type="text" value="2000ms"><select id="example4_imageAnimation2" class="example4_animations example4_size_l example4_margin_left" data-value="rotate_right">
+                                    <option value=""></option>
+                                    <option value="rotate_right">rotate_right</option>
+                                    <option value="rotate_left">rotate_left</option>
+                                    <option value="fadein">fadein</option>
+                                    <option value="pulse">pulse</option>
+                                </select></span></div>
+                        <div><label>imageAutoResize</label> : <span><select id="example4_imageAutoResize" class="example4_boolean example4_size_m" data-value="true">
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select></span></div>
+                        <div><label>imageResizeFactor</label> : <span><input id="example4_imageResizeFactor" class="example4_size_s" type="text" value="1"></span></div>
+                        <div><label>imageColor</label> : <span><input id="example4_imageColor1" class="example4_size_m" type="text" value="#202020"><input id="example4_imageColor2" class="example4_size_m example4_margin_left" type="text" value=""></span></div>
+                        <div><label>imageOrder</label> : <span><input id="example4_imageOrder" class="example4_size_s" type="text" value="1"></span></div>
+                    </div>
+                    <div>
+                        <div><label>fontawesome</label> : <span><input id="example4_fontawesome" class="example4_size_xl" type="text" value=""></span></div>
+                        <div><label>fontawesomeAnimation</label> : <span><input id="example4_fontawesomeAnimation1" class="example4_size_m" type="text" value=""><select id="example4_fontawesomeAnimation2" class="example4_animations example4_size_l example4_margin_left">
+                                    <option value=""></option>
+                                    <option value="rotate_right">rotate_right</option>
+                                    <option value="rotate_left">rotate_left</option>
+                                    <option value="fadein">fadein</option>
+                                    <option value="pulse">pulse</option>
+                                </select></span></div>
+                        <div><label>fontawesomeAutoResize</label> : <span><select id="example4_fontawesomeAutoResize" class="example4_boolean example4_size_m" data-value="true">
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select></span></div>
+                        <div><label>fontawesomeResizeFactor</label> : <span><input id="example4_fontawesomeResizeFactor" class="example4_size_s" type="text" value="1"></span></div>
+                        <div><label>fontawesomeColor</label> : <span><input id="example4_fontawesomeColor" class="example4_size_m" type="text" value="#202020"></span></div>
+                        <div><label>fontawesomeOrder</label> : <span><input id="example4_fontawesomeOrder" class="example4_size_s" type="text" value="2"></span></div>
+                    </div>
+                    <div>
+                        <div><label>text</label> : <span><input id="example4_text" class="example4_size_xl" type="text" value=""></span></div>
+                        <div><label>textAnimation</label> : <span><input id="example4_textAnimation1" class="example4_size_m" type="text" value=""><select id="example4_textAnimation2" class="example4_animations example4_size_l example4_margin_left">
+                                    <option value=""></option>
+                                    <option value="rotate_right">rotate_right</option>
+                                    <option value="rotate_left">rotate_left</option>
+                                    <option value="fadein">fadein</option>
+                                    <option value="pulse">pulse</option>
+                                </select></span></div>
+                        <div><label>textAutoResize</label> : <span><select id="example4_textAutoResize" class="example4_boolean example4_size_m" data-value="true">
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select></span></div>
+                        <div><label>textResizeFactor</label> : <span><input id="example4_textResizeFactor" class="example4_size_s" type="text" value="0.5"></span></div>
+                        <div><label>textColor</label> : <span><input id="example4_textColor" class="example4_size_m" type="text" value="#202020"></span></div>
+                        <div><label>textOrder</label> : <span><input id="example4_textOrder" class="example4_size_s" type="text" value="4"></span></div>
+                    </div>
+                    <div>
+                        <div><label>progress</label> : <span><select id="example4_progress" class="example4_boolean example4_size_m" data-value="false">
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select></span></div>
+                        <div><label>progressAutoResize</label> : <span><select id="example4_progressAutoResize" class="example4_boolean example4_size_m" data-value="true">
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select></span></div>
+                        <div><label>progressResizeFactor</label> : <span><input id="example4_progressResizeFactor" class="example4_size_s" type="text" value="0.25"></span></div>
+                        <div><label>progressColor</label> : <span><input id="example4_progressColor" class="example4_size_m" type="text" value="#a0a0a0"></span></div>
+                        <div><label>progressOrder</label> : <span><input id="example4_progressOrder" class="example4_size_s" type="text" value="5"></span></div>
+                        <div><label>progressFixedPosition</label> : <span><select id="example4_progressFixedPosition1" class="example4_size_l" data-value="">
+                                    <option value=""></option>
+                                    <option value="top">top</option>
+                                    <option value="bottom">bottom</option>
+                                </select><input id="example4_progressFixedPosition2" class="example4_size_m example4_margin_left" type="text" value=""></span></div>
+                        <div><label>progressSpeed</label> : <span><input id="example4_progressSpeed" class="example4_size_s" type="text" value="200"></span></div>
+                    </div>
+                    <div>
+                        <div><label>size</label> : <span><input id="example4_size" class="example4_size_s" type="text" value="50"></span></div>
+                        <div><label>maxSize</label> : <span><input id="example4_maxSize" class="example4_size_s" type="text" value="120"></span></div>
+                        <div><label>minSize</label> : <span><input id="example4_minSize" class="example4_size_s" type="text" value="20"></span></div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>direction</label> :
+                            <span><select id="example4_direction" class="example4_size_l">
+                                    <option value="column" selected="">column</option>
+                                    <option value="row">row</option>
+                                </select></span>
+                        </div>
+                        <div><label>fade</label> : <span><input id="example4_fade1" class="example4_size_s" type="text" value="400"><input id="example4_fade2" class="example4_size_s example4_margin_left" type="text" value="200"></span></div>
+                        <div><label>resizeInterval</label> : <span><input id="example4_resizeInterval" class="example4_size_s" type="text" value="50"></span></div>
+                    </div>
+                    <div>
+                        <div><label><b>Hide after</b></label> : <span><input id="example4_timeout" class="example4_size_s" type="text" value="5000"> ms</span></div>
+                    </div>
+                </div>
+                <p><button id="example4">Show LoadingOverlay</button></p>
+
+                <h3 id="example-5---set-defaults">Example 5 - Set Defaults</h3>
+                <div class="language-javascript highlighter-rouge">
+                    <div class="highlight">
+                        <pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlaySetup</span><span class="p">({</span>
+<span class="na">background</span>      <span class="p">:</span> <span class="dl">"</span><span class="s2">rgba(0, 0, 0, 0.5)</span><span class="dl">"</span><span class="p">,</span>
+<span class="na">image</span>           <span class="p">:</span> <span class="dl">"</span><span class="s2">img/custom.svg</span><span class="dl">"</span><span class="p">,</span>
+<span class="na">imageAnimation</span>  <span class="p">:</span> <span class="dl">"</span><span class="s2">1.5s fadein</span><span class="dl">"</span><span class="p">,</span>
+<span class="na">imageColor</span>      <span class="p">:</span> <span class="dl">"</span><span class="s2">#ffcc00</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">);</span>
+</code></pre>
+                    </div>
+                </div>
+
+                <p><button id="example5">Try new defaults</button></p>
+
+                <h3 id="example-6---display-a-loadingoverlay-during-each-ajax-request">Example 6 - Display a LoadingOverlay during each Ajax request</h3>
+                <p>You can rely on <a href="https://api.jquery.com/ajaxStart/">.ajaxStart()</a> and <a href="https://api.jquery.com/ajaxStop/">.ajaxStop()</a> to show and hide the LoadingOverlay during every Ajax request:</p>
+
+                <div class="language-javascript highlighter-rouge">
+                    <div class="highlight">
+                        <pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxStart</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxStop</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">hide</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="c1">// Now try to make a few Ajax calls, a LoadingOverlay will be shown until the last call is completed!</span>
+</code></pre>
+                    </div>
+                </div>
+
+                <p>Or, in case you need some more sophisticated control/filter, you can use <a href="https://api.jquery.com/ajaxSend/">.ajaxSend()</a> and <a href="https://api.jquery.com/ajaxComplete/">.ajaxComplete()</a> in the same way. LoadingOverlay will take care of multiple calls thanks to its internal counter feature.</p>
+
+                <div class="language-javascript highlighter-rouge">
+                    <div class="highlight">
+                        <pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxSend</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">jqxhr</span><span class="p">,</span> <span class="nx">settings</span><span class="p">){</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">show</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxComplete</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">jqxhr</span><span class="p">,</span> <span class="nx">settings</span><span class="p">){</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">LoadingOverlay</span><span class="p">(</span><span class="dl">"</span><span class="s2">hide</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="c1">// Now try to make a few Ajax calls, a LoadingOverlay will be shown until the last call is completed!</span>
+</code></pre>
+                    </div>
+                </div>
+
+                <h2 id="history">History</h2>
+                <p><em>20 March 2020</em> - <a href="posts/jquery-loading-overlay-2.1.7/">Version 2.1.7</a><br>
+                    <em>24 September 2018</em> - <a href="posts/jquery-loading-overlay-2.1.6/">Version 2.1.6</a><br>
+                    <em>3 July 2018</em> - <a href="posts/jquery-loading-overlay-2.1.5/">Version 2.1.5</a><br>
+                    <em>7 June 2018</em> - <a href="posts/jquery-loading-overlay-2.1.4/">Version 2.1.4</a><br>
+                    <em>4 May 2018</em> - <a href="posts/jquery-loading-overlay-2.1.3/">Version 2.1.3</a><br>
+                    <em>26 April 2018</em> - <a href="posts/jquery-loading-overlay-2.1.2/">Version 2.1.2</a><br>
+                    <em>22 April 2018</em> - <a href="posts/jquery-loading-overlay-2.1.1/">Version 2.1.1</a><br>
+                    <em>4 April 2018</em> - <a href="posts/jquery-loading-overlay-2.1.0/">Version 2.1.0</a><br>
+                    <em>20 March 2018</em> - <a href="posts/jquery-loading-overlay-2.0.2/">Version 2.0.2</a><br>
+                    <em>16 March 2018</em> - <a href="posts/jquery-loading-overlay-2.0.1/">Version 2.0.1</a><br>
+                    <em>16 March 2018</em> - <a href="posts/jquery-loading-overlay-2.0.0/">Version 2.0.0</a><br>
+                    <em>10 February 2018</em> - <a href="posts/jquery-loading-overlay-1.6.0/">Version 1.6.0</a><br>
+                    <em>29 September 2017</em> - <a href="posts/jquery-loading-overlay-1.5.4/">Version 1.5.4</a><br>
+                    <em>27 January 2017</em> - <a href="posts/jquery-loading-overlay-1.5.3/">Version 1.5.3</a><br>
+                    <em>9 December 2016</em> - <a href="posts/jquery-loading-overlay-1.5.2/">Version 1.5.2</a><br>
+                    <em>11 November 2016</em> - <a href="posts/jquery-loading-overlay-1.5.1/">Version 1.5.1</a><br>
+                    <em>11 November 2016</em> - <a href="posts/jquery-loading-overlay-1.5.1/">Version 1.5.0</a><br>
+                    <em>5 August 2016</em> - <a href="posts/jquery-loading-overlay-1.4.1/">Version 1.4.1</a><br>
+                    <em>29 June 2016</em> - <a href="posts/jquery-loading-overlay-1.4.0/">Version 1.4.0</a><br>
+                    <em>25 May 2016</em> - <a href="posts/jquery-loading-overlay-version-1.3/">Version 1.3</a><br>
+                    <em>22 April 2016</em> - <a href="posts/jquery-loading-overlay-version-1.2/">Version 1.2</a><br>
+                    <em>31 December 2015</em> - <a href="posts/jquery-loading-overlay-version-1.1/">Version 1.1</a><br>
+                    <em>15 February 2015</em> - <a href="posts/jquery-loading-overlay-release/">Version 1.0</a>
+                </p>
+
+
+                <h2 id="comments-and-ideas">Comments and Ideas</h2>
+                <p>
+                    Want to leave a comment or give me an idea? Send me an <span id="email_obfuscator"><a href="#" title="Show email address">email</a></span> or use the comments section below.
+                </p>
+            </section>
+        </article>
+
+
+        <div class="comments">
+            <div id="disqus_thread"></div>
+            <button id="disqus_load">ENABLE DISQUS COMMENTS<span>(This will load some third-party cookies from Disqus)</span></button>
+            <script>
+                let disqus_shortname = 'gasparesganga';
+                let disqus_title = 'jQuery LoadingOverlay';
+                let disqus_url = 'https://gasparesganga.com/labs/jquery-loading-overlay/';
+                let disqus_load_func = function () {
+                    let dsq = document.createElement('script');
+                    dsq.type = 'text/javascript';
+                    dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                };
+                (function () {
+                    let button = document.querySelector("#disqus_load");
+                    if (button) {
+                        button.addEventListener("click", function () {
+                            button.remove();
+                            disqus_load_func();
+                        });
+                    }
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+
+
+
+        <div id="back_to_top" title="Back to top" class="">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 445 445">
+                <g>
+                    <path
+                        d="M433.968,278.657L248.387,92.79c-7.419-7.044-16.08-10.566-25.977-10.566c-10.088,0-18.652,3.521-25.697,10.566 L10.848,278.657C3.615,285.887,0,294.549,0,304.637c0,10.28,3.619,18.843,10.848,25.693l21.411,21.413 c6.854,7.23,15.42,10.852,25.697,10.852c10.278,0,18.842-3.621,25.697-10.852L222.41,213.271L361.168,351.74 c6.848,7.228,15.413,10.852,25.7,10.852c10.082,0,18.747-3.624,25.975-10.852l21.409-21.412 c7.043-7.043,10.567-15.608,10.567-25.693C444.819,294.545,441.205,285.884,433.968,278.657z">
+                    </path>
+                </g>
+            </svg>
+        </div>
+    </main>
+
+    <footer>
+        © 2014 - 2023 Gaspare Sganga
+    </footer>
+
+    <script integrity="sha256-K80fLoaE3RtS8WWzxMrEBRybu2Dtm/0ODZCE/grEEfM=" src="/assets/js/main-2bcd1f2e8684dd1b52f165b3c4cac4051c9bbb60ed9bfd0e0d9084fe0ac411f3.js" type="text/javascript"></script>
+
+    <script integrity="sha256-muD2JR/j4A7liwqhLQ2fKlFegJY2XCOtLeDqSIAZPjY=" src="/assets/js/jquery-3.4.1.min-9ae0f6251fe3e00ee58b0aa12d0d9f2a515e8096365c23ad2de0ea4880193e36.js" type="text/javascript"></script>
+    <script integrity="sha256-Ks1KnqHDZ7qdFSpSYSo/nmQgXeYsWzpTLsdtku6dbHQ=" src="/assets/jquery-loading-overlay/_assets/loadingoverlay.min-2acd4a9ea1c367ba9d152a52612a3f9e64205de62c5b3a532ec76d92ee9d6c74.js" type="text/javascript"></script>
+    <script integrity="sha256-eaYxkRMQEYHgFVSPEhLb1n+aW+JUHF4f/npi0AklIgU=" src="/assets/jquery-loading-overlay/_assets/demo-79a6319113101181e015548f1212dbd67f9a5be2541c5e1ffe7a62d009252205.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+</body>
+<div style="position: absolute; top: 0px; z-index: 2147483647; display: block !important;"></div>
+
+</html>

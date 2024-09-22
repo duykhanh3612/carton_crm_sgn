@@ -1,0 +1,38 @@
+body {
+    overflow-x: hidden;
+}
+
+.content-wrapper {
+    /* overflow: hidden !important; */
+}
+
+.container-fluid {
+    height: 100vh;
+    padding: 0px 20px 20px 20px;
+    margin: 0;
+}
+
+.alert-warning {
+    background-color: #fcf8e3 !important;
+    border-color: #faebcc;
+    color: #8a6d3b;
+}
+.alert-warning::before {
+    content: "" !important;
+    display: none;
+}
+textarea.note {
+    border-radius: 0 !important;
+    color: #858585;
+    background-color: #fff;
+    border: 1px solid #d5d5d5;
+    padding: 5px 4px 6px;
+    font-size: 14px;
+    font-family: inherit;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+
+    width: 100%;
+}

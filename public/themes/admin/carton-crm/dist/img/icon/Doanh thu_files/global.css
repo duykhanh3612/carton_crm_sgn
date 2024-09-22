@@ -1,0 +1,213 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: rgba(255, 198, 25, 1);
+  color: rgba(24, 40, 51, 1);
+}
+.content-header {
+  border-radius: 4px;
+  background: #fff;
+  margin: 0 14px 30px 14px;
+  padding: 15px 23px;
+}
+p {
+  margin-bottom: 0;
+}
+
+.content-wrapper {
+  background: #fff;
+}
+
+.card {
+  margin-bottom: unset;
+}
+
+.nav-pills .nav-link:not(.active):hover {
+  color: unset;
+  background-color: #ffc61954;
+}
+
+.showDate {
+  display: flex;
+  padding: 8px 20px;
+  align-items: center;
+  gap: 6px;
+  border-radius: 4px;
+  border: 0.5px solid #b3b3b3;
+}
+.chooseDate {
+  display: flex;
+  padding: 8px 12px;
+  align-items: center;
+  gap: 6px;
+  border-radius: 4px;
+  background: var(--color-blue);
+  height: auto;
+}
+.form-control-lg {
+  width: 450px !important;
+  flex-shrink: 0;
+  border-radius: 4px !important;
+  border: 1px solid #d2d2d2;
+  color: #bebdbd;
+  line-height: 20px;
+  background-color: unset;
+  margin-right: 4px;
+  line-height: unset;
+  font-size: unset;
+  height: max-content;
+}
+.form-control:focus,
+.custom-select:focus {
+  border-color: var(--color-blue);
+  /* background-color: unset; */
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+}
+.btn,
+.form-control-lg {
+  padding: 13px 15px;
+  line-height: normal;
+}
+.bg-main-blue {
+  background: var(--color-blue);
+}
+.bg-filter {
+  background: #5492bc;
+}
+.bg-back {
+  background: #1f4762;
+}
+.modal-header {
+  background: var(--color-blue);
+}
+.modal-header h5 {
+  font-weight: bold;
+}
+.custom-select,
+.btn {
+  height: unset;
+  font-size: unset;
+}
+.form-group {
+  margin-bottom: 0;
+}
+.chooseFilter .custom-select {
+  height: unset;
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: unset;
+  height: 41.78px;
+}
+.card-body {
+  padding: 0 6.5px;
+}
+#example2 th:last-child {
+  width: 85px;
+}
+.bg-filter-2 {
+  border: 0.5px solid #1f4762;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+  height: unset;
+  background-color: unset;
+}
+.bg-filter-2.custom-select:focus {
+  border: 1px solid #1f4762;
+}
+ul {
+  margin-bottom: unset;
+  padding-inline-start: 20px;
+}
+.card-body {
+  overflow-y: scroll;
+}
+.progress {
+  background-color: #fff;
+  height: 10px;
+  margin-top: 16px;
+}
+.modal-dialog {
+  max-width: 700px;
+}
+.btnTableActions {
+  background-color: unset;
+}
+.createPromotion form {
+  padding: 0 6.5px;
+}
+.createPromotion input,
+.createPromotion textarea {
+  height: 80px;
+  padding: 10px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid #bcbcbc;
+  background: unset;
+  color: #9d9d9d;
+}
+.createPromotion input:focus-visible,
+.createPromotion textarea:focus-visible {
+  outline: unset;
+}
+.promotionType {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.promotionType .form-check {
+  height: 50px;
+}
+.promotionSelect .custom-select {
+  background: var(--color-blue) url("/dist/img/icon/arrow_down.png") right 0.75rem
+    center/20px 20px no-repeat;
+  padding: unset;
+  font-weight: bold;
+  height: 46px;
+}
+.promotionSelect option {
+  background-color: #fff;
+  font-weight: normal;
+}
+.promotionSelect .form-control:focus {
+  background-color: var(--color-blue);
+}
+.promotionStatistical {
+  margin-top: 40px;
+}
+.promotionStatistical .title {
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+.promotionImages input {
+  height: unset;
+  padding: 10px 0;
+  border-radius: unset;
+  border: unset;
+}
+.promotionConfirm button {
+  width: 148.945px;
+}
+
+.textFilter {
+  font-weight: 500;
+  color: #1f4762;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+/* màn hình tablet  */
+/* .form-control-lg{
+    width: 250px !important;
+  } */

@@ -1,0 +1,113 @@
+.main-form {
+    background: #ffffff;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.widget {
+    background: #ffffff;
+    clear: both;
+    margin-bottom: 20px;
+}
+.widget-title {
+    cursor: move;
+    overflow: hidden;
+    height: 35px;
+    border-bottom: 1px solid #eeeeee;
+    padding: 0 5px;
+    background: none;
+}
+.widget-body {
+    padding: 15px 15px;
+    border-radius: 0 0 3px 3px;
+    min-height: 0px;
+    background-color: #fff;
+}
+
+.status-label {
+    display: inline-block;
+    padding: 3px 5px;
+    color: #fff !important;
+}
+.label-success {
+    background-color: #36c6d3 !important;
+}
+.label-info {
+    background-color: #659be0;
+}
+.label-warning {
+    background-color: #f1c40f;
+}
+
+/* table */
+#invoicesTable {
+    table-layout: fixed;
+}
+.flex {
+    display: flex !important;
+}
+.dt-buttons {
+    margin: 0px 0 0 0;
+    padding: 0;
+    font-size: 0;
+    width: fit-content;
+}
+.stripe .btn {
+    margin: 0 10px 10px 0;
+}
+.w_50 {
+    width: 50px;
+    max-width: 50px !important;
+}
+.w_60 {
+    width: 60px;
+    max-width: 60px !important;
+}
+.w_80 {
+    width: 80px;
+    max-width: 80px !important;
+}
+.w_100 {
+    width: 100px;
+    max-width: 100px !important;
+}
+form.updateFrm {
+    width: 100%;
+}
+
+.col-left {
+    float: left;
+    padding-right: 0;
+}
+.col-right,
+.col-mid {
+    float: right;
+    padding-left: 0;
+}
+.col-left [class^="col-md-"] {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.col-mid [class^="col-md-"] {
+    padding-left: 30px;
+    padding-right: 0;
+}
+.col-right [class^="col-md-"] {
+    padding-left: 0;
+    padding-right: 0;
+}
+.clearfix {
+    clear: both;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.text-hidden {
+    /* display: block; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100px;
+}

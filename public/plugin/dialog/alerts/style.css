@@ -1,0 +1,42 @@
+#popup_container{
+    background: #fbfbfb;
+    color: #000;
+    max-width: 300px !important;
+    min-width: 300px !important;
+}
+#popup_title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 32px;
+    color: #fff;
+    cursor: default;
+    background: var(--primary_color, #0093d9)  ;
+    padding: 0;
+    margin: 0;
+}
+#popup_content {
+    padding: 1em 1.75em;
+    margin: 0;
+    position: relative;
+}
+#popup_panel {
+    text-align: center;
+    margin: 1em 0 0 1em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+#popup_ok{
+    color: #1f2d3d;
+    background-color: #ffc107;
+    border-color: #ffc107 !important;
+    box-shadow: none;
+}
+#popup_cancel{
+    color: #fff !important;
+    background-color: #343a40;
+    border-color: #343a40;
+    box-shadow: none;
+}
