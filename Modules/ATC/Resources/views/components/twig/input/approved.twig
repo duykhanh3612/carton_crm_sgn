@@ -1,0 +1,54 @@
+{%  if approved['accepts'] %}
+	<!-- begin sign -->
+	<div class="approved_close_container" style="border: 1px solid #989b9c;    border-bottom: none;">
+		{% set UpdatesSO = info['CountReturnApproved'] %}
+		{% if UpdatesSO %}
+			{% set btn_color = 'red' %}
+			{% set btn_color = UpdatesSO == 1 ?  'success' : btn_color %}
+			{% set btn_color = UpdatesSO == 2 ?  'danger' : btn_color %}
+			{% set btn_color = UpdatesSO == 3 ?  'warning' : btn_color %}
+			{% set btn_color = UpdatesSO == 4 ?  'info' : btn_color %}
+			{% set btn_color = UpdatesSO == 5 ?  'yellow' : btn_color %}
+			{% set btn_color = UpdatesSO == 6 ?  'purple' : btn_color %}
+			{% set btn_color = UpdatesSO == 7 ?  'azure' : btn_color %}
+			{% set btn_color = UpdatesSO == 8 ?  'black' : btn_color %}
+			{% set btn_color = UpdatesSO == 9 ?  'blue-alt' : btn_color %}
+		{% endif %}
+		{% if (GLOBALS['user']['level'] == 1 or GLOBALS['user']['approved_signature'] == 2) %}
+			{% if approved %}
+				<div style="display: inline-block;position: absolute">
+					<div>
+						<a href="#" title="Return Date: {{ info['CountReturnApprovedDate'] }}" class="btn-counter-approved btn-counter btn-{{ btn_color ? btn_color : 'default' }}" data-count="{{ UpdatesSO }}" id="undoApproved" style="float:left;margin-top:15px;margin-left: 10px">Return Approval</a>
+					</div>
+					<div style="margin-left: 10px;">
+						{{ info['CountReturnApprovedDate'] ? 'Return Date:' ~ info['CountReturnApprovedDate'] : '' }}
+					</div>
+				</div>
+			{% endif %}
+		{% endif %}
+
+		<div style="height: 120px;margin-top: 15px;">
+			<div class="approved_close pull-right" style="display: flex;">
+
+				{% for row in approved['accepts'] %}
+					<div class="div-table">
+
+						<div class="div-table-row">
+							<div class="div-table-col" style="height: 28px" align="center">
+								{{ row['name'] }}</div>
+						</div>
+						<div class="div-table-row">
+							<div class="div-table-col" style="height: 74px">
+
+								<img src="{{ row['img'] }}" alt="Girl in a jacket" width="60" height="60" class="img_center" {{ row['per'] ? 'id=approved data-id=' ~ row['id'] : '' }}><span>
+									{{ row['text'] }}
+								</span>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<!-- end sign -->
+{% endif %}

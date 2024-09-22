@@ -1,0 +1,9 @@
+{% set color = items[value].color %}
+<select class="{{class}}" name="{{name}}" data-id="{{id}}" style="background-color:{{color}} ">
+    {% if option_select %}
+    <option value="">Select...</option>
+    {% endif %}
+    {% for k,v in items %}
+    <option value="{{v.StatusKey}}" {{v.StatusKey == value ?"selected":""}} style="color: #ffffff; background-color: {{v.color}}">{{v.name_vn}}</option>
+    {% endfor %}
+</select>

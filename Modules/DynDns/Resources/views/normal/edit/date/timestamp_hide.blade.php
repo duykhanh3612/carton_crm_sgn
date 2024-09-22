@@ -1,0 +1,1 @@
+<input id="<?=$ctrl->name?>" name="<?=$ctrl->name?>" type="hidden" value="{{ time()}}">

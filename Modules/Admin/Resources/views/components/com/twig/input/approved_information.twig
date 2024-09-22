@@ -1,0 +1,15 @@
+{% if info['id'] %}
+	<div class="info-header">
+		<a href="#ap-information" data-toggle="collapse">
+			<h1>
+				<i class="glyph-icon icon-chevron-down"></i>
+				Approved Information</h1>
+		</a>
+	</div>
+	<div id="ap-information">
+		{% if approved and approved|length >0 %}
+			{% set approved_view = { 'approved':approved } %}
+			{{ load_view('request_pickup/import_approved',approved_view) }}
+		{% endif %}
+	</div>
+{% endif %}

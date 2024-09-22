@@ -1,0 +1,110 @@
+.panel-custom{
+    background: #fff !important;
+    border-bottom-style: inset;
+}
+
+.panel-custom .panel-heading, .myroot {
+    background: #f1f1f1 !important;
+}
+
+.panel-part .panel-custom .panel-heading {
+    background: none !important;
+}
+
+
+.panel-part .panel-custom {
+    /*margin-left: 1%;*/
+    background: none !important;
+}
+
+.panel {
+    margin-bottom: 0 !important;
+}
+
+.panel-child {
+    margin-left: 1%;
+    background: none !important;
+}
+
+.wrapper-parent .panel-heading:not(.myroot) {
+    background: none !important;
+}
+
+.heading-root {
+    background: #edf7f8 !important;
+    min-height: 65px !important;
+    border: 1px;
+    padding-top: 15px;
+    border-top-style: solid;
+    border-top-width: medium;
+    border-top-color: #118899 !important;
+}
+
+.title-top{
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+.title-parent{
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.title-root {
+    /*margin-left: 3%;*/
+    width: 100%;
+}
+
+.panel-title {
+    text-align:  inherit !important;
+    overflow: inherit !important;
+}
+
+.cat-top{
+    position: absolute;
+    margin-top: 12px;
+    display: inline-flex
+}
+
+.cat-x-top{
+    float:right;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.cat-x-top a {
+    color: #0f79dd;
+}
+.diagram-display-box{
+    text-align: center;
+}
+#itemList .img-flowchart, .main-container .img-flowchart {
+    max-height: 500px;
+    height: 500px;
+}
+#itemList table {width:100%; border-collapse:collapse }
+#itemList table tbody tr td{
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+}
+
+#itemList .no-image, #itemList .image, #itemList .col-image img {
+    height: 44px !important;
+    width: 44px !important;
+}
+
+#itemList .col-image {
+  /*  height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    padding: 0 !important;*/
+}
+
+#itemList .image-wrap .image {
+    margin-right: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}

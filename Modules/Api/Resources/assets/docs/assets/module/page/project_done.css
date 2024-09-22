@@ -1,0 +1,50 @@
+.task__stats {
+    position: relative;
+    width: 100%;
+    color: var(--light-grey);
+    font-size: 12px;
+    line-height: 25px;
+  }
+  .task__stats span{
+    padding: 0px 5px;
+  }
+  .task__stats a{
+    text-decoration: none;
+    color: inherit;
+  }
+  .task__stats span:not(:last-of-type) {
+    margin-right: 1rem;
+  }
+  .task__stats svg {
+    margin-right: 5px;
+  }
+
+.alert-primary {
+    color: #004085;
+    border-color: #b8daff;
+}
+.alert-danger {
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+.alert-warning {
+    color: #856404;
+    border-color: #ffeeba;
+}
+.alert-success {
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.color-alert-primary {
+    color: #004085;
+}
+.color-alert-danger {
+    color: #721c24;
+}
+.color-alert-warning {
+    color: #856404;
+}
+.color-alert-success {
+    color: #155724;
+}

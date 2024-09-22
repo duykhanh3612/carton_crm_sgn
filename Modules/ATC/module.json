@@ -1,0 +1,13 @@
+{
+    "name": "ATC",
+    "alias": "atc",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ATC\\Providers\\ATCServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,13 @@
+{
+    "name": "HyperSpace",
+    "alias": "hyperspace",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\HyperSpace\\Providers\\HyperSpaceServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

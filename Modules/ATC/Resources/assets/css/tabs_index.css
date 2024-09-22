@@ -1,0 +1,67 @@
+#page-content-wrapper.tabs #page-title {
+  position: absolute;
+  top: -0.3rem;
+  width: 100%;
+  height: 4.9rem;
+  left: 0;
+  background: #778899;
+}
+#page-content-wrapper.tabs #page-title h2 {
+  position: relative;
+  top: 1.5rem;
+  color: white;
+}
+#page-content-wrapper.tabs #page-title .wapper-limit-page {
+  position: relative;
+  top: 1.5rem;
+  color: white;
+}
+#page-content-wrapper.tabs #page-title .btn-edit {
+  position: relative;
+  top: 1.5rem;
+  right: 2rem;
+}
+#page-content-wrapper.tabs #page-title .btn-edit .btn {
+  background-color: white;
+}
+#page-content-wrapper.tabs #page-title .pagination {
+  background-color: white;
+}
+#page-content-wrapper.tabs #page-content {
+  margin-top: 3rem;
+}
+#page-content-wrapper.tabs #atcTab {
+  position: absolute;
+  top: 0;
+  border: 0;
+  padding: 0;
+  border-bottom: none !important;
+}
+#page-content-wrapper.tabs #atcTab .nav-link {
+  border-width: 0.75rem 0 0.5rem 0;
+  border-style: solid;
+  border-color: transparent;
+  background-color: transparent;
+  padding: 1rem 1rem 0.5rem;
+  color: white;
+  font-weight: bold;
+}
+#page-content-wrapper.tabs #atcTab .nav-link.active {
+  border-color: transparent transparent #0093d9 transparent;
+}
+#page-content-wrapper.tabs #atcTab .nav-link:hover:not(.active) {
+  color: #2b2f33;
+  background: #eff4f6;
+}
+@media screen and (max-width: 940px) {
+  #page-content-wrapper.tabs .wapper-limit-page {
+    display: none;
+  }
+}
+@media screen and (max-width: 834px) {
+  #page-content-wrapper.tabs .wapper-limit-page {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=tabs_index.css.map */

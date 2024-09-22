@@ -1,0 +1,394 @@
+.nopadding{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 700px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+.modal.right .modal-body {
+    padding: 15px 15px 80px;
+}
+.modal.right.fade .modal-dialog {
+    right: -700px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+    transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+.modal.right.fade.in .modal-dialog {
+    right: 0;
+}
+.modal-content {
+    border-radius: 0;
+    border: none;
+}
+.modal-header {
+    border-bottom-color: #EEEEEE;
+    background-color: #FAFAFA;
+}
+#main-content {
+    max-height: auto;
+    overflow-y: auto;
+}
+
+.table tr td {
+    background: #FFF;
+    border-color: #fff;
+    padding:0px !important;
+}
+td.center.my-action {
+    background-color: #ff660c;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+    transition: 0.5s all!important;
+    -webkit-transition: 0.5s all!important;
+    -moz-transition: 0.5s all!important;
+    -o-transition: 0.5s all!important;
+}
+td.center.my-action .a-padding{
+    margin-top: 5px;
+}
+
+.my-action a div{
+    background: #fff !important;
+}
+.wrapper-action a {
+    position: center;
+}
+.wrapper-action a div{
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    background: #fff;
+}
+.market-update-block {
+    padding: 1em 1em;
+    background: #999;
+    display: flex;
+}
+.market-update-block h3 {
+    color: #fff;
+    font-size: 2.5em;
+}
+.market-update-left h3 span:not(.stt) {
+    box-shadow: 0 0 8px #ddd;
+}
+.market-update-block h4,.market-update-block h4 a,.market-update-block h4 a span {
+    font-size: 1.2em;
+    color: #fff;
+    margin: 0.3em 0em;
+}
+.market-update-block p, .market-update-block p a {
+    color: #fff;
+    font-size: 1em;
+    line-height: 1.8em;
+}
+.market-update-block.clr-block-1 {
+    height: 140px;
+    min-height: 140px;
+    max-height: 140px;
+    background: #00a85a;
+    margin-right: 0.8em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+.market-update-block.clr-block-2 {
+    height: 140px;
+    min-height: 140px;
+    max-height: 140px;
+    background:#337ab7;
+    margin-right: 0.8em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+.market-update-block.clr-block-4 {
+    height: 140px;
+    min-height: 140px;
+    max-height: 140px;
+    background: #4fa7ff;
+    margin-right: 0.8em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+.market-update-block.clr-block-1:hover, .market-update-block.clr-block-2:hover,.market-update-block.clr-block-4:hover  {
+    background: #3C3C3C;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+.market-update-left {
+    padding: 0px;
+    display: inline-block;
+    flex: 1;
+    width: calc(100% - 40px);
+}
+.market-update-right {
+    padding: 0px;
+    flex-basis: 40px;
+}
+.market-update-right i.fa.fa-users {
+    margin-top: 5px;
+    font-size: 3em;
+    color:#ff660c;
+    width: 58px;
+    height: 58px;
+    background: #fff;
+    text-align: center;
+    border-radius: 49px;
+    -webkit-border-radius: 49px;
+    -moz-border-radius:49px;
+    -o-border-radius:49px;
+    line-height: 1.7em;
+}
+.market-update-right i.fa.fa-cart-arrow-down {
+    margin-top: 5px;
+    font-size: 3em;
+    color:#ff660c;
+    width: 58px;
+    height: 58px;
+    background: #fff;
+    text-align: center;
+    border-radius: 49px;
+    -webkit-border-radius: 49px;
+    -moz-border-radius:49px;
+    -o-border-radius:49px;
+    line-height: 1.7em;
+}
+.market-update-right i.fa.fa-envelope-o {
+    margin-top: 5px;
+    font-size:3em;
+    color:#ff660c;
+    width: 58px;
+    height: 58px;
+    background: #fff;
+    text-align: center;
+    border-radius: 49px;
+    -webkit-border-radius: 49px;
+    -moz-border-radius:49px;
+    -o-border-radius:49px;
+    line-height: 1.7em;
+}
+.market-update-right i.fa.fa-volume-control-phone {
+    font-size:3em;
+    color:#ff660c;
+    width: 58px;
+    height: 58px;
+    background: #fff;
+    text-align: center;
+    border-radius: 49px;
+    -webkit-border-radius: 49px;
+    -moz-border-radius:49px;
+    -o-border-radius:49px;
+    line-height: 1.7em;
+}
+.market-update-right i.fa.fa-coffee {
+    font-size:3em;
+    color:#ff660c;
+    width: 58px;
+    height: 58px;
+    background: #fff;
+    text-align: center;
+    border-radius: 49px;
+    -webkit-border-radius: 49px;
+    -moz-border-radius:49px;
+    -o-border-radius:49px;
+    line-height: 1.7em;
+}
+.market-update-right i.fa.fa-file-o {
+    font-size:3em;
+    color:#ff660c;
+    width: 58px;
+    height: 58px;
+    background: #fff;
+    text-align: center;
+    border-radius: 49px;
+    -webkit-border-radius: 49px;
+    -moz-border-radius:49px;
+    -o-border-radius:49px;
+    line-height: 1.7em;
+}
+.market-update-gd {
+    overflow-x: auto;
+    white-space: normal;
+}
+.market-update-block h4 a span {
+    font-size: 0.75em;
+}
+@media (max-width: 1450px) {
+    .market-update-block h3 {
+        font-size: 2em;
+    }
+    .market-update-left h3 span {
+        width: 150px;
+        display: flow;
+    }
+
+    .market-update-left h4 a {
+        font-size: 0.75em;
+        width: 150px;
+        display: flow;
+        word-break: break-all;
+    }
+    .market-update-left h3 span {
+        width:  auto;
+    }
+
+    .market-update-block {
+        padding: 1em 1em;
+        background: #999;
+    }
+}
+@media (max-width: 1280px) {
+    .market-update-block p,.market-update-block p a {
+        font-size: 0.75em;
+    }
+    .market-update-right {
+        padding: 0px;
+    }
+    p.myname-request{
+        word-break: break-all;
+    }
+}
+@media (max-width: 1024px) {
+    .market-update-block h4,.market-update-block h4 a,.market-update-block h4 a span {
+        font-size: 0.8em;
+    }
+    .market-update-block {
+        padding: 1.5em 1.5em;
+    }
+    .market-update-right i.fa.fa-users {
+        font-size: 2em;
+        width: 60px;
+        height: 60px;
+        margin-top: 0.7em;
+    }
+    .market-update-right i.fa.fa-cart-arrow-down{
+        font-size: 2em;
+        width: 60px;
+        height: 60px;
+        margin-top: 0.7em;
+    }
+    .market-update-right i.fa.fa-envelope-o, .market-update-right i.fa.fa-file-o, .market-update-right i.fa.fa-volume-control-phone,.market-update-right i.fa.fa-coffee  {
+        font-size: 2em;
+        width: 60px;
+        height: 60px;
+        margin-top: 0.7em;
+    }
+    .market-update-gd {
+        padding: 0px;
+    }
+    .my-action{
+        background: #ff660c !important;
+        margin-right: 0.8em!important;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+        transition: 0.5s all!important;
+        -webkit-transition: 0.5s all!important;
+        -moz-transition: 0.5s all!important;
+        -o-transition: 0.5s all!important;
+        border-radius: 10px!important;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        -o-border-radius:10px;
+        line-height: 1.7em;
+        width: 50px;
+        max-width: 50px;
+        min-width: 50px;
+    }
+    .mrg5B.font-white.note.my-time-proccessed {
+        font-size: 7px;
+        text-align: left;
+    }
+    .market-update-left p a,.market-update-left p a span,market-update-left p{
+        font-size: 1.0em;
+    }
+}
+@media (max-width: 991px) {
+    .market-update-gd {
+        float: left;
+        width: 33%;
+        text-align: center;
+    }
+    .market-update-block {
+        padding: 1em 1em;
+        background: #999;
+        display:block;
+    }
+    .market-update-right i.fa.fa-users {
+        font-size: 2em;
+        width: 60px;
+        height: 60px;
+        line-height: 1.9em;
+        margin-top: 0px;
+    }
+    .market-update-right i.fa.fa-cart-arrow-down{
+        font-size: 2em;
+        width: 60px;
+        height: 60px;
+        line-height: 1.9em;
+        margin-top: 0em;
+    }
+    .market-update-right i.fa.fa-envelope-o, .market-update-right i.fa.fa-file-o, .market-update-right i.fa.fa-volume-control-phone,.market-update-right i.fa.fa-coffee  {
+        font-size: 2em;
+        width: 60px;
+        height: 60px;
+        line-height: 1.9em;
+        margin-top: 0px;
+    }
+    .market-update-left {
+        padding-bottom: 0.8em;
+    }
+    .market-update-block h3, .market-update-block h3 a {
+        font-size: 1em;
+    }
+    .market-update-block h4,.market-update-block h4 a ,.market-update-block h4 a span#myname-product {
+        display: none;
+    }
+    .market-update-block p,.market-update-block p a {
+        font-size: 0.9em;
+    }
+    .mrg5B.font-white.note.my-time-proccessed, .market-update-left p, .market-update-left p a{
+        display: none;
+    }
+    td.center.my-action .a-padding{
+        margin-top:2px;
+    }
+
+    .my-action a ,.my-action div a{
+        margin-top:5px;
+    }
+}
+@media (max-width: 612px) {
+    .market-update-left h3 span {
+        width:  auto;
+    }
+}
+@media (max-width: 580px) {
+    .market-update-block h4,.market-update-block h4 a ,.market-update-block h4 a span {
+        font-size: 0.86em;
+    }
+    .market-update-block p,.market-update-block p a {
+        display: none;
+    }
+}

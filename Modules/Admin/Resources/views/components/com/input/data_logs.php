@@ -1,0 +1,1 @@
+<component class="data_logs" is-ajax data-ajax="<?=@$ajax?>" data-module="<?= @$module ?>" data-return="html"></component>

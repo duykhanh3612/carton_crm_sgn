@@ -1,0 +1,42 @@
+.btn-part-list-po {
+    position: absolute;
+    top: 4px;
+    right: -5px;
+}
+.header-shipmment {
+    padding: 2px;
+    text-align: center;
+    background: #616161!important;
+    color: white;
+    font-size: 12px;
+}
+.bgcolor{
+    background-color: #AAAAAA !important;
+}
+.bgshipmentinput{
+    background-color: #cecece !important;
+}
+.Shipment input {
+    height: 20px;
+}
+.w-110{
+    width: 110px; min-width: 110px; max-width: 110px;
+}
+.body-import  .chosen-container {
+    height: 20px !important;
+}
+.body-import .chosen-container-single .chosen-single{
+    line-height: 20px !important;
+}
+.body-import .chosen-container-single .chosen-single div{
+    line-height: 22px !important;
+}
+#itemList tbody tr td span{
+    display:block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.td-2{
+    padding-left: 5px;
+}

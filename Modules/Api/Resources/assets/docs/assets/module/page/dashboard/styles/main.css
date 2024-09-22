@@ -1,0 +1,64 @@
+.menu-items .item{
+    font-size: 14px;
+    line-height: 57px;
+    color: #fff;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+.submenu .subitem {
+    padding-left: 76px;
+    line-height: 50px!important;
+    font-size: 12px;
+    opacity: .7;
+    font-size: 14px;
+    line-height: 57px;
+    color: #fff;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.menu-items .item i:first-child {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    text-align: center;
+    border-radius: 36px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-right: 15px;
+}
+
+.menu-items .item i:last-child,.menu-items .subitem i:last-child {
+    position: absolute;
+    right: 0;
+    line-height: 57px;
+    width: 57px;
+    text-align: center;
+    font-size: 8px;
+}
+.menu-items .item .badge {
+    position: absolute;
+    right: 19px;
+    font-size: 9px;
+    background-color: rgba(255,255,255,.15);
+    height: 20px;
+    margin-top: 19px;
+    line-height: 15px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 15px;
+    font-weight: 500;
+    min-width: 20px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0,0,0,.3);
+}
+.menu-items .menu-expland{
+    transition: all 250ms ease 0s;
+    height: auto;
+}
+
+@media screen and (min-width: 900px) {
+}

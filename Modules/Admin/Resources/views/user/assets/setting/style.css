@@ -1,0 +1,107 @@
+.widget-header {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    position: relative;
+    min-height: 38px;
+    background: #f7f7f7 repeat-x;
+    background-image: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+    background-image: -o-linear-gradient(top, #fff 0, #eee 100%);
+    background-image: linear-gradient(to bottom, #fff 0, #eee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
+    color: #669fc7;
+    border-bottom: 1px solid #ddd;
+    padding-left: 12px;
+}
+
+.widget-header[class*="header-color-"] {
+    color: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.widget-header>.widget-caption,
+.widget-header> :first-child {
+    line-height: 36px;
+    padding: 0;
+    margin: 0;
+    display: inline;
+}
+
+.header-color-blue {
+    background: #307ecc;
+    border-color: #307ecc;
+}
+
+.widget-toolbar {
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 37px;
+    float: right;
+    position: relative;
+}
+
+.widget-toolbar .btn.btn-white {
+    border-color: #ccc;
+    color: #444 !important;
+    text-shadow: none !important;
+    background-color: #fff !important;
+    border-radius: 3px !important;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.label {
+    font-size: 12px;
+    line-height: 1.15;
+    height: 23px;
+    border-radius: 0;
+    text-shadow: none;
+    font-weight: 400;
+    display: inline-flex;
+    padding: 0.2em 0.6em 0.2em;
+    align-items: center;
+}
+
+.showEdit,.updateUser, .cancelEdit, .openCreatePassword {
+    cursor: pointer;
+}
+
+.badge-success,
+.label-success {
+    background-color: #82af6f !important;
+    color: #fff;
+}
+
+.label-danger {
+    background-color: #d9534f !important;
+    color: #fff;
+}
+
+.badge-primary,
+.label-primary {
+    background-color: #428bca !important;
+    color: #fff;
+}
+
+/* Modal Form */
+.table-header {
+    background: transparent;
+    font-size: 22px;
+    font-weight: bold;
+    color: #777;
+    line-height: 38px;
+    padding-left: 12px;
+    margin-bottom: 1px;
+    width: 100%;
+}
+
+.table-header .close {
+    margin-right: 8px;
+    margin-top: 0;
+    opacity: 0.45;
+    filter: alpha(opacity=45);
+}
+
+.table-header>button>span.white {
+    color: #999 !important;
+}

@@ -1,0 +1,21 @@
+<div class="form-group">
+    {{Form::label('department_name','Department')}}
+    {{Form::select('department_name',$departments, null ,['class'=>'form-control','placeholder' => 'Select employee department..'])}}
+    <div class="col-md-2"><span id="designationloader"><i class="fa fa-spinner fa-3x fa-spin"></i></span></div>
+    @error('department')
+        <p class="text-danger"> {{$message}} </p>
+    @enderror
+</div>
+<div class="form-group">
+
+    <select name="designation_name" class="form-control">
+        <option>--State--</option>
+
+    </select>
+    {{-- {{Form::label('designation','Designation')}}
+    {{Form::select('designation','', null ,['class'=>'form-control','placeholder' => 'Select employee department first..'])}}
+    @error('designation')
+        <p class="text-danger"> {{$message}} </p>
+    @enderror --}}
+</div>
+

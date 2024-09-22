@@ -1,0 +1,173 @@
+.press-notify{
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.press-notify .icon.glyphicons:before{
+    color: #0e0e0e;
+}
+.inline {
+    display: inline-block;
+}
+.dropdown-menu.notify .header {
+    font-size: 13px;
+    font-weight: bold;
+    min-width: 270px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    padding: 4px 0 6px 0;
+}
+
+.menu.mnotify {
+    overflow: hidden;
+    width: auto;
+    height: 254px;
+    padding-left: 0;
+
+}
+
+.waves-block {
+    display: block;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bg-light-green {
+    background-color: #8BC34A !important;
+    color: #fff;
+}
+
+.dropdown-menu.notify ul.menu {
+
+}
+
+.dropdown-menu.notify ul.active {
+
+}
+
+.dropdown-menu.notify ul.menu .icon-circle {
+    width: 36px;
+    height: 36px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+}
+
+.dropdown-menu.notify ul.menu li {
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu.notify ul.menu li a {
+    padding: 7px 11px;
+    text-decoration: none;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.dropdown-menu.notify ul.menu .icon-circle i {
+    font-size: 18px;
+    line-height: 36px;
+}
+
+.dropdown-menu.notify ul.menu .menu-info {
+    display: inline-block;
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    padding-left: 30px;
+    padding-right: 50px;
+}
+
+.dropdown-menu.notify ul.menu .menu-info h4 {
+    margin: 0;
+    font-size: 13px;
+    color: #333;
+}
+
+.dropdown-menu.notify ul.menu .menu-info p {
+    margin-left: 10px;
+    padding-bottom: 5px;
+    font-size: 11px;
+    color: #aaa;
+}
+
+.dropdown-menu.notify ul.menu .menu-info p .material-icons {
+    font-size: 13px;
+    color: #aaa;
+    position: relative;
+    top: 2px;
+}
+
+.dropdown-menu.notify .footer a {
+    text-align: center;
+    border-top: 1px solid #eee !important;
+    padding: 5px 0 5px 0 !important;
+    font-size: 12px;
+    margin-bottom: -5px;
+}
+
+.dropdown-menu.notify > li > a {
+    line-height: 25px;
+    display: block !important;
+    clear: both;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.slimScrollDiv {
+    position: relative;
+    width: auto;
+    height: 254px;
+    overflow: visible !important;
+}
+
+.icon-circle::before {
+    content: "" !important;
+}
+
+.text-notify {
+    word-break: break-word;
+    white-space: normal;
+    padding-right: 30px;
+}
+
+.noHover {
+    pointer-events: none !important;
+    font-weight: bold;
+}
+
+.nav-link > .fa {
+    position: relative;
+    width: 36px;
+    font-size: 24px;
+    top: 3px;
+    line-height: 12px;
+}
+
+.nav-link > .fa > .badge-info {
+    font-size: 0.75rem;
+    position: absolute;
+    right: 0;
+    font-family: sans-serif;
+    top: -10px;
+}
+@media only screen and (max-width: 40em){
+    .notify ul li.body {
+        width:auto;
+    }
+}

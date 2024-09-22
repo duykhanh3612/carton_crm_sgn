@@ -1,0 +1,1 @@
+<component class="approved_log" is-ajax data-ajax="<?=@$ajax?>" data-module="<?= @$module ?>" data-return="html"></component>

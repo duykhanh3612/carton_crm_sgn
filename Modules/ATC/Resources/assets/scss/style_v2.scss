@@ -1,0 +1,15 @@
+// compiler path : sass assets/scss/style_v2.scss assets/css/style_v2.css
+#page-title h2{
+    left: 4px;
+    .child-title{
+        margin-right:7rem;
+    }
+}
+.text-overflow{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.wapper-title-module{
+    width: 22rem;
+}

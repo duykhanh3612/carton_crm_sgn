@@ -1,0 +1,348 @@
+.result-suppliers {
+    position: absolute;
+    max-height: 290px;
+    background: white;
+    width: 100%;
+    z-index: 9;
+    border: 1px solid #bbb;
+    box-shadow: 0 0 3px 0 #bbb4b4;
+    border-radius: 5px;
+    /*margin-bottom: 7px;*/
+    overflow: auto;
+    display: none;
+}
+
+.result-suppliers p {
+    padding: 2px 5px;
+}
+
+.result-suppliers .supplier-item {
+    cursor: pointer;
+}
+
+.form-control.ChooseSup,
+.editing .form-control.ChooseSup,
+.editing, .select-status.select-supplier {
+    display: table-cell !important;
+}
+
+.form-control.ChooseSup,
+.editing .form-control.ChooseSup {
+    width: 50px !important;
+}
+
+.form-control.ChooseSup,
+.empty-supplier, .select-status.select-supplier, {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.editing .form-control.ChooseSup,
+.select-status.select-supplier,
+.editing .empty-supplier {
+    pointer-events: none;
+    opacity: 1;
+}
+
+.editing .form-control.ChooseSup,
+.editing .empty-supplier {
+    pointer-events: auto;
+}
+
+.select-status.select-supplier,
+.editing .select-status.select-supplier {
+    width: calc(100% - 50px);
+    border-radius: 0;
+    pointer-events: none;
+}
+
+.table-price, .table-details {
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-price {
+    min-width: 90px !important;
+}
+
+.table-details {
+    min-width: 1200px !important;
+}
+
+.prices-for-sales .form-group, .prices-for-distributors .form-group {
+    display: inline-flex !important;
+}
+
+.prices-for-sales .form-group .col-md-6, .prices-for-distributors .form-group .col-md-6 {
+    display: contents !important;
+}
+
+.prices-for-distributors .left {
+    margin-top: -38px;
+    margin-left: 10px;
+}
+
+.prices-for-sales .left {
+    margin-left: 10px;
+}
+
+/*.table-sales{*/
+/*    margin-top: 25px !important;*/
+/*}*/
+
+.table-details th,
+.table-details td,
+.table-price th,
+.table-price td {
+    padding: 5px;
+    text-align: center;
+    height: 35px !important;
+}
+
+.table-price th,
+.table-price td {
+    min-width: 90px !important;
+    max-width: 90px !important;
+    width: 90px !important;
+}
+
+.table-price th, .table-details th {
+    font-weight: bold;
+    border: 2px !important;
+    background-color: #dfe8f1 !important;
+}
+
+.input-th {
+    font-weight: bold;
+    width: 58px;
+}
+
+.table-price tr:nth-child(even), .table-details tr:nth-child(even) {
+    background-color: #f2f2f2 !important;
+}
+
+.divLeft {
+    display: block;
+    float: left;
+    width: 51%;
+    margin-right: 5px;
+}
+
+.divRight {
+    display: flex;
+    float: left;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    display: flex;
+}
+
+.wrapper-category {
+    display: block;
+    /*margin-top: 25px;*/
+}
+
+/*{
+    text-align: center;
+    display: block;
+}*/
+
+#itemList ul li {
+    display: block;
+}
+
+a.addCol-Price {
+    width: 80px !important;
+}
+
+.input-th, .input-style, .input-value {
+    border-radius: 3px;
+    background: #fff;
+    height: 26px;
+    padding: 2px 4px;
+    color: #2b2f33;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 1px 1px 3px #f6f6f6;
+    -moz-box-shadow: inset 1px 1px 3px #f6f6f6;
+    box-shadow: inset 1px 1px 3px #f6f6f6;
+}
+
+.prices-for-sales, .prices-for-distributors {
+    display: inline-block;
+}
+
+.prices-for-sales .form-group .col-md-6:last-child {
+    margin-top: 15px;
+}
+
+.prices-for-distributors .form-group .col-md-6:first-child {
+    margin-top: 20px;
+}
+
+.table-sales thead tr th:first-child {
+    min-width: 69px;
+}
+
+.tr-hidden {
+    display: none;
+}
+
+.td-leadtime .price-details {
+    max-width: 100px;
+    min-width: 100px;
+    width: 100px;
+}
+
+.td-measure,.th-style {
+    min-width: 67px;
+    max-width: 67px;
+    width: 67px
+}
+
+.th-style.th-group-even{
+
+}
+.th-style.th-group-odd{
+
+}
+.grey {
+    background-color: rgba(128,128,128,.25);
+}
+
+.red {
+    background-color: rgba(255,0,0,.25);
+}
+.blue {
+    background-color: rgba(0,0,255,.25);
+}
+
+
+#staff {
+    background: #f5f5f5;
+}
+
+#SupplierID {
+    -moz-appearance: window;
+    -webkit-appearance: none;
+    background: #f5f5f5;
+}
+
+@-moz-document url-prefix() {
+    .wrapper {
+        background: #f5f5f5 right center no-repeat;
+        padding-right: 20px;
+    }
+}
+
+.select-status.select-supplier {
+    display: initial !important;
+}
+
+.select-status {
+    line-height: 20px !important;
+}
+
+#page-wrapper select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.note-cate {
+    line-height: 15px;
+    font-style: italic;
+}
+
+#itemList table.table-details tr:nth-child(even) {
+    background-color: #989b9c !important;
+}
+
+#itemList table.table-details tr:nth-child(even) td{
+    background: #f2f2f2 !important;
+}
+
+.tag-weight, .label-weight span{
+    margin-top: 26px;
+    display: block !important;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background:#e74c3c;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis !important;
+    font-size: 80%;
+    line-height: 1;
+    display: inline;
+    padding: .4em .6em .3em;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: baseline;
+    white-space: nowrap;
+    color: #fff;
+    border-radius: .25em;
+    width: 55px;
+}
+.label-weight span{
+    margin-top: 0px;
+    width: 80px;
+}
+
+.fetch70 {
+    height:50px !important;
+    min-height:50px !important;
+    max-height:50px !important;
+}
+
+.input-moq{
+    width: 100% !important;
+}
+
+.input-leadtime {
+    width: 100px !important;
+}
+
+.table-details tbody tr input[type=text], .table-details tbody tr td a {
+    /*margin-top: -20px !important;*/
+}
+
+.table-price td {
+    min-width: 90px !important;
+}
+
+.table-price input[type=text] {
+    width: 80px !important;
+}
+
+#itemList table tbody tr input[type=text] {
+    float: left !important;
+}
+
+table.table-distributors {
+    margin-top: 0px !important;
+}
+
+table.table-price thead tr, table.table-details thead tr {
+    height: 38px !important;
+    max-height: 38px !important;
+    min-height: 38px !important;
+}
+
+.table tr td {
+    vertical-align: top;
+}
+/*@media screen and (max-width: 1200px) {*/
+/*    table.table-distributors.table, .addCol-Price {*/
+/*        margin-top: 0px !important;*/
+/*    }*/
+/*}*/

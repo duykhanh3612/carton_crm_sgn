@@ -1,0 +1,293 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'helveticaneue-light';
+    src: url('../font/helveticaneuelight.ttf');
+}
+
+body {
+    background: none !important;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'helveticaneue-light', sans-serif;
+}
+
+.float-left {
+    float: left !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.bold {
+    font-weight: bold !important;
+}
+
+.italic {
+    font-style: italic !important;
+}
+
+.underline {
+    text-decoration: underline !important;
+}
+
+.align-top {
+    vertical-align: top;
+}
+
+.fs11px {
+    font-size: 11px !important;
+}
+
+.fs12px {
+    font-size: 12px !important;
+}
+
+.fs14px {
+    font-size: 14px !important;
+}
+
+.fs15px {
+    font-size: 15px !important;
+}
+
+.fs16px {
+    font-size: 16px !important;
+}
+
+.A4_H {
+    width: 10.6in;
+    padding: 40px;
+}
+
+.A4_W {
+    width: 11.5in;
+    padding: 40px;
+}
+
+.A4_H * {
+    font-size: 12px;
+}
+
+.A4_W * {
+    font-size: 12px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table td > h1 {
+    font-size: 30px !important;
+    color: #5BACEA;
+}
+
+table td.border {
+    border-bottom: 1px dashed #000;
+}
+
+table.table-print td,
+table.table-print .head {
+    font-size: 13px !important;
+    padding: 2px 5px !important;
+    border: 1px solid #333 !important;
+}
+
+table td.fr {
+    border-bottom: 1px solid #4D4D4D;
+}
+
+table td a {
+    text-decoration: none;
+    color: #000;
+    pointer-events: none;
+}
+table .head {
+    background: #BDD7EE;
+    font-weight: bold;
+}
+
+table td.border {
+    border: 1px solid #333;
+}
+
+table td.no-border {
+    border: none !important;
+}
+
+table td.border-first-left {
+    border-left: 1px solid #333;
+}
+
+table td.border-first-top {
+    border-top: 1px solid #333;
+}
+
+table td.border-first-right {
+    border-right: 1px solid #333;
+}
+table td.border-bottom {
+    border-bottom: 1px solid #333;
+}
+
+.note {
+    overflow: hidden;
+    min-height: 48px;
+    outline: none;
+    padding: 5px;
+}
+
+.bg {
+    background: #F2F2F2;
+}
+
+table tr.head td {
+    padding: 7px 4px;
+    text-align: center;
+}
+
+table tr:not(.head) td:not(.align-top):not(.td-empty-line) {
+    padding: 5px 2px;
+}
+
+table tbody td {
+    border: 1px solid #333;
+}
+
+table.table-color tbody td {
+    border: 1px solid #BDD7EE;
+}
+
+.td-bg {
+    background: #BDD7EE;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#pf-print-area {
+    position: fixed;
+    bottom: 0;
+}
+
+table tbody tr {
+    height: 54px;
+}
+
+table tbody tr.head,
+table tbody tr.row-empty {
+    height: auto;
+}
+
+span.checkbox {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+}
+
+span.checkbox.checked:after {
+    content: "\2713";
+    position: absolute;
+    top: -4px;
+    left: 0;
+    color: #333;
+}
+
+.wrap-banks {
+    -webkit-flex: flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /* Or do it all in one line with flex flow */
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    /* tweak the where items line up on the row */
+    /* valid values are: flex-start, flex-end, space-between, space-around, stretch */
+    -webkit-align-content: flex-end;
+    align-content: flex-end;
+}
+.wrap-banks > div {
+    padding: 10px;
+    width: calc(50% - 20px);
+}
+
+.A4_V {
+    width: 15.5in;
+    padding: 30px;
+}
+
+.A4_V * {
+    font-size: 12px;
+}
+
+.A4_V table td > h1 {
+    font-size: 30px;
+    color: #5BACEA;
+}
+
+.A4_V table tr.head td {
+    padding: 7px 4px;
+    text-align: center;
+}
+
+.A4_V table tr:not(.head) td:not(.align-top):not(.td-empty-line) {
+    padding: 5px 2px;
+}
+
+.A4_V table tbody td {
+    border: 1px solid #333;
+}
+
+.A4_V table.table-color tbody td {
+    border: 1px solid #BDD7EE;
+}
+
+.font-bold {
+    font-weight: 700!important
+}
+
+.font-normal {
+    font-weight: 400
+}
+
+.font-italic {
+    font-style: italic
+}
+
+.font-none {
+    font-style: none
+}
+
+.clear {
+    clear: both
+}
+
+.center {
+    text-align: center;
+}

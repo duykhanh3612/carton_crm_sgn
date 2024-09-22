@@ -1,0 +1,13 @@
+{
+    "name": "ZaloDevelopers",
+    "alias": "zalodevelopers",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ZaloDevelopers\\Providers\\ZaloDevelopersServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

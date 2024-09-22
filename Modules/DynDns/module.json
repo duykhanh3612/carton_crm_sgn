@@ -1,0 +1,13 @@
+{
+    "name": "DynDns",
+    "alias": "dyndns",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DynDns\\Providers\\DynDnsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

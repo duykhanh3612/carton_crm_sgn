@@ -1,0 +1,66 @@
+      <div id="itemList" class="margin-itemlist-po" data-shipped="1">
+         <table class="mainTable table table-hover table-part" border="0" width="100%">
+            <tr class="nodrop">
+               {% for field,col in cols_item_list.line1 %}
+               <th nowrap="nowrap" style="min-width: 130px" class="col-mfr_part" width="130">
+                  {{col.name }}
+                  {% if(col.required) %}
+                  <span style="color:red">*</span>
+                  {% endif %}
+               </th>
+               {% endfor %}
+            </tr>
+            <tbody>
+               <tr class="highlightNoClick lengthPart myDragClass">
+                  {% for field,col in cols_item_list.line1 %}
+                  {% if(col.type ==  'hidden') %}
+                  <td class="col-{{field}}">
+                     <span>{{ info[field] }}</span>
+                     <input type="hidden" name="{{field}}" class="form-control expand" value="{{ info[field] }}">
+                     {% if(col.required) %}
+                     <div class="errordiv package_case_1">Not Empty</div>
+                     {% endif %}
+                  </td>
+                  {% elseif (col.type == 'text') %}
+                  <td class="col-description" style="">
+                     <input title="{{info['field']}}" type="text" name="{{field}}" class="form-control expand" value="{{info[field]}}">
+                  </td>
+                  {% else %}
+                  <td></td>
+                  {% endif %}
+                  {% endfor %}
+               </tr>
+               <tr data-parent="1" class="highlightNoClick1 lengthPart myDragClass Shipment sm-LFD182G45MJFE023 collapse-LFD182G45MJFE023" id="sub_1_1" value="1">
+                  <td class="bgcolor col-numberOfShipment " colspan="{{count(cols_item_list.line1)}}">
+                     <div style="display: flex">
+                        {% for field,col in cols_item_list.line2 %}
+                        <div class="td-2" style="">
+                           <div>
+                              <div class="header-shipmment  ">
+                                 <span>{{col.name }}</span>
+                              </div>
+                              <div>
+                                 {% if(col.type ==  'hidden') %}
+                                 <input type="text" style="pointer-events: none;" name="{{field}}" class="bgshipmentinput form-control text-center shipped-qty no-border" value="18720">
+                                 {% elseif (col.type == 'text' or col.type == 'number') %}
+                                 <input type="{{col.type}}" {{ col.required==1?"data-required='1'":"" }} name="{{field}}" id="{{field}}" class="bgshipmentinput form-control {{col.class}}" value="{{ info[field] }}">
+                                 {% elseif (col.type == 'date') %}
+                                 <input type="text" {{ col.required==1?"data-required='1'":"" }} name="{{field}}" id="{{field}}" class="date form-control bgshipmentinput {{col.class}}" value="{{ info[field]}}" autocomplete="off">
+                                 {% else %}
+                                 <input type="text" style="pointer-events: none;" name="{{field}}" class="bgshipmentinput form-control text-center" value="">
+                                 {% endif %}
+                                 {% if(col.required) %}
+                                 <div class="errordiv {{field}}">{{col.label }}
+                                    Not Empty!
+                                 </div>
+                                 {% endif %}
+                              </div>
+                           </div>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>

@@ -1,0 +1,13 @@
+<component class="department_employee">
+	<input type="hidden" name="{{name}}" id="{{id ?? name}}" value="{{value}}" />
+	<div class="dropdown {{class}}">
+		<label class="dropdown"  data-toggle="dropdown"><span class="title"></span><span class="caret"></span></label>
+		<ul class="dropdown-menu" data-id="#{{id ?? name}}" >
+			<div class="filter">
+				<input class="form-control keyword" type="text" placeholder="Search..">
+				<span class="caret filter-show-data"></span>
+				<span class="fa fa-times filter-show-data-cancel"></span>
+			</div>
+		</ul>
+	</div>
+</component>
