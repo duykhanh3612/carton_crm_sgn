@@ -325,7 +325,7 @@
                                     Hủy
                                 </button>
                                 <button type="submit" class="btn btn-warning">
-                                    <?=request()->segment(3) =="update"?"Cập nhập": "Thêm mới"?>
+                                    <?=request()->segment(3) =="update"?"cập nhật": "Thêm mới"?>
                                 </button>
                             </div>
                         </td>
@@ -492,7 +492,7 @@
 
                         </button>
                         <button type="submit" class="btn btn-warning">
-                            <?=request()->segment(3) =="update"?"Cập nhập": "Thêm mới"?>
+                            <?=request()->segment(3) =="update"?"cập nhật": "Thêm mới"?>
                         </button>
                         <button type="button" class="btn btn-dark" data-dismiss="modal">
                             Hủy
@@ -596,7 +596,7 @@
 
                         </button>
                         <button type="submit" class="btn btn-warning">
-                            <?=request()->segment(3) =="update"?"Cập nhập": "Thêm mới"?>
+                            <?=request()->segment(3) =="update"?"cập nhật": "Thêm mới"?>
                         </button>
                         <button type="button" class="btn btn-dark" data-dismiss="modal">
                             Hủy
@@ -627,7 +627,7 @@
 
                         </button>
                         <button type="submit" class="btn btn-warning">
-                            <?=request()->segment(3) =="update"?"Cập nhập": "Thêm mới"?>
+                            <?=request()->segment(3) =="update"?"cập nhật": "Thêm mới"?>
                         </button>
                         <button type="button" class="btn btn-dark" data-dismiss="modal">
                             Hủy

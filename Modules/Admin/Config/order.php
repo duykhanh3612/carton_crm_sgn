@@ -2,6 +2,15 @@
 return [
     'order' => [
         'title' => 'Đơn hàng',
+        'actions' => [
+            [
+                'href' =>"#",
+                'class' => 'action-export-excel',
+                'label' => 'Xuất DS đơn hàng',
+                'title' => 'Xuất DS đơn hàng',
+                'icon' => 'fa fa-file'
+            ],
+        ],
         'filters' => [
             [
                 // 'label' => __('Lọc'),
@@ -59,14 +68,14 @@ return [
             [
                 'field' => 'id',
                 'input' => 'icon',
-                'class' => 'w-40',
+                'class' => 'w-40 text-center',
                 'class_thead' => 'w_40',
                 'html' => '<i class="item-detail fa fa-plus"></i>',
             ],
             [
                 'field' => 'id',
                 'input' => 'no',
-                'class' => 'w_50',
+                'class' => 'w_50 text-center',
                 'class_thead' => 'w_50',
                 'text' => '#',
             ],
@@ -110,7 +119,7 @@ return [
                 'orderable' =>0,
                 'editable' => 1,
                 'required' => true,
-                'class' => 'text-center'
+                'class' => 'text-center text-hidden'
             ],
             // [
             //     'field' => 'store_id',
@@ -134,7 +143,7 @@ return [
                 'orderable' => 0,
                 'editable' => 1,
                 // 'required' => true,
-                'class' => 'text-center'
+                'class' => 'w_120  text-center'
             ],
             [
                 'field' => 'total',

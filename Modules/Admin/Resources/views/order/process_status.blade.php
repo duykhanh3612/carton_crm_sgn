@@ -6,21 +6,22 @@
 </a>
 @endif
 &nbsp;
-@if(check_rights_function('cancel_order','read') &&  $record->status < 4)
-{{-- data-ng-if="order.saleTypeID != 1 &amp;&amp; order.saleTypeID < 4 &amp;&amp; order.status < 4 &amp;&amp; order.status > 1" --}}
+
+    @if(check_rights_function('cancel_order','read') && $record->status < 4) {{-- data-ng-if="order.saleTypeID != 1 &amp;&amp; order.saleTypeID < 4 &amp;&amp; order.status < 4 &amp;&amp; order.status > 1" --}}
 <a  class="btn-cancel-order black bootbox-confirm ng-scope" ng-click="cancelOrder(order.saleOrderId, order.saleOrderCode)" title="Hủy đơn hàng">
     <i class="fa fa-stop-circle text-danger"></i>
 </a>
 &nbsp;
+    @endif
 <?php
-if(isset($links['copy']))
+    if(isAdmin() || isset($links['copy']))
 {
     echo '<a class="confirmCopy" data-href="'.route(Arr::get($links,'copy'),[$record->id]).'"><i class="fa fa-clone text-info"></i></a>';
 }
 
 ?>
 
-@endif
+
 &nbsp;
 <a class="grey ng-scope" style="cursor:pointer;" onclick="printOrder({{$record->id}})" title="In đơn hàng" data-ng-if="(order.saleTypeID == 1) || (order.status == 4 &amp;&amp; order.saleTypeID > 1 &amp;&amp; order.saleTypeID < 4) || (order.status == 1 &amp;&amp; order.saleTypeID > 1 &amp;&amp; order.saleTypeID < 4)">
     <i class="fa fa-print bigger-110"></i>
@@ -32,7 +33,7 @@ if(isset($links['copy']))
 
 &nbsp;
 <?php
-if( check_rights(2,"delete") && ($record->status == 1 || $record->status == 5)  && isset($links['delete']))
+if(isAdmin() || ( in_array($record->status,[1,2,5])) || (check_rights(2,"delete") &&  ($record->status == 1 || $record->status == 5)  && isset($links['delete'])))
 {
     echo '<a data-href="'.route(Arr::get($links,'delete'),[$record->id]).'" class="deleteDialog" data-toggle="confirm" data-target="#deleteUser"><i class="fa fa-trash text-danger"></i></a>';
 }

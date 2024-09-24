@@ -102,14 +102,24 @@
                                         </div>
                                     </div>
                                 </td>
+                                @if(request()->segment(3)=="copy" || in_array($record->status,[1]))
+                                <td>
+                                    <input name="item[{{ $did }}][qty]" data-required="1" id="qty_{{ $did }}"  min="1" step="1" class="form-control text-center money"  value="{{ floatval($row->qty) }}" >
+                                    <div class="errordiv qty_{{ $did }}" style="display: none;"><div class="arrow"></div>Nhập số lượng!</div>
+                                  </td>
+                                  <td>
+                                    <input name="item[{{ $did }}][price]" data-required="1" id="price_{{ $did }}"  data-required="1"  class="form-control text-center money" min='0'  value="{{floatval($row->unit_price)}}"  />
+                                    <div class="errordiv price_{{ $did }}" style="display: none;"><div class="arrow"></div>Nhập số giá tiền hàng hóa!</div>
+                                  </td>
+                                @else
                                 <td class="text-center">
                                     <div class="ace-spinner touch-spinner">
-                                        <label class="form-control disabled"><span class="ng-binding">{{ $row->qty }}</span></label>
+                                        <label class="disabled"><span class="ng-binding">{{ $row->qty }}</span></label>
 
                                         <div class="input-group ng-hide" data-ng-show="orderId == 0 || (saleTypeID > 1 &amp;&amp; orderStatus < 2 ) ">
                                             <input type="text" name="item[{{ $did }}][qty]"
                                                 class="numeric spinner-input form-control mousetrap ng-pristine ng-valid"
-                                                value="{{ $row->qty }}"
+                                                value="{{ $row->qty }}" {{@$record->status!=""?"readonly":""}}
                                                 auto-numeric="isDecimal == true ? {vMin: 0, vMax: 9999999.9999,mDec: 4,aPad: false } :{vMin: 0, vMax: 9999999 } ">
                                             <div class="spinner-buttons input-group-btn hidden-320 ng-scope"
                                                 ng-if="detail.isSerial==false">
@@ -128,8 +138,8 @@
                                 </td>
                                 <td class="hidden-480 text-right">
                                     <div class="ng-binding">
-                                        <label class="form-control text-center disabled">{{ number_format($row->unit_price) }}</label>
-                                        <input name="item[{{$row->id}}][price]" value="{{$row->unit_price}}" type="hidden" />
+                                        <label class="text-center disabled">{{ number_format($row->unit_price) }}</label>
+                                        <input name="item[{{ $did }}][price]" value="{{$row->unit_price}}" type="hidden" />
                                         <span
                                             data-ng-show="(orderId == 0 || (saleTypeID > 1 &amp;&amp; orderStatus < 2) ) &amp;&amp; (!saleOrder.Items[saleOrder.SelectedOrderIndex].SaleOrder.isPromotion || saleTypeID == 3)"
                                             data-ng-if="allowPriceModified" class="help-button ng-scope ng-hide"
@@ -154,6 +164,7 @@
 
                                     </div>
                                 </td>
+                                @endif
                                 <td class="text-right hidden-320 ng-binding">
                                     <span class="total">{{ number_format($row->total_price) }}</span>
 

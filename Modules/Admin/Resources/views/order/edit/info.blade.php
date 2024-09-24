@@ -207,7 +207,7 @@
                 <div class="widget-body">
                     <div class="widget-main padding-4">
                         <div class="tab-content padding-8 overflow-visible">
-                            <div class="row mb-1">
+                            {{-- <div class="row mb-1">
                                 <label class="col-md-5 control-label no-padding-right ng-binding" for="form-field-1">Vận chuyển</label>
                                 <div class="col-sm-7">
                                     {!! form_dropdown("shippers", $option['shippers'],@$record->shippers,'class="form-control" id="shippers"') !!}
@@ -216,7 +216,7 @@
                                         $("#shippers").val("{{ @$record->shippers }}");
                                     </script>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row mb-1">
                                 <label class="col-md-5 control-label no-padding-right ng-binding">Ngày giao</label>
                                 <div class="col-md-7">

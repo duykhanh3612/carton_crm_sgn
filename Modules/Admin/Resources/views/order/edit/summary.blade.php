@@ -210,7 +210,7 @@
 
                 $.confirm({
                     title: "Xác nhận",
-                    content: "Cập nhập thanh toán",
+                    content: "Cập nhật thanh toán",
                     type: 'blue',
                     buttons: {
                         ok: {
@@ -448,7 +448,7 @@
             discount_percent = tag.find("#discount_percent").val();
             $.confirm({
                 title: "Xác nhận",
-                content: "Cập nhập giảm giá",
+                content: "Cập nhật giảm giá",
                 type: 'blue',
                 buttons: {
                     ok: {

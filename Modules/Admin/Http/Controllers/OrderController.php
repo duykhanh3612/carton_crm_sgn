@@ -126,8 +126,16 @@ class OrderController extends BaseController
         $query = new  Order();
         $records = $query->filter($request->filter??[])->paginate(request()->limit);
         $records->appends(request()->all());
+        $summary = [
+            'order' => $records->total(),
+            'total' =>  (new  Order())->filter($request->filter??[])->sum("total"),
+            'debt' =>  (new  Order())->filter($request->filter??[])->sum("debt")
+        ];
         $includes = [
             "admin::order.modal"
+        ];
+        $footer_include = [
+            "admin::order.summary"
         ];
         return \Themes::render('datatable', [
             'params' => $params,
@@ -140,6 +148,8 @@ class OrderController extends BaseController
             'tfoots' => config($this->route . '.tfoots'),
             'links' => $links,
             'includes' => $includes,
+            'footer_include' => $footer_include,
+            'summary' => $summary,
             'childrenTabs' => $childrenTabs,
         ],true);
     }
@@ -159,6 +169,7 @@ class OrderController extends BaseController
         ];
         if(request()->segment(3) == "copy")
         {
+            $record->status = 1;
             $link_update =  route('admin.order.update.new');
         }
         else{
@@ -214,7 +225,7 @@ class OrderController extends BaseController
                     if (@$item['deleted']) {
                         OrderDetail::where('id',  $itemID)->delete();
                     } else {
-                        $product = Product::where("id", $item['product_id'])->first();
+                        $product = Product::where("id", @$item['product_id'])->first();
                         if(!empty($product))
                         {
                             $t['order_id'] = $oderID->id;
@@ -318,14 +329,14 @@ class OrderController extends BaseController
                 $log_action = "xác nhận hủy";
                 break;
             default:
-                $log_action = "cập nhập";
+                $log_action = "cập nhật";
                 break;
         }
         //Handel Update Log
         $order = Order::where("id", $orderId)->first();
         Order::updateSummary($order);
         OrderLog::updateLog($order, "đã $log_action đơn hàng ". $order->code, "user" , auth()->user());
-        return response()->json(['success' => true,"message"=>"Cập nhập trạng thái thành công"]);
+        return response()->json(['success' => true,"message"=>"Cập nhật trạng thái thành công"]);
     }
 
     function updatePayment()
@@ -362,7 +373,7 @@ class OrderController extends BaseController
                 # code...
                 break;
         }
-        Order::updateLog($order, "Cập nhập thanh toán đơn hàng:".number_format($payment_new_value).". Hình thức thanh toán". $payments_name );
+        Order::updateLog($order, "Cập nhật thanh toán đơn hàng:".number_format($payment_new_value).". Hình thức thanh toán". $payments_name );
         Order::updateSummary($order);
         $result = [
             'success' => true,
@@ -389,7 +400,7 @@ class OrderController extends BaseController
         $order->discount_type  = $discount_type;
         $order->discount_percent =  $discount_percent;
         $order->update();
-        Order::updateLog($order, "Cập nhập giả giá đơn hàng ".number_format($discount_value));
+        Order::updateLog($order, "Cập nhật giả giá đơn hàng ".number_format($discount_value));
         $result = "Update success";
         return response()->json($result, 200, ['Content-type' => 'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }

@@ -18,10 +18,59 @@
     <link href="assets/css/icons.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
     <link href="assets/css/printFelixOffice.css" rel="stylesheet" />
+    <style type="text/css">
+    body {
+  margin: 0;
+  padding: 0;
+  background-color: #FAFAFA;
+  font: 12pt "Optima";
+}
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.page {
+  width: 21cm;
+  min-height: 29.7cm;
+  padding: 2cm;
+  margin: 1cm auto;
+  border: 1px #D3D3D3 solid;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.subpage {
+  padding: 1cm;
+  border: 5px red solid;
+  height: 256mm;
+  outline: 2cm #FFEAEA solid;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  .page {
+    margin: 0;
+    border: initial;
+    border-radius: initial;
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: always;
+  }
+}
+</style>
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper"  style="font-size:20px">
         <div class="container">
             <div class="modal-content" id="printFelixOffice">
                 <!-- Trang in -->
@@ -29,30 +78,31 @@
                     <!-- HEADER -->
                     <div class="pageHeader tbPadding d-flex justify-content-between">
                         <p> {{ date('d/m/Y, H:i') }}</p>
-                        <p>Phần mềm quản lý bán hàng CARTON SGN</p>
+                        <p></p>
                     </div>
 
                     <!-- SGN INFO -->
                     <div id="cartonSGNInfo" class="tbPadding2">
                         <div class="row">
                             <!-- logo -->
-                            <div class="leftside col-xs-3">
+                            {{-- <div class="leftside col-xs-3">
                                 <img src="./assets/img/logo.png" alt="Logo" />
-                            </div>
+                            </div> --}}
                             <!-- thông tin -->
-                            <div class="rightside col-xs-9 text-center">
-                                <h3><strong>BAO BÌ CARTON SGN</strong></h3>
+                            <div class="rightside col-xs-12 text-center">
+
                                 <div class="row">
                                     <!-- chi nhánh -->
-                                    <div class="col-xs-8 text-left mt-10">
-                                        <p>
+                                   <div class="col-xs-8 text-left mt-10">
+				     					<h3><strong>BAO BÌ CARTON SGN</strong></h3>
+                                        {{-- <p>
                                             <span class="fw-600"> Chi nhánh HCM:</span> 59/4 Hiệp
                                             Bình, Hiệp Bình Phước, Thủ Đức
                                         </p>
                                         <p>
                                             <span class="fw-600">Chi nhánh HN:</span> Geleximco Lê
                                             Trọng Tấn, Dương Nội, Hà Đông
-                                        </p>
+                                        </p>   --}}
                                     </div>
                                     <!-- hotline -->
                                     <div class="col-xs-4 text-left mt-10">
@@ -67,7 +117,7 @@
 
                     <!-- TILTE + MÃ ĐƠN HÀNG -->
                     <div id="cartonSGNOderTitle" class="mt-20 text-center">
-                        <h3><strong>HÓA ĐƠN BÁN HÀNG</strong></h3>
+                        <h3><strong>PHIẾU GIAO HÀNG</strong></h3>
                         <h3 class="text-uppercase"><strong>{{ $order->code }}</strong></h3>
                     </div>
 
@@ -99,12 +149,12 @@
                             <p id="salePerson">{{ @$order->sale->full_name }}</p>
                         </div>
                     </div>
-
+                    <br/>
                     <!-- THÔNG TIN ĐƠN HÀNG -->
                     <div id="orderInfo">
                         <!-- TABLE ĐƠN HÀNG -->
                         <div class="item">
-                            <p class="fw-500 fw-bold">Đơn hàng:</p>
+                            {{-- <p class="fw-500 fw-bold">Đơn hàng:</p> --}}
                             <table id="orderTable" class="table table-bordered w-full">
                                 <thead>
                                     <tr>
@@ -113,7 +163,7 @@
                                         <th class="text-right">Đơn giá</th>
                                         <th class="text-right">Giảm giá</th>
                                         <th class="text-center">SL</th>
-                                        <th class="text-center">Đơn vị</th>
+                                        {{-- <th class="text-center">Đơn vị</th> --}}
                                         <th class="text-right">Thành tiền</th>
                                     </tr>
                                 </thead>
@@ -127,7 +177,7 @@
                                                 <td class="text-right">{{ number_format($row->unit_price) }}</td>
                                                 <td class="text-right">0</td>
                                                 <td class="text-center">{{ $row->qty }}</td>
-                                                <td class="text-center"></td>
+                                                {{-- <td class="text-center"></td> --}}
                                                 <td class="text-right">{{ number_format($row->total_price) }}</td>
                                             </tr>
                                         @endforeach
@@ -185,11 +235,13 @@
                     <div id="footer" class="flex-1">
                         <!-- Ghi chú -->
                         <p>Ghi chú:</p>
+
+                        <div>{!! $order->note !!}</div>
                         <!-- Ngày mua -->
                         <p>
-                            Ngày <span class="dayFooter">......</span> tháng
+                            {{-- Ngày <span class="dayFooter">......</span> tháng
                             <span class="monthFooter">......</span> năm
-                            <span class="yearFooter">......</span>
+                            <span class="yearFooter">......</span> --}}
                         </p>
                         <!-- Ký tên -->
                         <div class="row">

@@ -22,6 +22,13 @@ class SettingController extends BaseController
     {
         return view('admin::setting.index');
     }
+    function setting(){
+        return \Themes::view('admin::setting.setting');
+    }
+    function updateSettingConfig(Request $request)
+    {
+        update_setting($request->key, $request->value);
+    }
     function config()
     {
         return \Themes::view('admin::setting.config');

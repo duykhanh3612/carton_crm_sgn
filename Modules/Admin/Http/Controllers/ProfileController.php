@@ -29,7 +29,7 @@ class ProfileController extends BaseController
             'full_name' => $request->full_name,
             'phone' => $request->phone
         ]);
-        return redirect()->route('admin.user.account')->with('alert_message', 'Cập nhập thông tin thành công.');
+        return redirect()->route('admin.user.account')->with('alert_message', 'Cập nhật thông tin thành công.');
     }
 
     function updatePassword(Request $request)
@@ -60,7 +60,7 @@ class ProfileController extends BaseController
             return redirect()->route('admin.user.account')->with('errormsg', 'User creation failed.');
         }
 
-        return redirect()->route('admin.user.account')->with('alert_message', 'Cập nhập mật khẩu thành công.');
+        return redirect()->route('admin.user.account')->with('alert_message', 'Cập nhật mật khẩu thành công.');
     }
     function updateAvatar(Request $request)
     {

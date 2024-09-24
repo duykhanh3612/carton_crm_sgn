@@ -48,4 +48,15 @@ class DashboardController extends BaseController
         ];
         return Themes::render('admin::dashboard.v2', $data);
     }
+    public function statistical_activities()
+    {
+        $start_date = request("start_date");
+        $end_date = request("end_date");
+        $total  = Order::summary(['type'=>'between','startDate'=>$start_date,'endDate'=>$end_date])->sum('total');
+        $order = intval(Order::summary(['type'=>'between','startDate'=>$start_date,'endDate'=>$end_date])->count());
+        $result['total']= number_format( $total);
+        $result['total_order']= number_format( $order);
+        $result['avg']= $order==0?0:number_format( $total / $order);
+        return response()->json(['success'=>true,'result'=>$result]);
+    }
 }

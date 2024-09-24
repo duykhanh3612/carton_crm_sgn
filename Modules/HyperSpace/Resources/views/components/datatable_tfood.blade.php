@@ -21,7 +21,14 @@
     </tr>
 
     <tr>
-        <td colspan="{{count($theads)+ count(config("admin.".request()->segment(2).".tfirst")??[])+1}}">
+        <td colspan="6">
+            @if(!empty($footer_include))
+                @foreach($footer_include as $include)
+                    @include($include)
+                @endforeach
+            @endif
+        </td>
+        <td colspan="{{count($theads)+ count(config("admin.".request()->segment(2).".tfirst")??[])+1  - 6}}">
             @isset($config['option']['paginate'])
             <div class="paging" style="float:right">
                 {!! $records->links() !!}
