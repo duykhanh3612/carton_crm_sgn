@@ -13,8 +13,10 @@
             content: "\f056" !important;
         }
         .status {
-            padding: 5px 10px;
+            padding: 2px 5px;
             margin-bottom: 0;
+			white-space: nowrap;   
+			font-size:12px;
         }
         .status.key_1 {
             background: #ABBBC3;
@@ -23,8 +25,8 @@
         .status.key_1::before {
             content: "\f007";
             font-family: "Font Awesome 6 Free";
-            font-size:14px;
-            margin-right: 10px;
+            font-size: 10px;
+            margin-right: 5px;
         }
         .status.key_2 {
             background: #D15B47;
@@ -33,8 +35,8 @@
         .status.key_2::before {
             content: "\f507";
             font-family: "Font Awesome 6 Free";
-            font-size:14px;
-            margin-right: 10px;
+            font-size: 10px;
+            margin-right: 5px;
         }
         .status.key_3 {
             background: #428BCA;
@@ -43,7 +45,7 @@
         .status.key_3::before {
             content: "\f0d1";
             font-family: "Font Awesome 6 Free";
-            font-size:14px;
+            font-size:12px;
             margin-right: 10px;
         }
         .status.key_4 {
@@ -53,8 +55,8 @@
         .status.key_4::before {
             content: "\f00c";
             font-family: "Font Awesome 6 Free";
-            font-size:14px;
-            margin-right: 10px;
+            font-size: 10px;
+            margin-right: 5px;
         }
         .status.key_5 {
             background: #000;
@@ -63,8 +65,8 @@
         .status.key_5::before {
             content: "\f1f8";
             font-family: "Font Awesome 6 Free";
-            font-size:14px;
-            margin-right: 10px;
+            font-size: 10px;
+            margin-right: 5px;
         }
     </style>
     <div class="modal" id="modelOrderPrint">
