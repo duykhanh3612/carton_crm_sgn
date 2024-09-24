@@ -296,7 +296,7 @@
                             Hủy
                         </button>
                         @if((empty($record) && check_rights($module->file,"create")) || (!empty($record) && check_rights($module->file,"update")))
-                        <button type="button" class="btn btn-main" id="modalFormUpdateSubmit" style="display:none"> Cập nhập    </button>
+                        <button type="button" class="btn btn-main" id="modalFormUpdateSubmit" style="display:none"> Cập nhật</button>
                         @endif
                     </div>
                 </div>

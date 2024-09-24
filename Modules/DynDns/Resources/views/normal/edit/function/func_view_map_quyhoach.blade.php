@@ -47,7 +47,7 @@
             </div>-->
         <div class="row">
             <div class="note blockcont text-center col-sm-8 col-sm-offset-2">
-                Dữ liệu đang được cập nhập
+                Dữ liệu đang được cập nhật
             </div>
         </div>
     </div>

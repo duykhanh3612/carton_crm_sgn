@@ -11,6 +11,7 @@ class Order extends Model
 {
     protected $table = 'orders';
     protected $guarded = [];
+    protected $owner = "orders.created_by";
     public static function boot()
     {
         parent::boot();
@@ -72,7 +73,9 @@ class Order extends Model
             $q = $q->where("created_at", ">=", $params['created_at']['form'] . " 00:00:00");
             $q = $q->where("created_at", "<=", $params['created_at']['to'] . " 23:59:59");
         }
-
+        if (!isAdmin() && isset($this->owner)) {
+            $q->where($this->owner, auth()->user()->id)->orWhere('saler_id', auth()->user()->id);
+        }
         $q = $q->where("deleted", 0);
         if (!empty(request("sort_field"))) {
             $q = $q->orderByRaw("orders.id desc");
@@ -148,6 +151,10 @@ class Order extends Model
                 $date_range  = date("Y") . "-" . (date('m') - 1);
                 $q = $q->where("created_at", 'like', $date_range . "%");
                 break;
+            case 'between':
+                $q = $q->where("created_at", ">=", $params['startDate'] . " 00:00:00");
+                $q = $q->where("created_at", "<=", $params['endDate'] . " 23:59:59");
+                break;
         }
         return $q;
     }
@@ -158,11 +165,9 @@ class Order extends Model
     }
     public function customer($fields = null)
     {
-        if($fields != null)
-        {
+        if ($fields != null) {
             return $this->BelongsTo(Customer::class, "customer_id", "id")->select($fields);
-        }
-        else return $this->BelongsTo(Customer::class, "customer_id", "id");
+        } else return $this->BelongsTo(Customer::class, "customer_id", "id");
     }
     public function sale()
     {
@@ -248,7 +253,7 @@ class Order extends Model
                 'owner' => 'user',
                 'user_name'  => auth()->user()->user_name,
                 'user_full_name' => auth()->user()->full_name,
-                'title' => ($title == "" ? "Cập nhập thông tin đơn hàng" : $title)
+                'title' => ($title == "" ? "Cập nhật thông tin đơn hàng" : $title)
             ];
             OrderLog::create($data);
         } catch (\Throwable $e) {

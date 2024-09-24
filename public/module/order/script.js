@@ -39,6 +39,8 @@ function calcItem(e)
 {
     tr_item = e.closest("tr");
     qty  =  tr_item.find("input[name*=qty]").val();
+    if(tr_item.find("select[name*=product]").length==1)
+    {
     product = tr_item.find("select[name*=product]").val();
     tr_item.find("input[name*=product_id]").val(product);
     data = $('#choose_item').find(`option[value='${product}']`).data("json");
@@ -49,12 +51,16 @@ function calcItem(e)
         tr_item.find("input[name*=price]").val(convert_decimal(price,true));
     }
     tr_item.find("input[name*=price]").val(format_thousand((price)));
+    }
+    else{
+        price =  tr_item.find("input[name*=price]").val();
+    }
     tr_item.find(".total").html(format_thousand(convert_decimal(price) * convert_decimal(qty)));
 }
 function calSummary()
 {
     let sub_total=0,total_qty=0;
-    $("#renderOrderTable tbody tr").each(function(){
+    $("#renderOrderTable tbody tr:not(.deleted)").each(function(){
         let e = $(this);
         tr_item = e.closest("tr");
         price = tr_item.find("input[name*=price]").val();

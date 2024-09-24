@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('zalo-login', function () {
+    $code = $_GET['code'];
+    $zalo = new \App\Services\Zalo\ZNS();
+    $zalo->refreshToken( $code );
+    echo 'Cập nhậtAccess token thành công';
+});
 Route::get('admin/login', 'AuthController@login')->name('admin.user.login');
 Route::post('admin/login', 'AuthController@process_login')->name('user.process_login');
 Route::get('admin/logout', 'AuthController@logout')->name('admin.logout');
@@ -116,6 +122,7 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => "admin.
 
 
     Route::get('', 'DashboardController@index')->name("index");
+    Route::any('statistical_activities', 'DashboardController@statistical_activities')->name("statistical_activities");
     Route::get('config', 'SettingController@config')->name('config');
     Route::post('config/update', 'SettingController@updateConfig')->name('config.update');
     Route::get('user-setting', 'UserController@setting')->name('user.setting');
@@ -129,6 +136,8 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => "admin.
     Route::get('group/edit/{id}', 'UserController@editGroup')->name('group.edit');
     Route::post('group/update', 'UserController@updateGroup')->name('group.update');
     Route::post('group/update_permission', 'UserController@updateGroupPermission')->name('group.update.permission');
+    Route::get('setting', 'SettingController@setting')->name('setting');
+    Route::post('setting/update', 'SettingController@updateSettingConfig')->name('setting.update');
     Route::get('settings', 'SettingController@index')->name('settings');
     Route::get('settings/general', 'SettingController@general')->name('settings.general');
     Route::post('settings/update', 'SettingController@updateSetting')->name('settings.update');

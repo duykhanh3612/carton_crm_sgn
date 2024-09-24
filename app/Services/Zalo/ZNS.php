@@ -162,7 +162,7 @@ class ZNS
             return [
                 'success' => true,
                 'code' => $code,
-                'message' => $data["message"] ?? "error",
+                'message' => @$data["message"] ?? "error",
                 'data' => $data["data"] ?? $data,
                 'headers' => $headers
             ];
@@ -170,7 +170,7 @@ class ZNS
             return [
                 'success' => true,
                 'code' => $data['error'],
-                'message' => $data["message"],
+                'message' => @$data["message"],
                 'headers' => $headers
             ];
         }
@@ -259,7 +259,7 @@ class ZNS
             "phone" => $phone[0] != 0 ? $phone : substr($phone, 1, strlen($phone)),
             "otp" => $otp
         ];
-        $res = $this->request('POST', $this->tokenUri, $options);
+        $res = $this->request('POST', $this->baseUri, $options);
         return $res;
     }
 

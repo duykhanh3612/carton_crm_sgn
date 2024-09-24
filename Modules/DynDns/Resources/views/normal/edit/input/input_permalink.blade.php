@@ -107,7 +107,7 @@
             });
         });
           $('#{{$ctrl->att_table.$lang}}').on('change', function () {
-              $('#message_slug').html("Title đã thay đổi, bạn nên update lại premalink. Nhấn Update để cập nhập lại premalink.");
+              $('#message_slug').html("Title đã thay đổi, bạn nên update lại premalink. Nhấn Update để cập nhật  lại premalink.");
           });
 
         $('#btn-view-page').click(function(){

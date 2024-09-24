@@ -832,9 +832,8 @@ input.phoneNumber[type="number"] {
   border: 2px solid var(--colo-blue-2);
   border-radius: 6px;
 }
-.table td,
-.table th {
-  vertical-align: middle;
+.table td,.table th {
+  vertical-align: middle;    padding: 0.35rem;
 }
 
 #decentralizationTable .fa-check {

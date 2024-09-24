@@ -62,11 +62,11 @@ class ApiController extends Controller
         ];
         $records = Contact::create($data);
         Mail::send('api::mail', ['data' => $data], function ($m) use ($data) {
-            $email = "hailythanh@gmail.com";
+			$email = $data['email'];
             $name = request('name');
             $m->from($email,  $name)
                 ->to($this->conf->site_mail,  $name)
-                ->subject($data['mail_template']->name . ' từ ' . $email);
+				->subject("SGN Contact" . ' từ ' . $email);
         });
         $result['data'] =  $records;
         $result['code'] = 200;

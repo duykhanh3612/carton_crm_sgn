@@ -58,7 +58,7 @@ class Customer extends Model
             $q->orderBy($request->sort_field, $request->sort_order);
         }
 
-        return $q->dd();
+        return $q;
     }
 
     function basket()

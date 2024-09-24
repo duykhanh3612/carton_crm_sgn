@@ -59,10 +59,22 @@ class OrderController extends Controller
                 Customer::where("id", auth('api')->user()->id)->first()->update($info_invoice);
             }
             $customer =  Customer::where("id", auth('api')->user()->id)->first();
-            if($customer->full_name=="") $customer->full_name = @$request->receiver_name;
-            if($customer->phone=="") $customer->full_name = @$request->receiver_phone;
-            if($customer->email=="") $customer->full_name = @$request->receiver_email;
-            if($customer->address=="") $customer->full_name = @$request->shipping_address;
+            if($customer-> full_name=="")
+            {
+                $customer-> full_name  = @$request->receiver_name;
+            }
+            if($customer-> phone=="")
+            {
+                $customer->phone  = @$request->receiver_phone;
+            }
+            if($customer-> email=="")
+            {
+                $customer->email  =  @$request->receiver_email;
+            }
+            if($customer-> address=="")
+            {
+                $customer->address  =  @$request->shipping_address;
+            }
             $customer->save();
 
             \App\Helpers\LogHelper::write($shipment,"Shipment");
