@@ -60,19 +60,19 @@ class OrderController extends BaseController
                         'empty_value' => [""=>"----  Nhân viên  ----"],
                         'class' => 'text-left datatable-filter',
                     ],
-                    [
-                        'name' => 'filter[customer_id]',
-                        'field_name' => 'customer_id',
-                        'type' => 'form_drop',
-                        'table' => 'customers',
-                        'table_field' => ['key' => "id", "value" => "full_name"],
-                        // 'table_where' => "deleted = 0",
-                        'viewable' => 0,
-                        'editable' => 1,
-                        'defaultValue' => true,
-                        'empty_value' => [""=>"----  Khách hàng ----"],
-                        'class' => 'text-left datatable-filter',
-                    ],
+                    // [
+                    //     'name' => 'filter[customer_id]',
+                    //     'field_name' => 'customer_id',
+                    //     'type' => 'form_drop',
+                    //     'table' => 'customers',
+                    //     'table_field' => ['key' => "id", "value" => "full_name"],
+                    //     // 'table_where' => "deleted = 0",
+                    //     'viewable' => 0,
+                    //     'editable' => 1,
+                    //     'defaultValue' => true,
+                    //     'empty_value' => [""=>"----  Khách hàng ----"],
+                    //     'class' => 'text-left datatable-filter',
+                    // ],
                     [
                         'name' => "filter[status]",
                         'field_name' => 'status',
@@ -170,6 +170,7 @@ class OrderController extends BaseController
         if(request()->segment(3) == "copy")
         {
             $record->status = 1;
+            $record->saler_id = "";
             $link_update =  route('admin.order.update.new');
         }
         else{
@@ -220,6 +221,7 @@ class OrderController extends BaseController
 
         $oderID = $model::updateOrCreate(['id' => $id], $doc);
         if ($items = request('item')) {
+			\App\Helpers\LogHelper::write($items,"PO:".$oderID->id);
             foreach ($items as $itemID => $item) {
                 if ($itemID != "id") {
                     if (@$item['deleted']) {

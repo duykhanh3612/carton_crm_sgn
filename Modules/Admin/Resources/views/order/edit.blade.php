@@ -52,7 +52,7 @@
                 </button>
                 @endif
 
-                @if (check_rights_function('confirm_order','read') &&  @$record->status == 1)
+                @if (check_rights_function('confirm_order','read') &&  @$record->status == 1 && request()->segment(3) != "copy")
                 <button type="button" ng-disabled="isProcessing" class="btn btn-primary  confirmOrder" data-ng-show="saleTypeID > 1 &amp;&amp; orderStatus < 2" title="Lưu và Xác nhận đơn Đặt hàng">
                     <i class="icon-foursquare"></i>
                     <span class="hidden-480 ng-binding">Xác nhận</span>

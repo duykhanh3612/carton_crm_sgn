@@ -48,6 +48,7 @@
     "lang" : "Ngôn ngữ",
     "Action_create" : "Tạo mới",
     "Action_edit" : "Chỉnh sửa",
+    "Action_copy": "Copy",
     "create" : "Thêm mới",
     "update": "Chỉnh sửa",
     "Save" : "Lưu",

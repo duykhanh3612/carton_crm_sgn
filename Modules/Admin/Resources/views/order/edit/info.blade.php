@@ -38,7 +38,7 @@
                                             <label class="col-md-5 control-label no-padding-right ng-binding required" for="form-field-1">Người bán</label>
                                             <div class="col-md-7">
                                                 @if(isAdmin()||true)
-                                                {!! Form::select('saler_id', Users::getOption(true), @$record->saler_id??auth()->user()->id, ['class' => 'form-control','data-required'=>1,'title'=>"Chọn người bán "]) !!}
+                                                {!! Form::select('saler_id', Users::getOption(true), @$record->saler_id!=""?@$record->saler_id:auth()->user()->id, ['class' => 'form-control','data-required'=>1,'title'=>"Chọn người bán "]) !!}
                                                 @else
                                                 <label class="form-control">{{auth()->user()->full_name }}</label>
                                                 <input type="hidden" value="{{auth()->user()->id }}" name="saler_id" />

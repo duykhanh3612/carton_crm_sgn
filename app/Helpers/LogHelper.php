@@ -5,8 +5,8 @@ namespace App\Helpers;
 class LogHelper
 {
     public static function write($data = null, $key = null, $clientId = 0) {
-        if(!$clientId && !empty(auth()->user()->client_id)){
-            $clientId = auth()->user()->client_id;
+        if(!$clientId && !empty(auth()->user()->id)){
+            $clientId = auth()->user()->id;
         }
         if(!$clientId){
             $clientId = 'global';
@@ -52,7 +52,7 @@ class LogHelper
         fwrite($fn, $logString);
         fclose($fn);
     }
-    
+
     public static function memoryUsage($key = null, $clientId = 0) {
         if(!$clientId && !empty(auth()->user()->client_id)){
             $clientId = auth()->user()->client_id;

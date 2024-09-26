@@ -270,7 +270,7 @@ class Order extends Model
             $subTotal = 0;
             $discount = 0;
             foreach ($items as $item) {
-                $subTotal +=  $item->total_price;
+                $subTotal +=  convert_decimal($item->total_price);
                 $totalQty += $item->qty;
             }
 
@@ -283,8 +283,8 @@ class Order extends Model
             //Handel auto cal shipment
             // $shipment = Shipment::getFee($model->shipping_district, $subTotal);
             // $data_summary['shipping_fee'] = $shipment['fee'];
-            $shipment['fee'] = intval(convert_decimal($order->shipping_fee));
-            $data_summary['total'] = intval($data_summary['subTotal']) + intval(@$model['vat'])  + intval(@$shipment['fee']) - intval($order->discount_value);
+            $shipment['fee'] = convert_decimal($order->shipping_fee);
+            $data_summary['total'] = convert_decimal($data_summary['subTotal']) + convert_decimal(@$model['vat'])  + convert_decimal(@$shipment['fee']) - convert_decimal($order->discount_value);
             $data_summary['debt'] =  $data_summary['total'] - intval($order->total_paid);
             \App\Helpers\LogHelper::write($data_summary, "updateSummary");
             DB::table("orders")->where('id', $model->id)->update($data_summary);

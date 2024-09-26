@@ -260,6 +260,7 @@ class Users extends Model
                         'user_id' => $model->id
                     ],
                     [
+                        'user_name' => $model->full_name,
                         'group_name' => $group_name ,
                     ]
                 );

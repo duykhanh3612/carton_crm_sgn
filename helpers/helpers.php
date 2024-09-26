@@ -558,7 +558,7 @@ if (!function_exists('convert_data')) {
 if (!function_exists('convert_decimal')) {
     function convert_decimal($value)
     {
-        return floatval(str_replace(",","",$value));
+        return doubleval(str_replace(",","",$value));
     }
 }
 if (!function_exists('array_undot')) {
