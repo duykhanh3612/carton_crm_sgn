@@ -128,8 +128,8 @@ class OrderController extends BaseController
         $records->appends(request()->all());
         $summary = [
             'order' => $records->total(),
-            'total' =>  (new  Order())->filter($request->filter??[])->sum("total"),
-            'debt' =>  (new  Order())->filter($request->filter??[])->sum("debt")
+            'total' =>  (new  Order())->filter($request->filter??[])->whereIn("status",[2,4])->sum("total"),
+            'debt' =>  (new  Order())->filter($request->filter??[])->whereIn("status",[2,4])->sum("debt")
         ];
         $includes = [
             "admin::order.modal"
@@ -291,29 +291,32 @@ class OrderController extends BaseController
     {
         $orderId = request('order_id');
         $status = request('status');
-        $data['status'] = $status;
-
-        if ($status == 2) {
-            $data['customer_phone'] = request('customer_phone');
-            $data['shipping_province'] = request('shipping_province');
-            $data['shipping_district'] = request('shipping_district');
-            $data['shipping_address'] = request('shipping_address');
-        }
-        if ($status == 3) {
-            $data['shippers'] = request('shippers');
-            $data['delivery_date'] = date("Y-m-d", strtotime(str_replace("/", "-", request('delivery_date'))));
-            $data['carrier_name'] = request('carrier_name');
-            $data['shipping_comment'] = request('shipping_comment');
-            $data['shipping_fee'] = convert_decimal(request('shipping_fee'));
-        }
 
         $order = Order::where("id", $orderId)->first();
+		if(empty($order))
+		{
+			return response()->json(['success' => true,"message"=>"Cập nhật trạng thái thành công"]);
+		}
+        $order->status = $status;
+        if ($status == 2) {
+            $order->customer_phone = request('customer_phone');
+            $order->shipping_province = request('shipping_province');
+            $order->shipping_district = request('shipping_district');
+            $order->shipping_address = request('shipping_address');
+        }
+        if ($status == 3) {
+            $order->shippers = request('shippers');
+            $order->delivery_date = date("Y-m-d", strtotime(str_replace("/", "-", request('delivery_date'))));
+            $order->carrier_name = request('carrier_name');
+            $order->shipping_comment = request('shipping_comment');
+            $order->shipping_fee = convert_decimal(request('shipping_fee'));
+        }
 
         if(!empty($order))
         {
-            $order->update($data);
+            $order->save();
         }
-
+        Order::updateSummary($order);
 
         $log_action = "";
         switch($status)
@@ -335,8 +338,6 @@ class OrderController extends BaseController
                 break;
         }
         //Handel Update Log
-        $order = Order::where("id", $orderId)->first();
-        Order::updateSummary($order);
         OrderLog::updateLog($order, "đã $log_action đơn hàng ". $order->code, "user" , auth()->user());
         return response()->json(['success' => true,"message"=>"Cập nhật trạng thái thành công"]);
     }

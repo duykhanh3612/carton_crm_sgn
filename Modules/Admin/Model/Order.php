@@ -112,7 +112,8 @@ class Order extends Model
                     break;
             }
         }
-        $q = $q->where("deleted", 0)->where('status', '<>', 5);
+        // $q = $q->where("deleted", 0)->where('status', '<>', 5);
+        $q = $q->where("deleted", 0)->whereIn('status', [2,4]);
         return $q;
     }
 

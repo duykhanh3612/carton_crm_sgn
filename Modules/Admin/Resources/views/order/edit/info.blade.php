@@ -9,7 +9,7 @@
                             <a class="nav-link active" id="orderInfo1" data-toggle="tab" target="#info">TT Đơn hàng</a>
                         </li>
                         <!-- Tab Lịch sử -->
-                        <li class="nav-item">
+                        <li class="nav-item" style="pointer-events: auto;">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" target="#tracked" role="tab" aria-controls="profile" aria-selected="false">Lịch sử</a>
                         </li>
                     </ul>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
 
-                        <div id="tracked" class="tab-pane" ng-class="{ 'tracked ' : events.length > 0 }">
+                        <div id="tracked" class="tab-pane" ng-class="{ 'tracked ' : events.length > 0 }" style="pointer-events: auto;">
                             @include("admin::order.edit.history")
                         </div>
                     </div>
