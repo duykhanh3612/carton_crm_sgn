@@ -19,10 +19,10 @@
                             <div class="widget-body">
                                 <div class="widget-main padding-4">
                                     <div class="tab-content padding-8 overflow-visible">
-                                        <div class="row">
+                                        <div class="row  {{@$record->status >= "2"?"lock":""}}" >
                                             <label class="col-md-5 control-label no-padding-right ng-binding">Ngày tạo</label>
                                             <div class="col-md-7 input-group-contain">
-                                                <input id="saleDatePicker" class="form-control k-input" type="text" placeholder="Hôm nay" data-role="datetimepicker" style="width: 100%;" value="{{ @$record->created_at }}" disabled="disabled">
+                                                <input id="saleDatePicker" name="created_at" class="form-control k-input" type="text" placeholder="Hôm nay" data-role="datetimepicker" style="width: 100%;" value="{{ date("Y-m-d",strtotime(@$record->created_at)) }}" >
                                             </div>
                                         </div>
                                         <div class="row">
