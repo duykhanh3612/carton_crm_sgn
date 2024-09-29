@@ -5,8 +5,8 @@ namespace App\Helpers;
 class LogHelper
 {
     public static function write($data = null, $key = null, $clientId = 0) {
-        if(!$clientId && !empty(auth()->user()->id)){
-            $clientId = auth()->user()->id;
+        if(!$clientId && !empty(auth()->user()->user_name)){
+            $clientId = auth()->user()->user_name;
         }
         if(!$clientId){
             $clientId = 'global';

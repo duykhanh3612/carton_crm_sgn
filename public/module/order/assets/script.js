@@ -10,159 +10,58 @@ $(document).on("click","#addProduct",function(){
       <td class="text-center">${x}</td>
       <td colspan="2">
         <input name="item[${ $did }][product_id]" type="hidden" />
-        <select name="item[${ $did }][product]" data-required="1" id="product_${ $did }" class="custom-select btn btn-filter">${$option_product}</select>
-        <div class="errordiv product_${ $did }" style="display: none;"><div class="arrow"></div>Chọn sản phẩm!</div>
+        <select name="item[${ $did }][product]" class="custom-select btn btn-filter">${$option_product}</select>
       </td>
-      <td>
-        <input name="item[${ $did }][qty]" data-required="1" id="qty_${ $did }"  min="1" step="1" class="form-control text-center money" value="1" >
-        <div class="errordiv qty_${ $did }" style="display: none;"><div class="arrow"></div>Nhập số lượng!</div>
-      </td>
-      <td>
-        <input name="item[${ $did }][price]" data-required="1" id="price_${ $did }"  data-required="1"  class="form-control text-center money" min='0'   />
-        <div class="errordiv price_${ $did }" style="display: none;"><div class="arrow"></div>Nhập số giá tiền hàng hóa!</div>
-      </td>
+      <td><input name="item[${ $did }][qty]" type="number" min="1" step="1" class="form-control text-center" oninput="validity.valid||(value = this.previousValue);" value="1" onfocus="this.type='number'; this.value=this.lastValue" onblur="this.type=''; this.lastValue=this.value; this.value=this.value==''?'':(+this.value).toLocaleString()"></td>
+      <td><input name="item[${ $did }][price]" type="number" class="form-control text-center" min='0' onChange="positiveNumber(event)" onfocus="this.type='number'; this.value=this.lastValue" onblur="this.type=''; this.lastValue=this.value; this.value=this.value==''?'':(+this.value).toLocaleString()"/></td>
       <td class="text-right"><span class="total"></span></td>
-      <td class="text-center"><button  class=" deleteProductItem btnTableActions border-0" data-toggle="modal" data-target="#deleteServiceCard" type="button"><img src="${base_url}/public/themes/admin/carton-crm/dist/img/icon/delete.png" alt="Xóa" width="20px" style="vertical-align: unset"> </button></td></tr>`
+      <td class="text-center"><button onclick="SomeDeleteRowFunction(event)" class="btnTableActions border-0" data-toggle="modal" data-target="#deleteServiceCard" type="button"><img src="${base_url}/public/themes/admin/carton-crm/dist/img/icon/delete.png" alt="Xóa" width="20px" style="vertical-align: unset"> </button></td></tr>`
     );
     $("#renderOrderTable tbody tr:last-child").find("select[name*=product]").select2();
-    $('.money').mask("#,##0", {reverse: true});
 });
 $(document).on("keyup, change","input[name*=qty], select[name*=product]",function(){
     calcItem($(this));
-    calSummary();
-});
-
-$(document).on("keyup, change","input[name=shipping_fee]",function(){
     calSummary();
 });
 function calcItem(e)
 {
     tr_item = e.closest("tr");
     qty  =  tr_item.find("input[name*=qty]").val();
-    if(tr_item.find("select[name*=product]").length==1)
-    {
-    product = tr_item.find("select[name*=product]").val();
-    tr_item.find("input[name*=product_id]").val(product);
+    product = tr_item.find("input[name*=product_id]").val();
+
     data = $('#choose_item').find(`option[value='${product}']`).data("json");
     price = tr_item.find("input[name*=price]").val();
-    if(price == "" || price == undefined)
-    {
-        price = data.price;
-        tr_item.find("input[name*=price]").val(convert_decimal(price,true));
-    }
-    tr_item.find("input[name*=price]").val(format_thousand((price)));
-    }
-    else{
-        price =  tr_item.find("input[name*=price]").val();
-    }
-    tr_item.find(".total").html(format_thousand(convert_decimal(price) * convert_decimal(qty)));
+    //tr_item.find("input[name*=price]").val(price) 
+    
+    tr_item.find(".item_total_price_label").html(format_thousand(price*qty));
 }
 function calSummary()
 {
-    let sub_total=0,total_qty=0;
-    $("#renderOrderTable tbody tr:not(.deleted)").each(function(){
+    let total=0,total_qty=0;
+    $("#renderOrderTable tbody tr:not(.delete)").each(function(){
         let e = $(this);
         tr_item = e.closest("tr");
         price = tr_item.find("input[name*=price]").val();
         qty  =  tr_item.find("input[name*=qty]").val();
-        sub_total += convert_decimal(price) * convert_decimal(qty);
+        total += convert_decimal(price) * convert_decimal(qty);
         total_qty += convert_decimal(qty);
     });
-
-    shipping_fee = convert_decimal($("#shipping_fee").val());
-    discount_value = convert_decimal($("#updateFrm input[name=discount_value]").val());
-    total = sub_total + shipping_fee - discount_value;
-    total_paid = convert_decimal($("#updateFrm input[name=total_paid]").val());
-    $(".summary_subTotal").html(format_thousand(sub_total));
+    console.log(total,total_qty)
+    $(".summary_subTotal").html(format_thousand(total));
     $(".summary_qty").html(format_thousand(total_qty));
-    $(".summary_total").html(format_thousand(total));
-    $(".total_paid_label").html(format_thousand(total_paid));
-    $(".total_debt_label").html(format_thousand(total - total_paid));
-    $(".total_discount_label").html(format_thousand(discount_value));
 }
 $(document).on("keyup, change","input[name*=price]",function(){
     let e = $(this);
     tr_item = e.closest("tr");
     qty  =  tr_item.find("input[name*=qty]").val();
-    price = tr_item.find("input[name*=price]").val();
-    tr_item.find(".total").html(format_thousand(convert_decimal(price)*convert_decimal(qty)));
+    price = tr_item.find("input[name*=price]").val()
+    tr_item.find(".total").html(format_thousand(price*qty));
     calSummary();
 });
 
 $(".confirmOrder").click(function() {
     title = $(this).find('span').text();
     content = $(this).attr('title');
-    let fields  = ["customer_phone", "shipping_district", "shipping_address"];
-    $.each(fields,function(index, value)
-    {
-        $("#"+value).attr("data-required",1);
-    });
-    if(checkValidate($("#updateFrm")))
-    {
-        return false;
-    }
-    else{
-        $.confirm({
-            title: title,
-            content: content,
-            type: 'blue',
-            buttons: {
-                ok: {
-                    text: "Xác nhận",
-                    btnClass: 'btn-primary',
-                    keys: ['enter'],
-                    action: function() {
-                        $.ajax({
-                            method: "POST",
-                            url: base_url + "/admin/order/update-status",
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data: {
-                                order_id: $("#id").val(),
-                                customer_phone: $("#customer_phone").val(),
-                                shipping_province: $("#shipping_province").val(),
-                                shipping_district: $("#shipping_district").val(),
-                                shipping_address: $("#shipping_address").val(),
-                                status: 2
-                            }
-                        }).done(function(res) {
-                            if(res.success){
-                                showNoti(res.message);
-                            }
-                            setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        });
-                    }
-                },
-                cancel: {
-                    text: "Hủy",
-                    btnClass: 'btn-back',
-                    keys: ['enter'],
-                    action: function() {
-                        console.log('the user clicked cancel');
-                    }
-                },
-            }
-        });
-    }
-});
-
-function onDeliveryOrder(e) {
-    // let fields  = ["shippers", "shippingDatePicker", "carrier_name"];
-    let fields  = ["shippingDatePicker", "carrier_name"];
-    $.each(fields,function(index, value)
-    {
-        $("#"+value).attr("data-required",1);
-    });
-    if(checkValidate($("#updateFrm")))
-    {
-        return false;
-    }
-
-    title = $(e).find('span').text();
-    content = $(e).attr('title');
     $.confirm({
         title: title,
         content: content,
@@ -181,21 +80,10 @@ function onDeliveryOrder(e) {
                         },
                         data: {
                             order_id: $("#id").val(),
-                            // shippers: $("#shippers").val(),
-                            delivery_date: $("#shippingDatePicker").val(),
-                            carrier_name: $("#carrier_name").val(),
-                            shipping_comment: $("#shipping_comment").val(),
-                            shipping_fee: $("#shipping_fee").val(),
-                            status: 3
+                            status: 2
                         }
                     }).done(function(res) {
-                        if(res.success){
-                            showNoti(res.message);
-                        }
-                        setTimeout(function() {
-                            location.reload();
-                        }, 2000);
-
+                        location.reload();
                     });
                 }
             },
@@ -209,58 +97,56 @@ function onDeliveryOrder(e) {
             },
         }
     });
-}
+});
+// function onDeliveryOrder(e) {
+//     title = $(e).find('span').text();
+//     content = $(e).attr('title');
+//     $.confirm({
+//         title: title,
+//         content: content,
+//         type: 'blue',
+//         buttons: {
+//             ok: {
+//                 text: "Xác nhận",
+//                 btnClass: 'btn-primary',
+//                 keys: ['enter'],
+//                 action: function() {
+//                     $.ajax({
+//                         method: "POST",
+//                         url: base_url + "/admin/order/update-status",
+//                         headers: {
+//                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//                         },
+//                         data: {
+//                             order_id: $("#id").val(),
+//                             shippers: $("#shippers").val(),
+//                             delivery_date: $("#shippingDatePicker").val(),
+//                             carrier_name: $("#carrier_name").val(),
+//                             shipping_comment: $("#shipping_comment").val(),
+//                             status: 3
+//                         }
+//                     }).done(function(res) {
+//                         location.reload();
+//                     });
+//                 }
+//             },
+//             cancel: {
+//                 text: "Hủy",
+//                 btnClass: 'btn-back',
+//                 keys: ['enter'],
+//                 action: function() {
+//                     console.log('the user clicked cancel');
+//                 }
+//             },
+//         }
+//     });
+// }
 
 $(document).on("click","#btn-update-order", function() {
-    if($("#renderOrderTable").find("tbody > tr:not(.deleted)").length == 0)
+    if(!checkValidate($("#fromOrder")))
     {
-        if($("#id").val()=="")
-        {
-            showNoti("", "Hóa đơn chưa tạo sản phẩm","error");
-        }
-        else{
-            href = base_url +  '/admin/order/delete/' + $("#id").val();
-            $.confirm({
-                title: 'Xác nhận!',
-                content: 'Đơn hàng không có hàng hoá, bạn có muốn xoá không',
-                buttons: {
-                    confirm: {
-                        text: 'Đồng ý',
-                        btnClass: 'btn-blue',
-                        keys: ['enter', 'shift'],
-                        action: function(){
-                            $.LoadingOverlay("show");
-                            $.ajax({
-                                method: "GET",
-                                url: href,
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                data: {
-
-                                }
-                            }).done(function(res) {
-                                $.LoadingOverlay("hide");
-                                window.location = base_url + "/admin/order";
-                            });
-                        }
-                    },
-                    cancel: {
-                        text: 'Đóng',
-                        btnClass: 'btn-default',
-                    }
-                }
-            });
-
-        }
-        return false;
+        $("#fromOrder").submit();
     }
-
-    if(checkValidate($("#updateFrm")))
-    {
-        return false;
-    }
-    $("#updateFrm").submit();
 });
 $(".cancelOrder").click(function() {
     e = $(this);
@@ -345,13 +231,6 @@ $(".restoreOrder").click(function() {
 
 $(".saveOrderOnline").click(function() {
     e = $(this);
-    total_paid = convert_decimal($("input[name=total_paid]").val());
-    total = convert_decimal(getTotal());
-   /* if(total_paid!=total)
-    {
-        showNoti("Đơn hàng chưa thanh toán xong, không thể hoàn tất đơn hàng","Thông báo","warning");
-        return false;
-    }*/
     $.confirm({
         title: e.attr('title'),
         content: e.attr('title'),
@@ -411,12 +290,10 @@ $(document).on("click",".deleteProductItem",function(){
         $(this).closest('tr').remove();
     }
     else{
-        $(this).closest("tr").addClass("deleted");
         $(this).append(`<input type="hidden" name="item[${id}][deleted]" value="1" />`)
         // $(this).closest('tr').addClass("remove");
         $(this).closest('tr').hide();
     }
-    calSummary();
 });
 jQuery('#saleDatePicker').datetimepicker({
     i18n: {
@@ -432,8 +309,8 @@ jQuery('#saleDatePicker').datetimepicker({
             ]
         }
     },
-    timepicker: true,
-    format: 'Y-m-d H:i:s'
+    timepicker: false,
+    format: 'Y-m-d'
 });
 jQuery('#shippingDatePicker').datetimepicker({
     i18n: {
@@ -530,7 +407,7 @@ $(document).on("click", ".qty-plus", function(){
     $(this).parent().find('input').trigger("change");
 });
 
-$(document).on("change", ".update_shipment", function(){
+/*$(document).on("change", ".update_shipment", function(){
     district = $("#shipping_district").val();
     total_price  = 0;
     $('#sample-table-2 > tbody > tr').each(function(){
@@ -549,10 +426,9 @@ $(document).on("change", ".update_shipment", function(){
         }
     }).done(function(res) {
         $("#shipping_fee_label").html(format_thousand(res.data.fee));
-        $("#shipping_fee").val(format_thousand(res.data.fee));
-        calSummary();
+        $("#shipping_fee").val(res.data.fee);
     });
-});
+}); */
 
 $(document).on("change", "#shipping_province", function(){
     update_shipment();
@@ -574,30 +450,12 @@ $(document).on("change", "#shipping_province", function(){
 // }
 // update_shipment();
 
-function getSubTotal()
+function getTotal()
 {
     total_price  = 0;
-    $('#renderOrderTable > tbody > tr').each(function(){
-        price =  parseFloat(String($(this).find(".total").text()).trim().replace(/\s/g, '').replace(/,/g, ''));
+    $('#sample-table-2 > tbody > tr').each(function(){
+        price =  parseFloat(String($(this).find("td:nth-child(6)").text()).trim().replace(/\s/g, '').replace(/,/g, ''));
         total_price += price;
     });
     return total_price;
 }
-
-function getTotal()
-{
-    total_price  = getSubTotal();
-    shipping_fee = convert_decimal($("#shipping_fee").val());
-    discount_value = convert_decimal($("#updateFrm input[name=discount_value]").val());
-    return total_price + shipping_fee - discount_value;
-}
-$(document).on("keydown", ":input:not(textarea)", function(event) {
-    if (event.key == "Enter") {
-        event.preventDefault();
-    }
-});
-
-
-$(document).ready(function(){
-    $('.money').mask("#,##0", {reverse: true});
-});

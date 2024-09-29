@@ -141,9 +141,9 @@ class ZNS
             $client = new GuzzleHttpClient();
             $response = $client->request($method, $uri, $finalOptions);
             $result = $this->formatResponse($response);
-
+			return $result;
             if ($result['code'] == "-124") {
-                $this->refreshToken();
+                //$this->refreshToken();
             }
             return $result;
         } catch (\Throwable $e) {
@@ -246,10 +246,10 @@ class ZNS
                 $this->options['headers']['access_token'] = $this->accessToken;
                 update_config("access_token",  $this->accessToken);
             }
-            return true;
         } catch (\Throwable $exception) {
             LogHelper::write($exception->getMessage(), 'getRefreshToken::exception');
-            return false;
+
+            $result = $this->formatException($exception);
         }
     }
 

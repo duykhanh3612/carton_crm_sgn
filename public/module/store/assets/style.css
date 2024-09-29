@@ -1,0 +1,90 @@
+.control-label {
+    font-weight: 700;
+}
+.ng-hide {
+    display: none !important;
+}
+#store_setting {
+    background: #fff;
+    padding: 15px;
+    height: 100vh;
+}
+.form-horizontal .form-actions {
+    padding-left: 10px;
+}
+.form-actions {
+    display: block;
+    background-color: #f5f5f5;
+    border-top: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 19px 20px 20px;
+}
+.pull-right {
+    float: right !important;
+}
+.btn-primary,
+.btn-primary:focus {
+    background-color: #428bca !important;
+    border-color: #428bca;
+    border-radius: 3px !important;
+}
+
+.dropzone {
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    min-height: 360px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.03);
+    padding: 23px;
+}
+
+.widget-header {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    position: relative;
+    min-height: 38px;
+    background: #f7f7f7 repeat-x;
+    background-image: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+    background-image: -o-linear-gradient(top, #fff 0, #eee 100%);
+    background-image: linear-gradient(to bottom, #fff 0, #eee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
+    color: #669fc7;
+    border-bottom: 1px solid #ddd;
+    padding-left: 12px;
+}
+.widget-header[class*="header-color-"] {
+    color: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.header-color-blue {
+    background: #307ecc;
+    border-color: #307ecc;
+}
+.widget-body {
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #fff;
+}
+.header-color-blue + .widget-body {
+    border-color: #307ecc;
+}
+
+.table-striped input {
+    border-radius: 3px !important;
+    color: #858585 !important;
+    background-color: #fff;
+    border: 1px solid #d5d5d5;
+    padding: 5px 4px 6px;
+    font-size: 14px;
+    font-family: inherit;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+}
+
+.ng-pristine .row {
+    margin-bottom: 10px;
+}
