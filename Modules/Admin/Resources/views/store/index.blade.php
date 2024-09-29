@@ -206,7 +206,8 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="clearfix col-xs-12 form-actions update" ng-hide="layoutSettings.companyInfo.editing == true">
+                            <div class="clearfix col-xs-12 form-actions update"
+                                ng-hide="layoutSettings.companyInfo.editing == true">
                                 <div class="pull-right">
                                     <button class="btn btn-primary ng-binding" onclick="startEditCompanyInfo();"
                                         type="button">
@@ -217,12 +218,12 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4">
-                            <div class="widget-main col-sm-8">
+                            <div class="widget-main">
                                 <div class="ng-hide">
 
 
                                     @include('admin::components.inputs.image', [
-                                        'label' => "",
+                                        'label' => "image",
                                         'name' => "image",
                                         'value' =>  @$store->image,
                                         'class' => '',

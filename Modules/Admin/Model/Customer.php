@@ -49,7 +49,7 @@ class Customer extends Model
 
         //Handel Owner
         if (!isAdmin() && isset($this->owner)) {
-            $q->where($this->owner, auth()->user()->id);
+           // $q->where($this->owner, auth()->user()->id);
         }
         $q->where("customers.deleted", 0);
 

@@ -53,7 +53,7 @@ class OrderController extends BaseController
                         'type' => 'form_drop',
                         'table' => 'users_group',
                         'table_field' => ['key' => "user_id", "value" => "user_name"],
-                        'table_where' => "group_id = 3",
+                        //'table_where' => "group_id = 3",
                         'viewable' => 0,
                         'editable' => 1,
                         'defaultValue' => true,
@@ -128,8 +128,8 @@ class OrderController extends BaseController
         $records->appends(request()->all());
         $summary = [
             'order' => $records->total(),
-            'total' =>  (new  Order())->filter($request->filter??[])->whereIn("status",[2,4])->sum("total"),
-            'debt' =>  (new  Order())->filter($request->filter??[])->whereIn("status",[2,4])->sum("debt")
+            'total' =>  (new  Order())->filter($request->filter??[])->sum("total"),
+            'debt' =>  (new  Order())->filter($request->filter??[])->sum("debt")
         ];
         $includes = [
             "admin::order.modal"
@@ -452,7 +452,9 @@ class OrderController extends BaseController
                     'fee' =>  $price * 0.1
                 ];
             }
-        }
+        } 
+		//Handel Temp hide get calc fee sheep
+        $shipment['fee'] = 0;
         $result['data'] =  $shipment ;
         $result['code'] = 200;
         $result['success'] = true;

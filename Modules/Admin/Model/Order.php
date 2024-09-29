@@ -74,7 +74,7 @@ class Order extends Model
             $q = $q->where("created_at", "<=", $params['created_at']['to'] . " 23:59:59");
         }
         if (!isAdmin() && isset($this->owner)) {
-            $q->where($this->owner, auth()->user()->id)->orWhere('saler_id', auth()->user()->id);
+           // $q->where($this->owner, auth()->user()->id)->orWhere('saler_id', auth()->user()->id);
         }
         $q = $q->where("deleted", 0);
         if (!empty(request("sort_field"))) {
@@ -113,7 +113,7 @@ class Order extends Model
             }
         }
         // $q = $q->where("deleted", 0)->where('status', '<>', 5);
-        $q = $q->where("deleted", 0)->whereIn('status', [2,4]);
+        $q = $q->where("deleted", 0)->whereIn('status', [2,3,4]);
         return $q;
     }
 

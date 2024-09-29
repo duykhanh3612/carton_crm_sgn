@@ -341,7 +341,7 @@ input:disabled
 
 /* Table */
 table.layout-fixed{
-    table-layout: fixed
+  table-layout: fixed;
 }
 
 
@@ -503,6 +503,10 @@ label.disabled{
 
 .flex-right{
     margin-left: auto;
+}
+.orderGeneralInfo2 .select2-container {
+  width: 50px !important;
+  flex-grow: 1;
 }
 @media only screen and (max-width:699px) {
     .col-sm-reverse{

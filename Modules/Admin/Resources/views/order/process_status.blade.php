@@ -23,11 +23,10 @@
 
 
 &nbsp;
-@if(in_array($record->status,[2,3,4]))
 <a class="grey ng-scope" style="cursor:pointer;" onclick="printOrder({{$record->id}})" title="In đơn hàng" data-ng-if="(order.saleTypeID == 1) || (order.status == 4 &amp;&amp; order.saleTypeID > 1 &amp;&amp; order.saleTypeID < 4) || (order.status == 1 &amp;&amp; order.saleTypeID > 1 &amp;&amp; order.saleTypeID < 4)">
     <i class="fa fa-print bigger-110"></i>
 </a>
-@endif
+
 {{-- <a class="blue ng-scope" data-ng-click="copyOnlineOrder(order)" title="Sao chép đơn đặt hàng" data-ng-if="(order.saleTypeID == 2 &amp;&amp; order.status < 5 &amp;&amp; order.status > 1) || (order.status == 4 &amp;&amp; order.saleTypeID > 1 &amp;&amp; order.sale)">
     <i class="fa fa-copy bigger-110"></i>
 </a> --}}

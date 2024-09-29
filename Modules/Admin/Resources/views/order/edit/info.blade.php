@@ -5,7 +5,7 @@
                 <div class="tabbable">
                     <ul class="nav nav-tabs" id="myTabs" role="tablist">
                         <!-- Tab TT Đơn hàng -->
-                        <li class="nav-item">
+                        <li class="nav-item" style="pointer-events: auto;">
                             <a class="nav-link active" id="orderInfo1" data-toggle="tab" target="#info">TT Đơn hàng</a>
                         </li>
                         <!-- Tab Lịch sử -->
@@ -22,7 +22,7 @@
                                         <div class="row  {{@$record->status >= "2"?"lock":""}}" >
                                             <label class="col-md-5 control-label no-padding-right ng-binding">Ngày tạo</label>
                                             <div class="col-md-7 input-group-contain">
-                                                <input id="saleDatePicker" name="created_at" class="form-control k-input" type="text" placeholder="Hôm nay" data-role="datetimepicker" style="width: 100%;" value="{{ date("Y-m-d",strtotime(@$record->created_at)) }}" >
+                                                <input id="saleDatePicker" name="created_at" class="form-control k-input" type="text" placeholder="Hôm nay" data-role="datetimepicker" style="width: 100%;" value="{{ @$record->created_at!=""?date("Y-m-d H:i:s",strtotime(@$record->created_at)):date("Y-m-d H:i:s") }}" >
                                             </div>
                                         </div>
                                         <div class="row">

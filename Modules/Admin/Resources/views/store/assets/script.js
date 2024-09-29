@@ -1,8 +1,8 @@
 function startEditCompanyInfo()
 {
-    $(".profile-users").find('.ng-hide]ng-show="layoutSettings.companyInfo.editing"]').each(function(){
+    $(".profile-users").find('.ng-hide').each(function(){
         $(this).removeClass('ng-hide').addClass("ng-hide-bingding");
-        // $(this).closest(".col-sm-8 > div:nth-child(2)").addClass("ng-hide");
+        $(this).closest(".col-sm-8").find("div:nth-child(2)").addClass("ng-hide");
         $('.form-actions.update').hide();
         $('.form-actions.submit').show();
     });

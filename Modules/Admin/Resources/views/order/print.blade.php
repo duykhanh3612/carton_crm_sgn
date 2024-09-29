@@ -243,6 +243,7 @@
                             <span class="monthFooter">......</span> năm
                             <span class="yearFooter">......</span> --}}
                         </p>
+						<br/>
                         <!-- Ký tên -->
                         <div class="row">
                             <!-- Người lập phiếu -->

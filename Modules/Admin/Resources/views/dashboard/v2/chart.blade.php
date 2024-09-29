@@ -66,7 +66,7 @@
                             </p>
                         </div>
                         <!-- item progress -->
-                        <div class="col-11">
+                        <div class="col-10">
                             <div class="progress position-relative">
                                 <div class="progress-bar bg-main-blue-3" role="progressbar" style="width: {{$item->quantity_sold/$total_item*100}}%;" aria-valuenow="{{$total_item }}" aria-valuemin="0" aria-valuemax="{{$total_item }}">
 
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <!-- item quantity -->
-                        <div class="col-1">
+                        <div class="col-2">
                             <p class="text-right">{{$item->quantity_sold}}</p>
                         </div>
                     </div>

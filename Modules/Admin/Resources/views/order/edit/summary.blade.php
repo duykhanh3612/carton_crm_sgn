@@ -57,8 +57,8 @@
 </div>
 <!-- Thanh toán -->
 <div class="col-md-3 col-sm-6 col-12">
-    <div class="info-box">
-        <span class="info-box-icon bg-danger {{empty($record) || (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3]))?'showPayment':''}}"  data-toggle="popover" title="Thanh toán">
+    <div class="info-box" style="pointer-events: auto;">
+        <span class="info-box-icon bg-danger {{empty($record) || (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3,4]))?'showPayment':''}}"  data-toggle="popover" title="Thanh toán">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="white">
                 <path d="M64 32C28.7 32 0 60.7 0 96v32H576V96c0-35.3-28.7-64-64-64H64zM576 224H0V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V224zM112 352h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm112 16c0-8.8 7.2-16 16-16H368c8.8 0 16 7.2 16 16s-7.2 16-16 16H240c-8.8 0-16-7.2-16-16z" />
             </svg>
@@ -67,7 +67,7 @@
             <span class="info-box-text">Đã thanh toán</span>
             <span class="info-box-number">
                 <b class="total_paid_label">{{ number_format(@$record->total_paid) }}</b>
-                @if (empty($record) || (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3])))
+                @if (empty($record) || (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3,4])))
                 <i   data-toggle="popover" class="showPayment fa fa-credit-card bigger-230 icon-only blue" ng-class="isHoverAmountPaid ?'orange':'' " title="Thanh toán"></i>
                 @endif
             </span>
