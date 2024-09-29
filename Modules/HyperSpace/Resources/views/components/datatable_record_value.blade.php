@@ -181,7 +181,7 @@ if(!$isArray){
             echo $recordValue!=""?\Arr::get($thead['data'],$recordValue):"";
             break;
         case 'form_drop':
-            echo get_data($thead['table'],[$thead['table_field']['key'] => $recordValue],$thead['table_field']['value']);
+            echo '<label class="'.$thead['field']. ' key_'.$recordValue.' ">'.get_data($thead['table'],[$thead['table_field']['key'] => $recordValue],$thead['table_field']['value']).'</label>';
             break;
         case 'column':
             $fields  = $thead['fields'];

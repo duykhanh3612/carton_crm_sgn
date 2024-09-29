@@ -40,10 +40,16 @@ class OAController extends BaseController
 
         //Handel update all otp old
         OTP::where("phone", $otp->phone)->whereNull("status")->update(['status' => "expiration"]);
-        $new_otp = $otp->update(['time_line' => date('Y-m-d H:i:s', strtotime('+5 minutes'))]);
+        //$new_otp = $otp->update(['time_line' => date('Y-m-d H:i:s', strtotime('+5 minutes'))]);
 
-        $zaloZns->sendOTP($otp->phone, $otp->code);
-
+        $res = $zaloZns->sendOTP($otp->phone, $otp->code);
+         if($res['code'] == 200)
+        {
+            $otp->update(['status'=>'success','result'=>json_encode($res)]);
+        }
+    	else{
+			$otp->update(['status'=>'fail','result'=>json_encode($res)]);
+		}
         return redirect()->back();
     }
     function otp_destroy($id = null)
