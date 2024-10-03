@@ -86,8 +86,8 @@ class OrderController extends BaseController
                 ],
                 "right" => [
                     [
-                        'name' => "filter[created_at]",
-                        'field_name' => 'created_at',
+                        'name' => "filter[date]",
+                        'field_name' => 'date',
                         'type' => "choose_date",
                     ],
                 ]

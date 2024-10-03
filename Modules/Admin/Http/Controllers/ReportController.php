@@ -161,7 +161,7 @@ class ReportController extends BaseController
                 return url("public/storage/export/" . $fileName . ".csv");
         } else {
             $records = Order::report()
-                ->selectRaw('ROW_NUMBER() OVER(ORDER BY orders.id ASC) AS row_num,orders.code,orders.created_at,u1.full_name as carrier_name, c.name,qty,subTotal,discount_value,total, debt')
+                ->selectRaw('ROW_NUMBER() OVER(ORDER BY orders.id ASC) AS row_num,orders.code,orders.date,u1.full_name as carrier_name, c.name,qty,subTotal,discount_value,total, debt')
                 ->join("users as u1", "u1.id", "cashier")
                 ->join("customers as c", "c.id", "customer_id")
                 ->get();

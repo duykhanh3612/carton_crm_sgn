@@ -68,10 +68,10 @@ class Order extends Model
         if (isset($params['customer_id'])) {
             $q = $q->where("customer_id", $params['customer_id']);
         }
-        if (isset($params['created_at']['form']) && isset($params['created_at']['to'])) {
+        if (isset($params['date']['form']) && isset($params['date']['to'])) {
 
-            $q = $q->where("created_at", ">=", $params['created_at']['form'] . " 00:00:00");
-            $q = $q->where("created_at", "<=", $params['created_at']['to'] . " 23:59:59");
+            $q = $q->where("date", ">=", $params['date']['form'] . " 00:00:00");
+            $q = $q->where("date", "<=", $params['date']['to'] . " 23:59:59");
         }
         if (!isAdmin() && isset($this->owner)) {
            // $q->where($this->owner, auth()->user()->id)->orWhere('saler_id', auth()->user()->id);
@@ -92,23 +92,23 @@ class Order extends Model
 
             $formDate = date("Y-m-d", strtotime(str_replace('/', '-', $request->fromDate)));
             $toDate = date("Y-m-d", strtotime(str_replace('/', '-', $request->toDate)));
-            $q = $q->where("created_at", ">=",  $formDate . " 00:00:00");
-            $q = $q->where("created_at", "<=", $toDate . " 23:59:59");
+            $q = $q->where("date", ">=",  $formDate . " 00:00:00");
+            $q = $q->where("date", "<=", $toDate . " 23:59:59");
         } else {
             switch ($request->filter_type) {
                 case 1:
                     $date_range = $this->getStartAndEndDate();
-                    $q = $q->where("created_at", ">=", $date_range['startDate'] . " 00:00:00");
-                    $q = $q->where("created_at", "<=", $date_range['endDate'] . " 23:59:59");
+                    $q = $q->where("date", ">=", $date_range['startDate'] . " 00:00:00");
+                    $q = $q->where("date", "<=", $date_range['endDate'] . " 23:59:59");
                     break;
                 case 2:
                     $date_range  = date("Y-m");
-                    $q = $q->where("created_at", 'like', $date_range . "%");
+                    $q = $q->where("date", 'like', $date_range . "%");
                     break;
                 case 3:
                     $date_range = $this->getQuarterRange();
-                    $q = $q->where("created_at", ">=", $date_range['startDate'] . " 00:00:00");
-                    $q = $q->where("created_at", "<=", $date_range['endDate'] . " 23:59:59");
+                    $q = $q->where("date", ">=", $date_range['startDate'] . " 00:00:00");
+                    $q = $q->where("date", "<=", $date_range['endDate'] . " 23:59:59");
                     break;
             }
         }
@@ -121,10 +121,10 @@ class Order extends Model
     {
 
         if ($params == "in_day") {
-            $q = $q->where("created_at", "like", date("Y-m-d") . "%");
+            $q = $q->where("date", "like", date("Y-m-d") . "%");
         } else
             $q = $q->whereIn("id", function ($q) {
-                $q->select('id')->from("orders")->where("created_at", "like", date("Y-m-d") . "%");
+                $q->select('id')->from("orders")->where("date", "like", date("Y-m-d") . "%");
             });
 
         $q = $q->where("deleted", 0)->where("status", "<>", 5);
@@ -136,25 +136,25 @@ class Order extends Model
         switch ($params['type']) {
             case 'week':
                 $date_range = $this->getStartAndEndDate();
-                $q = $q->where("created_at", ">=", $date_range['startDate'] . " 00:00:00");
-                $q = $q->where("created_at", "<=", $date_range['endDate'] . " 23:59:59");
+                $q = $q->where("date", ">=", $date_range['startDate'] . " 00:00:00");
+                $q = $q->where("date", "<=", $date_range['endDate'] . " 23:59:59");
                 break;
             case 'last_week':
                 $date_range = $this->getStartAndEndDate(date('W') - 1);
-                $q = $q->where("created_at", ">=", $date_range['startDate'] . " 00:00:00");
-                $q = $q->where("created_at", "<=", $date_range['endDate'] . " 23:59:59");
+                $q = $q->where("date", ">=", $date_range['startDate'] . " 00:00:00");
+                $q = $q->where("date", "<=", $date_range['endDate'] . " 23:59:59");
                 break;
             case 'month':
                 $date_range  = date("Y-m");
-                $q = $q->where("created_at", 'like', $date_range . "%");
+                $q = $q->where("date", 'like', $date_range . "%");
                 break;
             case 'last_month':
                 $date_range  = date("Y") . "-" . (date('m') - 1);
-                $q = $q->where("created_at", 'like', $date_range . "%");
+                $q = $q->where("date", 'like', $date_range . "%");
                 break;
             case 'between':
-                $q = $q->where("created_at", ">=", $params['startDate'] . " 00:00:00");
-                $q = $q->where("created_at", "<=", $params['endDate'] . " 23:59:59");
+                $q = $q->where("date", ">=", $params['startDate'] . " 00:00:00");
+                $q = $q->where("date", "<=", $params['endDate'] . " 23:59:59");
                 break;
         }
         return $q;
@@ -306,10 +306,10 @@ class Order extends Model
             ->selectRaw("n.weekday,m.sale_date,IFNULL(m.total_sales,0) as total_sales");
         $query->leftJoin(DB::raw(
             "(
-                select WEEKDAY(created_at)+1 AS weekday, DATE(created_at) AS sale_date, SUM(total) AS total_sales
+                select WEEKDAY(date)+1 AS weekday, DATE(date) AS sale_date, SUM(total) AS total_sales
                 from orders
-                where created_at >= '$startOfWeek' and created_at <=  '$endOfWeek 11:59:59' and deleted=0 and status <> 5
-                group by DATE(created_at) ORDER BY(sale_date)) as m"
+                where date >= '$startOfWeek' and date <=  '$endOfWeek 11:59:59' and deleted=0 and status <> 5
+                group by DATE(date) ORDER BY(sale_date)) as m"
         ), function ($q) {
             $q->on("n.weekday", "=", "m.weekday");
         });
@@ -321,9 +321,5 @@ class Order extends Model
         } else {
             return  $query->get();
         }
-        // return    $q->select(DB::raw('WEEKDAY(created_at)+1 AS weekday'), DB::raw('DATE(created_at) AS sale_date'), DB::raw('SUM(total) AS total_sales'))
-        // ->where('created_at', '>=', $startOfWeek)->where('created_at', '<=', $endOfWeek." 11:59:59")
-        // ->groupBy(DB::raw('DATE(created_at)'))
-        // ->orderBy('sale_date')->get()->keyBy('weekday')->get();
     }
 }

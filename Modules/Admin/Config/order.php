@@ -90,7 +90,7 @@ return [
                 'class' => 'text-center'
             ],
             [
-                'field' => 'created_at',
+                'field' => 'date',
                 'text' => 'Ngày bán',
                 'type' => 'datetime',
                 'format' => 'full_day',

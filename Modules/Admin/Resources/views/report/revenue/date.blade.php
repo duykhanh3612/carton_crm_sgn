@@ -82,7 +82,7 @@
                             <i class="blue icon-plus-sign" data-ng-class="item.$isShowDetail ? 'icon-minus-sign' : 'icon-plus-sign'" title="Xem chi tiết"></i>
                         </td> --}}
                         <td class="text-center ng-binding">{{$r->code}}</td>
-                        <td class="hidden-640 text-center ng-binding">{{date("d/m/Y H:i:s",strtotime($r->created_at))}}</td>
+                        <td class="hidden-640 text-center ng-binding">{{date("d/m/Y H:i:s",strtotime($r->date))}}</td>
                         <td class="hidden-640 text-center ng-binding">{{@$users[$r->cashier]}}</td>
                         <td class="hidden-640 text-center ng-binding">{{@$r->customer->full_name}}</td>
                         <td class="hidden-768 text-center ng-binding">{{number_format($r->qty)}}</td>
