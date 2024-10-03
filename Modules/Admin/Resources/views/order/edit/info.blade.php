@@ -22,7 +22,7 @@
                                         <div class="row  {{@$record->status >= "2"?"lock":""}}" >
                                             <label class="col-md-5 control-label no-padding-right ng-binding">Ngày tạo</label>
                                             <div class="col-md-7 input-group-contain">
-                                                <input id="saleDatePicker" name="created_at" class="form-control k-input" type="text" placeholder="Hôm nay" data-role="datetimepicker" style="width: 100%;" value="{{ @$record->created_at!=""?date("Y-m-d H:i:s",strtotime(@$record->created_at)):date("Y-m-d H:i:s") }}" >
+                                                <input id="saleDatePicker" name="date" class="form-control k-input" type="text" placeholder="Hôm nay" data-role="datetimepicker" style="width: 100%;" value="{{ @$record->date!=""?date("Y-m-d H:i:s",strtotime(@$record->date)):date("Y-m-d H:i:s") }}" >
                                             </div>
                                         </div>
                                         <div class="row">

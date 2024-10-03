@@ -171,6 +171,8 @@ class OrderController extends BaseController
         {
             $record->status = 1;
             $record->saler_id = "";
+            $record->date = "";
+
             $link_update =  route('admin.order.update.new');
         }
         else{
@@ -452,7 +454,7 @@ class OrderController extends BaseController
                     'fee' =>  $price * 0.1
                 ];
             }
-        } 
+        }
 		//Handel Temp hide get calc fee sheep
         $shipment['fee'] = 0;
         $result['data'] =  $shipment ;
