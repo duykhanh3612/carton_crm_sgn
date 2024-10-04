@@ -256,29 +256,7 @@ class OrderController extends BaseController
 
         Order::updateSummary($oderID);
         Order::updateLog($oderID);
-        // if(@$doc['customer_id'] != "" && request("customer"))
-        // {
-        //     $customer = request("customer");
-        //     $d['email'] =   $customer['email'];
-        //     $d['address'] =   $customer['address'];
-        //     if(isset($customer['phone']))
-        //     {
-        //         $d['phone'] =   $customer['phone'];
-        //     }
-        //     Customer::updateOrCreate(['id' => $doc['customer_id'] ], $d);
-        // }
         return redirect("admin/order/edit/" . $oderID->id);
-        // if($id == null)
-        // {
-        //     return redirect("admin/order/edit/". $oderID->id );
-        // }
-        // if ($action == "save") {
-        //     $url = route("admin.order");
-        //     // return redirect($url);
-        //     return redirect()->back();
-        // } else {
-        //     return redirect()->back();
-        // }
     }
     public function destroy($id)
     {
@@ -402,10 +380,12 @@ class OrderController extends BaseController
 
         $order->discount_value  = $discount_value;
         $order->total =  intval($order->subTotal) + intval($order->shipping_fee) - intval($discount_value);
+        $order->debt =    $order->total - $order->total_paid;
         $order->discount_type  = $discount_type;
         $order->discount_percent =  $discount_percent;
         $order->update();
         Order::updateLog($order, "Cập nhật giả giá đơn hàng ".number_format($discount_value));
+
         $result = "Update success";
         return response()->json($result, 200, ['Content-type' => 'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
