@@ -13,7 +13,7 @@ use Modules\Admin\Model\Product;
 use Modules\Admin\Model\Product\ProductCategory;
 use Modules\Admin\Model\Shipment;
 use Modules\Plugin\Entities\Themes;
-
+use App\Services\Maatwebsite\ExcelExport;
 
 
 class OrderController extends BaseController
@@ -389,21 +389,46 @@ class OrderController extends BaseController
         $result = "Update success";
         return response()->json($result, 200, ['Content-type' => 'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
-    function export(Request $request)
+    function export(Request $request,$type = "csv")
     {
-        $this->prepareSearch($request);
-        $query = new  Order();
-        $records = $query->filter()
-            ->selectRaw('ROW_NUMBER() OVER(PARTITION BY id) AS row_num ,name,district,price,area')
-            ->get();
-        $head = ["STT", "TIÊU ĐỀ", "QUẬN", "GIÁ", "DIỆN TÍCH"];
-        $arr = array_merge([$head], $records->toArray());
-        $fileName = 'file_quotation_' . date("d-m");
-        if (file_exists(base_path("public/storage/export/" . $fileName . ".csv"))) {
-            @unlink(base_path("public/storage/export/" . $fileName . ".csv"));
+        if($type=="csv")
+        {
+            $this->prepareSearch($request);
+            $query = new  Order();
+            $records = $query->filter()
+                ->selectRaw('ROW_NUMBER() OVER(PARTITION BY id) AS row_num ,name,district,price,area')
+                ->get();
+            $head = ["STT", "TIÊU ĐỀ", "QUẬN", "GIÁ", "DIỆN TÍCH"];
+            $arr = array_merge([$head], $records->toArray());
+            $fileName = 'file_quotation_' . date("d-m");
+            if (file_exists(base_path("public/storage/export/" . $fileName . ".csv"))) {
+                @unlink(base_path("public/storage/export/" . $fileName . ".csv"));
+            }
+            writeCsv($arr, base_path("public/storage/export/" . $fileName . ".csv"));
+            return response()->download(base_path("public/storage/export/" . $fileName . ".csv"));
         }
-        writeCsv($arr, base_path("public/storage/export/" . $fileName . ".csv"));
-        return response()->download(base_path("public/storage/export/" . $fileName . ".csv"));
+        else if($type=="orders")
+        {
+            $ids = request("ids");
+            $excel = new ExcelExport();
+            $data['orders']  = Order::whereIn("orders.id",$ids)->get();
+            $data["records"] = OrderDetail::join("orders","orders.id","orders_detail.order_id")->whereIn("orders.id",$ids)->get();
+            $data['startDate'] = request('startDate');
+            $data['endDate'] = request('endDate');
+            $file = "orders".time().".xlsx";
+            if(request("preview"))
+            {
+                return view("admin::order.export.orders",$data);
+            }
+            if(request('type')=="json")
+            {
+                $excel->view("admin::order.export.orders", $data, $file,"asset");
+                $result['file'] = url(env("APP_PATH")."storage/".$file);
+                $result['name'] = $file;
+                return response()->json($result, 200, ['Content-type' => 'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
+            }
+            return $excel->view("admin::order.export.orders",$data,$file);
+        }
     }
 
     function print($id)

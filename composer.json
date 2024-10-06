@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.3",
+        "maatwebsite/excel": "^3.1",
         "nwidart/laravel-modules": "^8.3",
         "tymon/jwt-auth": "^1.0@dev"
     },

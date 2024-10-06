@@ -154,3 +154,59 @@ function printOrder(id)
     // $("#modelOrderPrint").modal('show');
     $("#modelOrderPrint").html(`<iframe src="${base_url}/admin/order/print/${id}" style="width:100%:height: 800px"></iframe>`);
 }
+
+$(document).on("click",".action-export-excel",function(){
+    tag = $("#invoicesTable");
+    check_list = tag.find("input.listItemids:checked").length;
+    if(check_list == 0)
+    {
+        showNoti("Chọn đơn hàng để Export","Thông báo","warning");
+        return false;
+    }
+    ids = [];
+    tag.find("input.listItemids:checked").each(function(){
+        ids.push($(this).val());
+    });
+    data = {
+        ids: ids,
+        startDate: $("#filter_created_at_form").val(),
+        endDate: $("#filter_created_at_to").val(),
+        // type: "json"
+    }
+    window.location = base_url + "/admin/order/export/orders?"+$.param(data);
+    // $.ajax({
+    //     method: "POST",
+    //     url:base_url + "/admin/order/export/orders",
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     },
+    //     data: {
+    //         ids: ids,
+    //         startDate: $("#filter_created_at_form").val(),
+    //         endDate: $("#filter_created_at_to").val(),
+    //         type: "json"
+    //     }
+    // }).done(function(res) {
+    //     showNoti('Update Comment Success', 'Order', 'War');
+    //     downloadFile(res.data.file,res.data.name);
+    // });
+
+});
+function downloadFile(fileUrl, fileName) {
+    var link = document.createElement('a');
+    link.href = fileUrl;
+
+    // Set the download attribute if a filename is specified
+    if (fileName) {
+        link.download = fileName;
+    }
+
+    // Append the anchor to the body
+    document.body.appendChild(link);
+
+    // Trigger click event
+    link.click();
+
+    // Remove the anchor from the DOM after triggering the download
+    document.body.removeChild(link);
+}
