@@ -175,6 +175,7 @@ class OrderController extends BaseController
     }
     public function update(Request $request, $id = null)
     {
+
         $status = $id ? 200 : 500;
         $doc = $request->toArray();
 
@@ -206,6 +207,8 @@ class OrderController extends BaseController
         {
             $doc['cashier'] = auth()->user()->id;
         }
+        $log_order = $model::where("id",$id)->first()->toArray();
+        $log_order['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
 
         $oderID = $model::updateOrCreate(['id' => $id], $doc);
         if ($items = request('item')) {
@@ -239,9 +242,10 @@ class OrderController extends BaseController
                 }
             }
         }
-
+        $log_order_changed = $model::where("id",$id)->first();
+        $log_order_changed['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
         Order::updateSummary($oderID);
-        Order::updateLog($oderID);
+        Order::updateLog($log_order, $log_order_changed);
         return redirect("admin/order/edit/" . $oderID->id);
     }
     public function destroy($id)
@@ -259,6 +263,7 @@ class OrderController extends BaseController
         $status = request('status');
 
         $order = Order::where("id", $orderId)->first();
+        $log_order = $order;
 		if(empty($order))
 		{
 			return response()->json(['success' => true,"message"=>"Cập nhật trạng thái thành công"]);
@@ -304,7 +309,7 @@ class OrderController extends BaseController
                 break;
         }
         //Handel Update Log
-        OrderLog::updateLog($order, "đã $log_action đơn hàng ". $order->code, "user" , auth()->user());
+        OrderLog::updateLog($log_order, $order, "đã $log_action đơn hàng ". $order->code, "user" , auth()->user());
         return response()->json(['success' => true,"message"=>"Cập nhật trạng thái thành công"]);
     }
 
@@ -315,6 +320,7 @@ class OrderController extends BaseController
         $payment_type = request("payment_type");
 
         $order = Order::where("id", $order_id)->first();
+        $log_order = $order;
         if(empty($order))
         {
             $result = "Update fail";
@@ -342,7 +348,7 @@ class OrderController extends BaseController
                 # code...
                 break;
         }
-        Order::updateLog($order, "Cập nhật thanh toán đơn hàng:".number_format($payment_new_value).". Hình thức thanh toán". $payments_name );
+        Order::updateLog($log_order, $order, "Cập nhật thanh toán đơn hàng:".number_format($payment_new_value).". Hình thức thanh toán". $payments_name );
         Order::updateSummary($order);
         $result = [
             'success' => true,
@@ -358,6 +364,7 @@ class OrderController extends BaseController
         $discount_type = request("discount_type");
         $discount_percent = request("discount_percent");
         $order = Order::where("id", $order_id)->first();
+        $log_order = $order;
         if(empty($order))
         {
             $result = "Update fail";
@@ -370,7 +377,7 @@ class OrderController extends BaseController
         $order->discount_type  = $discount_type;
         $order->discount_percent =  $discount_percent;
         $order->update();
-        Order::updateLog($order, "Cập nhật giả giá đơn hàng ".number_format($discount_value));
+        Order::updateLog($log_order, $order, "Cập nhật giả giá đơn hàng ".number_format($discount_value));
 
         $result = "Update success";
         return response()->json($result, 200, ['Content-type' => 'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);

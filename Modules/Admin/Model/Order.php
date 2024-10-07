@@ -74,13 +74,13 @@ class Order extends Model
             $q = $q->where("date", "<=", $params['date']['to'] . " 23:59:59");
         }
         if (!isAdmin() && isset($this->owner)) {
-           // $q->where($this->owner, auth()->user()->id)->orWhere('saler_id', auth()->user()->id);
+            // $q->where($this->owner, auth()->user()->id)->orWhere('saler_id', auth()->user()->id);
         }
         $q = $q->where("deleted", 0);
         if (!empty(request("sort_field"))) {
             $q = $q->orderByRaw("orders.id desc");
         } else {
-            $q = $q->orderBy(request("sort_field")??"id", request("sort_order") ?? "asc");
+            $q = $q->orderBy(request("sort_field") ?? "id", request("sort_order") ?? "asc");
         }
         return $q;
     }
@@ -113,7 +113,7 @@ class Order extends Model
             }
         }
         // $q = $q->where("deleted", 0)->where('status', '<>', 5);
-        $q = $q->where("deleted", 0)->whereIn('status', [2,3,4]);
+        $q = $q->where("deleted", 0)->whereIn('status', [2, 3, 4]);
         return $q;
     }
 
@@ -237,29 +237,95 @@ class Order extends Model
         $day = array_sum(array_slice($map, ($fmonth - 1), ($month - $fmonth + 1)));
 
         return "Day $day on $total of quarter $quarter, $year.";
-        // print(quarter_day("2017-01-01")) . "\n"; // prints Day 1 on 90 of quarter 1, 2017.
-        // print(quarter_day("2017-04-01")) . "\n"; // prints Day 1 on 91 of quarter 2, 2017.
-        // print(quarter_day("2017-08-15")) . "\n"; // prints Day 46 on 92 of quarter 3, 2017.
-        // print(quarter_day("2017-12-31")) . "\n"; // prints Day 92 on 92 of quarter 4, 2017.
-
     }
 
-    public static function updateLog($model, $title = "")
+    public static function updateLog($content, $content_changed, $title = "")
     {
+        $content_result = [];
         try {
-            $time  = date("Y-m-d H:i:s");
+            if ($title == "") {
+                $title = self::getMessageLog($content, $content_changed,  $content_result);
+            }
             $data = [
-                'order_id' => $model->id,
+                'order_id' => $content_changed->id,
                 'user_id' => auth()->user()->id,
                 'owner' => 'user',
                 'user_name'  => auth()->user()->user_name,
                 'user_full_name' => auth()->user()->full_name,
-                'title' => ($title == "" ? "Cập nhật thông tin đơn hàng" : $title)
+                'content' => json_encode($content),
+                'content_changed' => json_encode($content_changed),
+                'content_result' => json_encode($content_result),
+                'title' => $title
             ];
             OrderLog::create($data);
         } catch (\Throwable $e) {
-            write_log($data, "EstateUpdateLog");
+            write_log($e->getMessage(), "EstateUpdateLog");
         }
+    }
+    public static function getMessageLog($content, $content_changed, &$content_result)
+    {
+        // Convert data if needed
+        $content = convert_data($content, true);
+        $content_changed = convert_data($content_changed, true);
+
+        $result = [];
+        $status = OrderStatus::pluck("name", "id")->toArray(); // Cache status names
+        $ignored_fields = ["created_at", "updated_at", "created_by", "deleted"];
+
+        // Merge the keys of both arrays to loop once and handle additions, deletions, and updates in one go
+        $all_keys = array_unique(array_merge(array_keys($content), array_keys($content_changed)));
+
+        foreach ($all_keys as $key) {
+            $old_value = \Arr::get($content, $key);
+            $new_value = \Arr::get($content_changed, $key);
+
+            // Handle deleted fields (present in old content but missing in changed content)
+            if (!array_key_exists($key, $content_changed)) {
+                $content_result['deleted'][$key] = $old_value;
+                continue;
+            }
+
+            // Handle added fields (present in changed content but missing in old content)
+            if (!array_key_exists($key, $content)) {
+                $content_result['add'][$key] = $new_value;
+                continue;
+            }
+
+            // Handle updated fields (value changed and not in the ignored fields)
+            if ($old_value != $new_value && !in_array($key, $ignored_fields)) {
+
+                $content_result['update'][$key] = $new_value;
+            }
+        }
+
+        // Generate message for added and deleted entries
+        $title = "";
+        foreach ($content_result as $action => $items) {
+
+            foreach ($items as $key => $value) {
+                if ($action == 'deleted') {
+                    $title .= "Xóa dữ liệu: " . $value . "\n";
+                } elseif ($action == 'add') {
+                    $title .= "Thêm dữ liệu: " . $value . "\n";
+                }
+                else{
+                    if ($key == "status") {
+                        $old_status = @$status[$old_value] ?? '';
+                        $new_status = @$status[$new_value] ?? '';
+                        $result[] = trans($key) . " : '" . $old_status . "'=>'" . $new_status . "'";
+                    } else {
+                        $result[] = trans($key) . " : '" . $old_value . "'=>'" . $new_value . "'";
+                    }
+                }
+            }
+        }
+
+        // Combine title and result updates
+        if (!empty($result)) {
+            $title .= "Điều chỉnh thông tin: \n" . implode(", \n", $result);
+        }
+
+        return $title ?: '';
     }
     public static function updateSummary($model)
     {
