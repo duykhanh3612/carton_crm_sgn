@@ -163,10 +163,12 @@ $(document).on("click",".action-export-excel",function(){
         showNoti("Chọn đơn hàng để Export","Thông báo","warning");
         return false;
     }
-    ids = [];
-    tag.find("input.listItemids:checked").each(function(){
-        ids.push($(this).val());
-    });
+    else{
+        ids = [];
+        tag.find("input.listItemids:checked").each(function(){
+            ids.push($(this).val());
+        });
+    }
     data = {
         ids: ids,
         startDate: $("#filter_created_at_form").val(),
