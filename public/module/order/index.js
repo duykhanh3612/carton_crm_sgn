@@ -171,13 +171,7 @@ $(document).on("click",".action-export-excel",function(){
     }
 
     const params = {
-        page: $(".current_page").val(),
-        current_tab: $("#current_tab").val(),
-        limit: $("select.limit-changed").val(),
-        keywords: $("#nameFilter,#keywords").val(),
-        sort_column: $("#sort_column").val(),
-        sort_field: $("#sort_field").val(),
-        sort_order: $("#sort_order").val(),
+        ids: ids,
     };
     $(".datatable-filter").each(function () {
         if (this.type === "radio" || this.type === "checkbox") {
@@ -187,15 +181,15 @@ $(document).on("click",".action-export-excel",function(){
         }
     });
 
-    data = {
-        ids: ids,
-        // startDate: $("#filter_created_at_form").val(),
-        // endDate: $("#filter_created_at_to").val(),
-        keywords:  $("#keywords").val(),
-        filter: params
-        // type: "json"
-    }
-    window.location = base_url + "/admin/order/export/orders?"+$.param(data);
+    // data = {
+    //     ids: ids,
+    //     // startDate: $("#filter_created_at_form").val(),
+    //     // endDate: $("#filter_created_at_to").val(),
+    //     keywords:  $("#keywords").val(),
+    //     filter: params
+    //     // type: "json"
+    // }
+    window.location = base_url + "/admin/order/export/orders?"+$.param(params);
     // $.ajax({
     //     method: "POST",
     //     url:base_url + "/admin/order/export/orders",

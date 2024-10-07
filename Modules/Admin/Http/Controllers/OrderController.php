@@ -411,11 +411,12 @@ class OrderController extends BaseController
         {
             $ids = request("ids");
             $excel = new ExcelExport();
+            dd(request()->toArray());
             if(empty($ids))
             {
                 $query = new  Order();
                 $records = $query->filter($request->filter??[]);
-                $data['orders']  = $query->get();
+                $data['orders']  = $query->dd();
                 $data["records"] = OrderDetail::join("orders","orders.id","orders_detail.order_id")->whereIn("orders.id",$query->pluck("id")->toArray())->get();
             }
             else{
