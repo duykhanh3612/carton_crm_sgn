@@ -158,13 +158,13 @@ function printOrder(id)
 $(document).on("click",".action-export-excel",function(){
     tag = $("#invoicesTable");
     check_list = tag.find("input.listItemids:checked").length;
+    ids = [];
     if(check_list == 0)
     {
         // showNoti("Chọn đơn hàng để Export","Thông báo","warning");
         // return false;
     }
     else{
-        ids = [];
         tag.find("input.listItemids:checked").each(function(){
             ids.push($(this).val());
         });
