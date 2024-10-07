@@ -175,7 +175,6 @@ $(document).on("click",".action-export-excel",function(){
         current_tab: $("#current_tab").val(),
         limit: $("select.limit-changed").val(),
         keywords: $("#nameFilter,#keywords").val(),
-        weborder: weborder,
         sort_column: $("#sort_column").val(),
         sort_field: $("#sort_field").val(),
         sort_order: $("#sort_order").val(),
