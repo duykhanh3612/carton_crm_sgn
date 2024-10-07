@@ -1,7 +1,7 @@
 @push('js')
     <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" rel="stylesheet">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <script src="{{asset("module/order/index.js")}}" ></script>
+    <script src="{{asset("module/order/index.js?v=".time())}}" ></script>
 
     <style type="text/css">
         .item-detail {
@@ -15,7 +15,7 @@
         .status {
             padding: 2px 5px;
             margin-bottom: 0;
-			white-space: nowrap;   
+			white-space: nowrap;
 			font-size:12px;
         }
         .status.key_1 {
