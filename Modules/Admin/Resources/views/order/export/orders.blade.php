@@ -305,7 +305,7 @@
                 <td class="s2">{{number_format($record->total - $record->discount_value)}} </td>
                 <td class="s2">0</td>
                 <td class="s2">{{ $record->payments_type==1?number_format($record->total_paid):0 }}</td>
-                <td class="s2">{{ $record->payments_type==3?number_format($record->total_paid):0 }}/td>
+                <td class="s2">{{ $record->payments_type==3?number_format($record->total_paid):0 }}</td>
                 <td class="s2">{{ $record->payments_type==2?number_format($record->total_paid):0 }}</td>
                 <td class="s1 softmerge">
                     <div class="softmerge-inner" style="width:57px;left:-1px">{{@$status[$record->status]}}</div>
