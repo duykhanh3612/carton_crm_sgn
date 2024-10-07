@@ -288,7 +288,7 @@
                 <td class="s1">{{$record->code}}</td>
                 <td class="s2">{{$record->date}}</td>
                 <td class="s1 softmerge">
-                    <div class="softmerge-inner" style="left:-1px">{{$record->id}}</div>
+                    <div class="softmerge-inner" style="left:-1px">{{Modules\Admin\Model\Users::where("id", $record->saler_id)->first()->full_name}}</div>
                 </td>
                 <td class="s1 softmerge">
                     <div class="softmerge-inner" style="left:-1px">{{Modules\Admin\Model\Customer::where("id", $record->customer_id)->first()->full_name}}</div>
