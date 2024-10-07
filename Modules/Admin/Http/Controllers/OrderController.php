@@ -411,8 +411,17 @@ class OrderController extends BaseController
         {
             $ids = request("ids");
             $excel = new ExcelExport();
-            $data['orders']  = Order::whereIn("orders.id",$ids)->get();
-            $data["records"] = OrderDetail::join("orders","orders.id","orders_detail.order_id")->whereIn("orders.id",$ids)->get();
+            if(empty($ids))
+            {
+                $query = new  Order();
+                $records = $query->filter($request->filter??[])->paginate(request()->limit);
+                $data['orders']  = $query->get();
+                $data["records"] = OrderDetail::join("orders","orders.id","orders_detail.order_id")->whereIn("orders.id",$query->pluck("id")->toArray())->get();
+            }
+            else{
+                $data['orders']  = Order::whereIn("orders.id",$ids)->get();
+                $data["records"] = OrderDetail::join("orders","orders.id","orders_detail.order_id")->whereIn("orders.id",$ids)->get();
+            }
             $data['startDate'] = request('startDate');
             $data['endDate'] = request('endDate');
             $file = "orders".time().".xlsx";
