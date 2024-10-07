@@ -246,20 +246,20 @@ class Order extends Model
 
     public static function updateLog($model, $title = "")
     {
-        // try {
-        //     $time  = date("Y-m-d H:i:s");
-        //     $data = [
-        //         'order_id' => $model->id,
-        //         'user_id' => auth()->user()->id,
-        //         'owner' => 'user',
-        //         'user_name'  => auth()->user()->user_name,
-        //         'user_full_name' => auth()->user()->full_name,
-        //         'title' => ($title == "" ? "Cập nhật thông tin đơn hàng" : $title)
-        //     ];
-        //     OrderLog::create($data);
-        // } catch (\Throwable $e) {
-        //     write_log($data, "EstateUpdateLog");
-        // }
+        try {
+            $time  = date("Y-m-d H:i:s");
+            $data = [
+                'order_id' => $model->id,
+                'user_id' => auth()->user()->id,
+                'owner' => 'user',
+                'user_name'  => auth()->user()->user_name,
+                'user_full_name' => auth()->user()->full_name,
+                'title' => ($title == "" ? "Cập nhật thông tin đơn hàng" : $title)
+            ];
+            OrderLog::create($data);
+        } catch (\Throwable $e) {
+            write_log($data, "EstateUpdateLog");
+        }
     }
     public static function updateSummary($model)
     {
