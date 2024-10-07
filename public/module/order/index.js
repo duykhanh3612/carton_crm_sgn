@@ -169,10 +169,31 @@ $(document).on("click",".action-export-excel",function(){
             ids.push($(this).val());
         });
     }
+
+    const params = {
+        page: $(".current_page").val(),
+        current_tab: $("#current_tab").val(),
+        limit: $("select.limit-changed").val(),
+        keywords: $("#nameFilter,#keywords").val(),
+        weborder: weborder,
+        sort_column: $("#sort_column").val(),
+        sort_field: $("#sort_field").val(),
+        sort_order: $("#sort_order").val(),
+    };
+    $(".datatable-filter").each(function () {
+        if (this.type === "radio" || this.type === "checkbox") {
+            params[this.name] = this.checked ? 1 : null;
+        } else {
+            params[this.name] = $(this).val();
+        }
+    });
+
     data = {
         ids: ids,
         startDate: $("#filter_created_at_form").val(),
         endDate: $("#filter_created_at_to").val(),
+        keywords:  $("#keywords").val(),
+        filter: params
         // type: "json"
     }
     window.location = base_url + "/admin/order/export/orders?"+$.param(data);
