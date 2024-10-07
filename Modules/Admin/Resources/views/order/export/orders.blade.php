@@ -291,7 +291,7 @@
                     <div class="softmerge-inner" style="left:-1px">{{$record->id}}</div>
                 </td>
                 <td class="s1 softmerge">
-                    <div class="softmerge-inner" style="left:-1px">{{$record->customer_id}}</div>
+                    <div class="softmerge-inner" style="left:-1px">{{Modules\Admin\Model\Customer::where("id",$record->customer_id)->first()->full_name||$record->customer_phone}}</div>
                 </td>
                 <td class="s1 softmerge">
                     <div class="softmerge-inner" style="left:-1px">{{$record->shipping_address}}</div>
