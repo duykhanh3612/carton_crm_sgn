@@ -347,11 +347,11 @@ $(".saveOrderOnline").click(function() {
     e = $(this);
     total_paid = convert_decimal($("input[name=total_paid]").val());
     total = convert_decimal(getTotal());
-    if(total_paid!=total)
-    {
-        showNoti("Đơn hàng chưa thanh toán xong, không thể hoàn tất đơn hàng","Thông báo","warning");
-        return false;
-    }
+    // if(total_paid!=total)
+    // {
+    //     showNoti("Đơn hàng chưa thanh toán xong, không thể hoàn tất đơn hàng","Thông báo","warning");
+    //     return false;
+    // }
     $.confirm({
         title: e.attr('title'),
         content: e.attr('title'),
