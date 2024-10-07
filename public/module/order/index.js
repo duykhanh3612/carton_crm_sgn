@@ -160,8 +160,8 @@ $(document).on("click",".action-export-excel",function(){
     check_list = tag.find("input.listItemids:checked").length;
     if(check_list == 0)
     {
-        showNoti("Chọn đơn hàng để Export","Thông báo","warning");
-        return false;
+        // showNoti("Chọn đơn hàng để Export","Thông báo","warning");
+        // return false;
     }
     else{
         ids = [];
