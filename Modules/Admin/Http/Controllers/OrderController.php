@@ -411,7 +411,6 @@ class OrderController extends BaseController
         {
             $ids = request("ids");
             $excel = new ExcelExport();
-            dd(request()->toArray());
             if(empty($ids))
             {
                 $query = new  Order();
