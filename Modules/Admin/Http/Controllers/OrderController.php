@@ -414,7 +414,7 @@ class OrderController extends BaseController
             if(empty($ids))
             {
                 $query = new  Order();
-                $records = $query->filter($request->filter??[])->paginate(request()->limit);
+                $records = $query->filter($request->filter??[]);
                 $data['orders']  = $query->get();
                 $data["records"] = OrderDetail::join("orders","orders.id","orders_detail.order_id")->whereIn("orders.id",$query->pluck("id")->toArray())->get();
             }

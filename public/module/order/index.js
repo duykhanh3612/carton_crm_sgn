@@ -189,8 +189,8 @@ $(document).on("click",".action-export-excel",function(){
 
     data = {
         ids: ids,
-        startDate: $("#filter_created_at_form").val(),
-        endDate: $("#filter_created_at_to").val(),
+        // startDate: $("#filter_created_at_form").val(),
+        // endDate: $("#filter_created_at_to").val(),
         keywords:  $("#keywords").val(),
         filter: params
         // type: "json"
