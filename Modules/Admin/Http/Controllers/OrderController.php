@@ -69,6 +69,13 @@ class OrderController extends BaseController
                         'empty_value' => [""=>"----  Trạng thái  ----"],
                         'class' => 'datatable-filter',
                     ],
+                    [
+                        'name' => "filter[status_payment]",
+                        'type' => "option_items_keynum",
+                        'empty_value' => [""=>"Chọn Tình trạng thanh toán"],
+                        'option_key' => "status_payment",
+                        'class' => 'datatable-filter',
+                    ],
                 ],
                 "right" => [
                     [
@@ -213,8 +220,6 @@ class OrderController extends BaseController
             $log_order = [];
         }
 
-        // $log_order['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
-
         $oderID = $model::updateOrCreate(['id' => $id], $doc);
         if ($items = request('item')) {
 			\App\Helpers\LogHelper::write($items,"PO:".$oderID->id);
@@ -248,7 +253,6 @@ class OrderController extends BaseController
             }
         }
         $log_order_changed = $model::where("id",$id)->first();
-        // $log_order_changed['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
         Order::updateSummary($oderID);
         Order::updateLog($log_order, $log_order_changed);
         return redirect("admin/order/edit/" . $oderID->id);

@@ -59,6 +59,14 @@ class Order extends Model
         if (isset($params['status'])) {
             $q = $q->where("status", $params['status']);
         }
+        if (isset($params['status_payment'])) {
+            if($params['status_payment']==1)
+            $q = $q->where("debt", 0);
+
+            if($params['status_payment']==2)
+            $q = $q->where("debt","<>", 9);
+        }
+
         if (isset($params['cashier'])) {
             $q = $q->where("cashier", $params['cashier']);
         }
