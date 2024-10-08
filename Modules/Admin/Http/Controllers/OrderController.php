@@ -207,7 +207,12 @@ class OrderController extends BaseController
         {
             $doc['cashier'] = auth()->user()->id;
         }
-        $log_order = $model::where("id",$id)->first()->toArray();
+        $log_order = $model::where("id",$id)->first();
+        if(empty($log_order))
+        {
+            $log_order = $log_order->toArray();
+        }
+        else $log_order = [];
         $log_order['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
 
         $oderID = $model::updateOrCreate(['id' => $id], $doc);
