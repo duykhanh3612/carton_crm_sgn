@@ -392,7 +392,7 @@ $(document).on("click","#btnNewComment",function(){
     comment = $("#note").val();
      $.ajax({
         method: "POST",
-        url:base_url + "/admin/order/update"+'/'+$("#id").val(),
+        url:base_url + "/admin/order/update_comment/"+'/'+$("#id").val(),
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },

@@ -253,6 +253,16 @@ class OrderController extends BaseController
         Order::updateLog($log_order, $log_order_changed);
         return redirect("admin/order/edit/" . $oderID->id);
     }
+    public function update_comment($id)
+    {
+        $order = Order::where('id', $id)->first();
+        if(!empty($order))
+        {
+            $order->note =  request('note');
+            $order->save();
+        }
+
+    }
     public function destroy($id)
     {
         $record = Order::find($id);
