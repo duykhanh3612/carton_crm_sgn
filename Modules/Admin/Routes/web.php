@@ -65,7 +65,7 @@ Route::prefix($adminPrefix)->name($adminPrefix . '.')->group(function () {
         Route::get('order/create', 'OrderController@edit')->name('order.create');
         Route::any('order/export/{type}', 'OrderController@export')->name('order.export');
         Route::any('order/update', 'OrderController@update')->name('order.update.new');
-        Route::any('order/update_comment', 'OrderController@update_comment')->name('order.update.update_comment');
+        Route::any('order/update_comment/{id}', 'OrderController@update_comment')->name('order.update.update_comment');
 
         Route::post('order/item', 'OrderController@item')->name('order.item');
         Route::get('order/copy/{id}', 'OrderController@edit')->name('order.copy');
