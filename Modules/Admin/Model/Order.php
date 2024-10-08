@@ -264,13 +264,11 @@ class Order extends Model
     }
     public static function getMessageLog($content, $content_changed, &$content_result)
     {
-        // Convert data if needed
+            // Convert data if needed
         $content = convert_data($content, true);
         $content_changed = convert_data($content_changed, true);
 
-        $result = [];
-        $status = OrderStatus::pluck("name", "id")->toArray(); // Cache status names
-        $ignored_fields = ["created_at", "updated_at", "created_by", "deleted"];
+        $ignored_fields = ["created_at", "updated_at", "created_by", "deleted","items"];
 
         // Merge the keys of both arrays to loop once and handle additions, deletions, and updates in one go
         $all_keys = array_unique(array_merge(array_keys($content), array_keys($content_changed)));
@@ -293,33 +291,43 @@ class Order extends Model
 
             // Handle updated fields (value changed and not in the ignored fields)
             if ($old_value != $new_value && !in_array($key, $ignored_fields)) {
-
                 $content_result['update'][$key] = $new_value;
             }
         }
 
         // Generate message for added and deleted entries
         $title = "";
+        $result = [];
+
         foreach ($content_result as $action => $items) {
 
             foreach ($items as $key => $value) {
-                if ($action == 'deleted') {
-                    $title .= "Xóa dữ liệu: " . $value . "\n";
-                } elseif ($action == 'add') {
-                    $title .= "Thêm dữ liệu: " . $value . "\n";
+                $old_value = \Arr::get($content, $key);
+                $new_value = \Arr::get($content_changed, $key);
+                if($key == "items")
+                {
+
                 }
                 else{
-                    if ($key == "status") {
-                        $old_status = @$status[$old_value] ?? '';
-                        $new_status = @$status[$new_value] ?? '';
-                        $result[] = trans($key) . " : '" . $old_status . "'=>'" . $new_status . "'";
-                    } else {
-                        $result[] = trans($key) . " : '" . $old_value . "'=>'" . $new_value . "'";
+                    if ($action == 'deleted') {
+                        $title .= "Xóa dữ liệu: " . $value . "\n";
+                    } elseif ($action == 'add') {
+                        $title .= "Thêm dữ liệu: " . $value . "\n";
+                    }
+                    else{
+                        if ($key == "status") {
+                            $status = OrderStatus::pluck("name", "id")->toArray(); // Cache status names
+                            $old_status = @$status[$old_value] ?? '';
+                            $new_status = @$status[$new_value] ?? '';
+                            $result[] = trans($key) . " : '" . $old_status . "'=>'" . $new_status . "'";
+                        } else {
+                            $result[] = trans($key) . " : '" . $old_value . "'=>'" . $new_value . "'";
+                        }
                     }
                 }
+
             }
         }
-
         // Combine title and result updates
         if (!empty($result)) {
             $title .= "Điều chỉnh thông tin: \n" . implode(", \n", $result);

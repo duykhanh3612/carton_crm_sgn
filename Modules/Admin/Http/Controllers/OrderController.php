@@ -208,12 +208,12 @@ class OrderController extends BaseController
             $doc['cashier'] = auth()->user()->id;
         }
         $log_order = $model::where("id",$id)->first();
-        if(!empty($log_order))
+        if(empty($log_order))
         {
-            $log_order = $log_order->toArray();
+            $log_order = [];
         }
-        else $log_order = [];
-        $log_order['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
+
+        // $log_order['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
 
         $oderID = $model::updateOrCreate(['id' => $id], $doc);
         if ($items = request('item')) {
@@ -248,7 +248,7 @@ class OrderController extends BaseController
             }
         }
         $log_order_changed = $model::where("id",$id)->first();
-        $log_order_changed['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
+        // $log_order_changed['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
         Order::updateSummary($oderID);
         Order::updateLog($log_order, $log_order_changed);
         return redirect("admin/order/edit/" . $oderID->id);
