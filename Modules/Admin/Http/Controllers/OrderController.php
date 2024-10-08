@@ -208,7 +208,7 @@ class OrderController extends BaseController
             $doc['cashier'] = auth()->user()->id;
         }
         $log_order = $model::where("id",$id)->first();
-        if(empty($log_order))
+        if(!empty($log_order))
         {
             $log_order = $log_order->toArray();
         }
