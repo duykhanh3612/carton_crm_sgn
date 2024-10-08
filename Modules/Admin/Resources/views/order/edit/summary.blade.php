@@ -75,9 +75,6 @@
                 ?>
                 @if (empty($record) || (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3])))
                 <i   data-toggle="popover" class="showPayment {{$type}} bigger-230 icon-only blue" ng-class="isHoverAmountPaid ?'orange':'' " title="Thanh toán"></i>
-
-                @else
-                <i   data-toggle="popover" class=" {{$type}} bigger-230 icon-only blue" title="Thanh toán"></i>
                 @endif
             </span>
         </div>
