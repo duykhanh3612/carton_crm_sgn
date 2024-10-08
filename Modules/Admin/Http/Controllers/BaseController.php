@@ -21,7 +21,7 @@ class BaseController extends Controller
     const HS_WITH_TITLE = "with_option_title_";
     const HS_GROUP = "hs_group";
     const HS_LEVEL = "hs_level";
-    private $defaultLimit = 10;
+    private $defaultLimit = 25;
     public $model = [
         'order' => \Modules\Admin\Model\Order::class,
         'order_status' => \Modules\Admin\Model\OrderStatus::class,
@@ -104,7 +104,7 @@ class BaseController extends Controller
     public function prepareSearch(Request $request, $sortDefault = 'id'): void
     {
         request()->merge([
-            'limit' => (int)$request->get('limit', $this->defaultLimit),
+            'limit' => (int)$request->get('limit', user_config("default_limit")??$this->defaultLimit),
             'current_tab' => $request->get('current_tab', 0),
             'weborder' => $request->get('weborder', 0),
             'keywords' => $request->get('keywords', ''),
