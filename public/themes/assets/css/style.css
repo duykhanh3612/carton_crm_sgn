@@ -349,3 +349,15 @@ div.switch-toggle.switch-on:hover:after {
 .paging p{
     padding-bottom: 10px;
 }
+.paging li{
+    width: 35px;
+    padding: 6px;
+    text-align: center;
+    border-radius: 2px;
+    color:#1f2d3d !important;
+    background:#fff;
+}
+.paging li.active{
+    background-color: var(--secondary_bg_color) !important;
+    color: #fff !important;
+}

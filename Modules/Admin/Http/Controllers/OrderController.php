@@ -309,7 +309,7 @@ class OrderController extends BaseController
                 break;
         }
         //Handel Update Log
-        OrderLog::updateLog($log_order, $order, "đã $log_action đơn hàng ". $order->code, "user" , auth()->user());
+        Order::updateLog($log_order, $order, "đã $log_action đơn hàng ". $order->code, "user" , auth()->user());
         return response()->json(['success' => true,"message"=>"Cập nhật trạng thái thành công"]);
     }
 

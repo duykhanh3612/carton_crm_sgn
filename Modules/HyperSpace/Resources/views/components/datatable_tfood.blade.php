@@ -31,7 +31,7 @@
         <td colspan="{{count($theads)+ count(config("admin.".request()->segment(2).".tfirst")??[])+1  - 6}}">
             @isset($config['option']['paginate'])
             <div class="paging" style="float:right">
-                {!! $records->links() !!}
+                {!! $records->links("pagination.default") !!}
             </div>
             @endisset
         </td>

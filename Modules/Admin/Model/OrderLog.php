@@ -25,4 +25,5 @@ class OrderLog extends Model
             write_log($data,"EstateUpdateLog");
         }
     }
+
 }
