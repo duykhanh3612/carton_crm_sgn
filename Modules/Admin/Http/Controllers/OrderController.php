@@ -353,7 +353,9 @@ class OrderController extends BaseController
                 # code...
                 break;
         }
-        Order::updateLog($log_order, $order, "Cập nhật thanh toán đơn hàng:".number_format($payment_new_value).". Hình thức thanh toán". $payments_name );
+
+        $order_changed = Order::where("id", $order_id)->first();
+        Order::updateLog($log_order, $order_changed, "Cập nhật thanh toán đơn hàng:".number_format($payment_new_value).". Hình thức thanh toán". $payments_name );
         Order::updateSummary($order);
         $result = [
             'success' => true,
