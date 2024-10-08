@@ -71,6 +71,7 @@ class OrderController extends BaseController
                     ],
                     [
                         'name' => "filter[status_payment]",
+                        'field_name' => 'status_payment',
                         'type' => "option_items_keynum",
                         'empty_value' => [""=>"Chọn Tình trạng thanh toán"],
                         'option_key' => "status_payment",
