@@ -255,13 +255,16 @@ class OrderController extends BaseController
     }
     public function update_comment($id)
     {
+
         $order = Order::where('id', $id)->first();
+        $log_order =  $order;
         if(!empty($order))
         {
             $order->note =  request('note');
             $order->save();
         }
-
+        $log_order_changed = Order::where("id",$id)->first();
+        Order::updateLog($log_order, $log_order_changed);
     }
     public function destroy($id)
     {
