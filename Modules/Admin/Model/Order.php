@@ -64,7 +64,7 @@ class Order extends Model
             $q = $q->where("debt", 0);
 
             if($params['status_payment']==2)
-            $q = $q->where("debt","<>", 9);
+            $q = $q->where("debt","<>", 0);
         }
 
         if (isset($params['cashier'])) {
