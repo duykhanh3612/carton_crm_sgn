@@ -67,14 +67,13 @@
             <span class="info-box-text">Đã thanh toán</span>
             <span class="info-box-number">
                 <b class="total_paid_label">{{ number_format(@$record->total_paid) }}</b>
-                @if (empty($record) || (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3,4])))
                 <?php if(@$record->payments_type==1)
                     $type = "fa-solid fa-money-check-dollar";
                     else if(@$record->payments_type==3)
                     $type = "fa-solid fa-money-bill-transfer";
                     else $type = "fa fa-credit-card"
                 ?>
-
+                @if (empty($record) || (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3])))
                 <i   data-toggle="popover" class="showPayment {{$type}} bigger-230 icon-only blue" ng-class="isHoverAmountPaid ?'orange':'' " title="Thanh toán"></i>
                 @endif
             </span>

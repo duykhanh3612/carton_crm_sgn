@@ -86,7 +86,7 @@
             </div>
             @if(method_exists($rows,"links"))
             <div class="paging d-flex justify-content-end mt-3 mb-3">
-                {!! $rows->links("paging.default") !!}
+                {!! $rows->links("pagination.default") !!}
             </div>
             @endif
         </div>

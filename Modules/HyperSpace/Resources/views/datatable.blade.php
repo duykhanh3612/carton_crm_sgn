@@ -5,7 +5,7 @@
     <input type="hidden" id="sort_column" value="{{ request()->sort_column ?? 1 }}" />
     <input type="hidden" id="sort_field" value="{{ request()->sort_field ?? 'id' }}" />
     <input type="hidden" id="sort_order" value="{{ request()->sort_order ?? 'desc' }}" />
-    <input type="hidden" id="current_limit" value="{{ request()->current_limit ?? 25 }}" />
+    <input type="hidden" id="current_limit" value="{{ request()->current_limit ?? user_config("default_limit") }}" />
     <input type="hidden" id="categoryID" value="{{ request()->categoryID ?? 1 }}" />
     <input type="hidden" id="act" value="{{ request()->segment(2) }}" />
     <form id="form-update-selected" action="" method="POST"><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />

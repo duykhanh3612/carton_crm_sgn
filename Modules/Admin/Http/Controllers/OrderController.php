@@ -69,6 +69,14 @@ class OrderController extends BaseController
                         'empty_value' => [""=>"----  Trạng thái  ----"],
                         'class' => 'datatable-filter',
                     ],
+                    [
+                        'name' => "filter[status_payment]",
+                        'field_name' => 'status_payment',
+                        'type' => "option_items_keynum",
+                        'empty_value' => [""=>"Chọn Tình trạng thanh toán"],
+                        'option_key' => "status_payment",
+                        'class' => 'datatable-filter',
+                    ],
                 ],
                 "right" => [
                     [
@@ -207,8 +215,11 @@ class OrderController extends BaseController
         {
             $doc['cashier'] = auth()->user()->id;
         }
-        $log_order = $model::where("id",$id)->first()->toArray();
-        $log_order['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
+        $log_order = $model::where("id",$id)->first();
+        if(empty($log_order))
+        {
+            $log_order = [];
+        }
 
         $oderID = $model::updateOrCreate(['id' => $id], $doc);
         if ($items = request('item')) {
@@ -243,10 +254,22 @@ class OrderController extends BaseController
             }
         }
         $log_order_changed = $model::where("id",$id)->first();
-        $log_order_changed['items'] = \Arr::dot(OrderDetail::where("order_id",$id)->get()->toArray());
         Order::updateSummary($oderID);
         Order::updateLog($log_order, $log_order_changed);
         return redirect("admin/order/edit/" . $oderID->id);
+    }
+    public function update_comment($id)
+    {
+
+        $order = Order::where('id', $id)->first();
+        $log_order =  $order;
+        if(!empty($order))
+        {
+            $order->note =  request('note');
+            $order->save();
+        }
+        $log_order_changed = Order::where("id",$id)->first();
+        Order::updateLog($log_order, $log_order_changed);
     }
     public function destroy($id)
     {
@@ -348,7 +371,9 @@ class OrderController extends BaseController
                 # code...
                 break;
         }
-        Order::updateLog($log_order, $order, "Cập nhật thanh toán đơn hàng:".number_format($payment_new_value).". Hình thức thanh toán". $payments_name );
+
+        $order_changed = Order::where("id", $order_id)->first();
+        Order::updateLog($log_order, $order_changed, "Cập nhật thanh toán đơn hàng:".number_format($payment_new_value).". Hình thức thanh toán". $payments_name );
         Order::updateSummary($order);
         $result = [
             'success' => true,

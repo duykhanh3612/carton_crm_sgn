@@ -1836,7 +1836,9 @@ function getDataTableParams() {
     const params = {
         page: $(".current_page").val(),
         current_tab: $("#current_tab").val(),
-        limit: $("select.limit-changed").val(),
+        // limit: $("select.limit-changed").val(),
+        limit: $("#current_limit").val(),
+
         keywords: $("#nameFilter,#keywords").val(),
         weborder: weborder,
         sort_column: $("#sort_column").val(),

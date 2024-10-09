@@ -31,9 +31,9 @@
         <!-- summernote -->
         <link rel="stylesheet" href="{{ assets }}plugins/summernote/summernote-bs4.min.css" />
         <!-- global css -->
-        <link rel="stylesheet" href="{{ assets }}css/global.css" />
-        <link rel="stylesheet" href="{{ base }}themes/admin/css/components.css" />
-        <link rel="stylesheet" href="{{ base }}themes/assets/css/style.css" />
+        <link rel="stylesheet" href="{{ assets }}css/global.css?v={{time()}}" />
+        <link rel="stylesheet" href="{{ base }}themes/admin/css/components.css?v={{time()}}" />
+        <link rel="stylesheet" href="{{ base }}themes/assets/css/style.css?v={{time()}}" />
         {{-- <script src="{{ assets }}plugins/jquery/jquery.min.js"></script> --}}
         <script src="{{ base }}plugin/jquery/jquery-3.4.1.min.js"></script>
         @include('plugin::devitech.meta')
