@@ -343,10 +343,9 @@ class Order extends Model
 
         return $title ?: '';
     }
-    public static function updateSummary($model)
+    public static function updateSummary($order)
     {
-        $items =  OrderDetail::where('order_id',  $model->id)->get();
-        $order = Order::where('id', $model->id)->first();
+        $items =  OrderDetail::where('order_id',  $order->id)->get();
         if (!empty($items)) {
             $totalQty = 0;
             $total = 0;
@@ -358,8 +357,6 @@ class Order extends Model
             }
 
             $data_summary = [
-                'discount_code' => $model->discount_code,
-                'discount_value' => $model->discount_value,
                 'subTotal' => $subTotal,
                 'qty' => $totalQty,
             ];
@@ -367,10 +364,10 @@ class Order extends Model
             // $shipment = Shipment::getFee($model->shipping_district, $subTotal);
             // $data_summary['shipping_fee'] = $shipment['fee'];
             $shipment['fee'] = convert_decimal($order->shipping_fee);
-            $data_summary['total'] = convert_decimal($data_summary['subTotal']) + convert_decimal(@$model['vat'])  + convert_decimal(@$shipment['fee']) - convert_decimal($order->discount_value);
+            $data_summary['total'] = convert_decimal($data_summary['subTotal']) + convert_decimal(@$order['vat'])  + convert_decimal(@$shipment['fee']) - convert_decimal($order->discount_value);
             $data_summary['debt'] =  $data_summary['total'] - intval($order->total_paid);
-            \App\Helpers\LogHelper::write($data_summary, "updateSummary");
-            DB::table("orders")->where('id', $model->id)->update($data_summary);
+            // \App\Helpers\LogHelper::write($data_summary, "updateSummary");
+            DB::table("orders")->where('id', $order->id)->update($data_summary);
         }
     }
 

@@ -214,19 +214,14 @@ class OrderController extends BaseController
             $doc['delivery_date'] = date("Y-m-d",strtotime(str_replace("/","-",$doc['delivery_date'])));
         }
         $doc['shipping_fee'] = convert_decimal(@$doc['shipping_fee']);
-        $doc['discount_value'] = convert_decimal(@$doc['discount_value']);
-        $doc['total_paid'] = convert_decimal(@$doc['total_paid']);
-        if($doc['total_paid']>0)
-        {
-            $doc['cashier'] = auth()->user()->id;
-        }
+
         $log_order = $model::where("id",$id)->first();
         if(empty($log_order))
         {
             $log_order = [];
         }
 
-        $oderID = $model::updateOrCreate(['id' => $id], $doc);
+        $order_new = $model::updateOrCreate(['id' => $id], $doc);
         if ($items = request('item')) {
 			\App\Helpers\LogHelper::write($items,"PO:".$oderID->id);
             foreach ($items as $itemID => $item) {
@@ -258,9 +253,9 @@ class OrderController extends BaseController
                 }
             }
         }
-        $log_order_changed = $model::where("id",$id)->first();
-        Order::updateSummary($oderID);
-        Order::updateLog($log_order, $log_order_changed);
+
+        Order::updateSummary($order_new);
+        Order::updateLog($log_order, $order_new);
         return redirect("admin/order/edit/" . $oderID->id);
     }
     public function update_comment($id)
@@ -400,14 +395,13 @@ class OrderController extends BaseController
             $result = "Update fail";
             return response()->json($result, 201, ['Content-type' => 'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);
         }
-
         $order->discount_value  = $discount_value;
         $order->total =  intval($order->subTotal) + intval($order->shipping_fee) - intval($discount_value);
         $order->debt =    $order->total - $order->total_paid;
         $order->discount_type  = $discount_type;
         $order->discount_percent =  $discount_percent;
         $order->update();
-        Order::updateLog($log_order, $order, "Cập nhật giả giá đơn hàng ".number_format($discount_value));
+        Order::updateLog($log_order, $order, "Cập nhật giá đơn hàng ".number_format($discount_value));
 
         $result = "Update success";
         return response()->json($result, 200, ['Content-type' => 'application/json;charset=utf-8'], JSON_UNESCAPED_UNICODE);

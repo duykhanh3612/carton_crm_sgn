@@ -37,10 +37,6 @@
                     @include('admin::order.edit.info')
             </section>
             <input id="id" value="{{@$record->id}}" type="hidden" />
-            <input name="discount_type" value="{{@$record->discount_type}}" type="hidden" />
-            <input name="discount_percent" value="{{@$record->discount_percent}}" type="hidden" />
-            <input name="payments_type" value="{{@$record->payments_type}}" type="hidden" />
-            <input name="total_paid" value="{{@$record->total_paid}}" type="hidden" />
 
             <!-- Button Range -->
             <div class="d-flex justify-content-end mt-3" style="gap: 8px">
