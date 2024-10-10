@@ -37,11 +37,6 @@
                     @include('admin::order.edit.info')
             </section>
             <input id="id" value="{{@$record->id}}" type="hidden" />
-            <input name="discount_value" value="{{@$record->discount_value}}" type="hidden" />
-            <input name="discount_type" value="{{@$record->discount_type}}" type="hidden" />
-            <input name="discount_percent" value="{{@$record->discount_percent}}" type="hidden" />
-            <input name="payments_type" value="{{@$record->payments_type}}" type="hidden" />
-            <input name="total_paid" value="{{@$record->total_paid}}" type="hidden" />
 
             <!-- Button Range -->
             <div class="d-flex justify-content-end mt-3" style="gap: 8px">
@@ -109,7 +104,7 @@
                     <i class="fa fa-arrow-left"></i>
                     <span class="hidden-480 ng-binding">Trở về</span>
                 </button>
-                <input type="hidden" id="id" value="{{ @$record->id }}" />
+
                 <!-- Lưu và tiếp tục -->
                 {{-- <button class="btn btn-warning" type="button">
                     <img src="../../dist/img/icon/save.png" alt="" width="15" />
@@ -151,14 +146,3 @@
     {!! Themes::module("order") !!}
     @endpush
 @endpush
-
-
-<div class="content is-dev hidden">
-    <quote style="">
-    - Chỉnh sửa đơn hàng:
-        + Khi đơn hàng không có hàng hoá & user nhấn "Lưu" thì sẽ hiển thị pop-up cảnh báo "Đơn hàng không có hàng hoá, bạn có muốn xoá không? với đơn hàng chưa tạo thì chỉ hiện thông báo
-        + Hiện tại,những đơn "hoàn thành", "đã huỷ" vẫn đang cập nhật được khách hàng, đơn vị vận chuyển,....Update: các đơn ở trạng thái này thì sẽ update disable hết tất cả các thông tin trong đơn (input, seclect, button,....), chế độ chỉ xem
-    - Tạo đơn hàng:
-        + Khi đơn hàng không có hàng hoá & user nhấn "Lưu" thì sẽ hiển thị pop-up cảnh báo "Đơn hàng không có hàng hoá, không lưu được"
-    </quote>
-</div>
