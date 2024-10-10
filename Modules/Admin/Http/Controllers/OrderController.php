@@ -223,7 +223,7 @@ class OrderController extends BaseController
 
         $order_new = $model::updateOrCreate(['id' => $id], $doc);
         if ($items = request('item')) {
-			\App\Helpers\LogHelper::write($items,"PO:".$oderID->id);
+			\App\Helpers\LogHelper::write($items,"PO:".$order_new->id);
             foreach ($items as $itemID => $item) {
                 if ($itemID != "id") {
                     if (@$item['deleted']) {
@@ -232,7 +232,7 @@ class OrderController extends BaseController
                         $product = Product::where("id", @$item['product_id'])->first();
                         if(!empty($product))
                         {
-                            $t['order_id'] = $oderID->id;
+                            $t['order_id'] = $order_new->id;
                             $t['product_id'] =   $product->id;
                             $t['product_name'] =   $product->name;
                             $t['category'] =   $product->product_category_id;
@@ -242,8 +242,6 @@ class OrderController extends BaseController
                             $t['qty'] = convert_decimal(@$item['qty']);
 
                             $t['unit_price'] = convert_decimal(@$item['price']);
-                            // $t['total_price'] = $t['unit_price'] *  $t['qty'] ;
-                            // $t['total_price'] = $product->price *  $t['qty'];
                             $t['total_price'] = convert_decimal(@$t['unit_price']) * convert_decimal($t['qty']);
                             $itemID = is_string($itemID) ? "" : $itemID;
                             OrderDetail::updateOrCreate(['id' =>  $itemID], $t);
@@ -256,7 +254,7 @@ class OrderController extends BaseController
 
         Order::updateSummary($order_new);
         Order::updateLog($log_order, $order_new);
-        return redirect("admin/order/edit/" . $oderID->id);
+        return redirect("admin/order/edit/" . $order_new->id);
     }
     public function update_comment($id)
     {
