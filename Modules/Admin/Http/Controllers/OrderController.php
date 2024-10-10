@@ -360,12 +360,12 @@ class OrderController extends BaseController
             case '1':
                 $payments_name = "Tiền mặt";
                 break;
-            case '2':
-                $payments_name = "CK";
-                break;
-            case '3':
-                $payments_name = "Thẻ";
-                break;
+                case '3':
+                    $payments_name = "CK";
+                    break;
+                case '2':
+                    $payments_name = "Thẻ";
+                    break;
 
             default:
                 # code...
