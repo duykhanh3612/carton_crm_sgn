@@ -165,6 +165,9 @@ class OrderController extends BaseController
         {
             $arr_reset = ["id","date","carrier_name","delivery_date","saler_id"];
             $record->status = 1;
+            $record->discount_value = 0;
+            $record->total_paid = 0;
+
             foreach($arr_reset as $key)
             {
                 $record->{$key} = "";
