@@ -70,7 +70,7 @@ function calSummary()
     });
 
     shipping_fee = convert_decimal($("#shipping_fee").val());
-    discount_value = convert_decimal($("#updateFrm input[name=discount_value]").val());
+    discount_value = convert_decimal($("#discount_value").val());
     total = sub_total + shipping_fee - discount_value;
     total_paid = convert_decimal($("#updateFrm input[name=total_paid]").val());
     $(".summary_subTotal").html(format_thousand(sub_total));
@@ -587,7 +587,7 @@ function getTotal()
 {
     total_price  = getSubTotal();
     shipping_fee = convert_decimal($("#shipping_fee").val());
-    discount_value = convert_decimal($("#updateFrm input[name=discount_value]").val());
+    discount_value = convert_decimal($("#discount_value").val());
     return total_price + shipping_fee - discount_value;
 }
 $(document).on("keydown", ":input:not(textarea)", function(event) {

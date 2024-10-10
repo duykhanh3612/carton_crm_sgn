@@ -163,10 +163,12 @@ class OrderController extends BaseController
         ];
         if(request()->segment(3) == "copy")
         {
+            $arr_reset = ["id","date","carrier_name","delivery_date","saler_id"];
             $record->status = 1;
-            $record->saler_id = "";
-            $record->date = "";
-
+            foreach($arr_reset as $key)
+            {
+                $record->{$key} = "";
+            }
             $link_update =  route('admin.order.update.new');
         }
         else{
