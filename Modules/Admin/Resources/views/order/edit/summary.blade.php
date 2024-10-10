@@ -19,7 +19,7 @@
 <!-- Số lượng -->
 <div class="col-md-3 col-sm-6 col-12">
     <div class="info-box" id="box-discount">
-        <span class="info-box-icon bg-success {{check_rights_function("discount_order",'read') && intval($record->id) != 0 && @$record->status <= 1?'showDiscount':''}}">
+        <span class="info-box-icon bg-success {{check_rights_function("discount_order",'read') && intval(@$record->id) != 0 && @$record->status <= 1?'showDiscount':''}}">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="white">
                 <path d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5V80C0 53.5 21.5 32 48 32H197.5c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
             </svg>
@@ -29,7 +29,7 @@
             <span class="info-box-text">Giảm giá</span>
             <span class="info-box-number">
                 <b class="total_discount_label">{{ number_format(@$record->discount_value) }}</b>
-                @if(check_rights_function("discount_order",'read') && intval($record->id) != 0 &&  @$record->status <= 1)
+                @if(check_rights_function("discount_order",'read') && intval(@$record->id) != 0 &&  @$record->status <= 1)
                 <i  class="showDiscount fa fa-gift icon-only green bigger-300" ng-class="saleOrder.Items[saleOrder.SelectedOrderIndex].SaleOrder.optimal === 3 ?'bigger-150 margin-left-10':'bigger-300' " data-ng-click="openPromotionList(saleOrder.Items[saleOrder.SelectedOrderIndex].SaleOrder , allowPromotionModified)"></i>
                 @endif
             </span>
@@ -58,7 +58,7 @@
 <!-- Thanh toán -->
 <div class="col-md-3 col-sm-6 col-12">
     <div class="info-box" style="pointer-events: auto;">
-        <span class="info-box-icon bg-danger {{intval($record->id) != 0 && (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3,4]))?'showPayment':''}}"  data-toggle="popover" title="Thanh toán">
+        <span class="info-box-icon bg-danger {{intval(@$record->id) != 0 && (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3,4]))?'showPayment':''}}"  data-toggle="popover" title="Thanh toán">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="white">
                 <path d="M64 32C28.7 32 0 60.7 0 96v32H576V96c0-35.3-28.7-64-64-64H64zM576 224H0V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V224zM112 352h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm112 16c0-8.8 7.2-16 16-16H368c8.8 0 16 7.2 16 16s-7.2 16-16 16H240c-8.8 0-16-7.2-16-16z" />
             </svg>
@@ -74,7 +74,7 @@
                     else $type = "fa fa-credit-card"
                 ?>
                 @if (empty($record) || (check_rights_function(6,'read') && in_array(@$record->status,[1,2,3])))
-                <i   data-toggle="popover" class="{{intval($record->id) != 0?"showPayment":""}} {{$type}} bigger-230 icon-only blue" ng-class="isHoverAmountPaid ?'orange':'' " title="Thanh toán"></i>
+                <i   data-toggle="popover" class="{{intval(@$record->id) != 0?"showPayment":""}} {{$type}} bigger-230 icon-only blue" ng-class="isHoverAmountPaid ?'orange':'' " title="Thanh toán"></i>
                 @endif
             </span>
         </div>
